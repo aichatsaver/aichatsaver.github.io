@@ -119,3 +119,6 @@ html[data-theme="dark"] .cp-pill.building,html[data-theme="dark"] .cp-pill.queue
   .cp-commits .msg{flex-basis:100%;order:3}
   .cp select{width:100%}
 }
+.cp-banner{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.cp-banner.ok{border-color:var(--ok)}
+.cp-banner .cp-btn{margin-left:auto}
