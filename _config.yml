@@ -16,6 +16,11 @@ exclude:
   - "*.sh"
   - "*.py"
   - vendor
+  - node_modules
+  - work
+  - control_build
+  - "*.zip"
+  - "*.bak"
 defaults:
   - scope:
       path: "pages"
