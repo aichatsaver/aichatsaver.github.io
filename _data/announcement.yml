@@ -1,0 +1,11 @@
+# Site-wide announcement bar — edit in the admin panel ("Announcement"). Off by default.
+enabled: false
+text: ""
+# texts: optional per-language text, e.g. {es: "…"}; other languages show text.
+texts: {}
+link_texts: {}
+link: ""
+link_text: ""
+color: "#6d28d9"
+text_color: "#ffffff"
+dismissible: true
