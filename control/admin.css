@@ -122,3 +122,4 @@ html[data-theme="dark"] .cp-pill.building,html[data-theme="dark"] .cp-pill.queue
 .cp-banner{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .cp-banner.ok{border-color:var(--ok)}
 .cp-banner .cp-btn{margin-left:auto}
+.cp-editing{margin:6px 0 10px;font-size:17px;color:var(--accent)}
