@@ -1,5 +1,5 @@
 # Français strings for the AI Chat Saver site. Placeholders such as %name%, %email% and %shortcut% are filled in by the templates.
-# The meta lists are translations of the English values in _data/site.yml; if those are edited in Pages CMS, the edited English text is shown until this file is updated.
+# The meta lists are translations of the English values in _data/site.yml; if those are edited in the admin panel or in site.yml, the edited English text is shown until this file is updated.
 nav:
   product: Produit
   pricing: Tarifs
