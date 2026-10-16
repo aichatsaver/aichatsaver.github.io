@@ -6,9 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
 <script>try{if(localStorage.getItem("theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
-{%- if page.title and page.url != '/' and page.i18n_key != 'home' %}{% assign t = page.title | append: ' · ' | append: s.product_name %}{% else %}{% assign t = s.product_name | append: ' — ' | append: tagline %}{% endif %}
+{%- comment -%} Pricing pages take their title and description from _data/i18n/<lang>.yml (pricing.title / pricing.description), so edits there apply. {%- endcomment -%}
+{%- if page.i18n_key == 'pricing' and tr.pricing.title %}{% assign ptitle = tr.pricing.title %}{% assign pdesc = tr.pricing.description | default: page.description %}{% else %}{% assign ptitle = page.title %}{% assign pdesc = page.description %}{% endif -%}
+{%- if ptitle and page.url != '/' and page.i18n_key != 'home' %}{% assign t = ptitle | append: ' · ' | append: s.product_name %}{% else %}{% assign t = s.product_name | append: ' — ' | append: tagline %}{% endif %}
 <title>{{ t }}</title>
-<meta name="description" content="{{ page.description | default: tdesc | strip_newlines | escape }}">
+<meta name="description" content="{{ pdesc | default: tdesc | strip_newlines | escape }}">
 <link rel="canonical" href="{{ page.url | replace: 'index.html', '' | absolute_url }}">
 {%- if page.i18n_key %}{% if page.i18n_key == 'pricing' %}{% assign ipath = '/pricing.html' %}{% else %}{% assign ipath = '/' %}{% endif %}
 {%- for lg in site.data.languages %}{% if lg.code == 'en' %}{% assign lhref = ipath %}{% else %}{% assign lhref = '/' | append: lg.code | append: ipath %}{% endif %}
@@ -23,7 +25,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{{ s.product_name }}">
 <meta property="og:title" content="{{ t | escape }}">
-<meta property="og:description" content="{{ page.description | default: tdesc | strip_newlines | escape }}">
+<meta property="og:description" content="{{ pdesc | default: tdesc | strip_newlines | escape }}">
 <meta property="og:url" content="{{ page.url | replace: 'index.html', '' | absolute_url }}">
 <meta property="og:image" content="{{ '/assets/images/logo.png' | absolute_url }}">
 <meta name="theme-color" content="#7c3aed">
