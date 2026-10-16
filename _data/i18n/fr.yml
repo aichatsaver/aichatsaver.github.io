@@ -16,6 +16,7 @@ ui:
   language: Langue
   main_nav: Principale
   footer_nav: Pied de page
+  dismiss: Fermer
 foot:
   support: 'Assistance :'
   disclaimer: '%name% est un produit indépendant, ni affilié aux services d’IA avec lesquels il fonctionne, ni approuvé par eux. Leurs noms et logos appartiennent à leurs propriétaires.'
@@ -25,6 +26,7 @@ stores:
   soon: Bientôt disponible
   chrome_soon_aria: 'Chrome Web Store : bientôt disponible'
   edge_soon_aria: 'Microsoft Edge Add-ons : bientôt disponible'
+  version: Version %version%
 meta:
   tagline: Enregistrez chaque conversation d’IA dans un dossier sur votre propre ordinateur.
   description: AI Chat Saver est une extension de navigateur qui enregistre vos conversations de 18 assistants d’IA dans un dossier local, avec mise à jour en un clic, recherche et exports fidèles aux sites d’origine.
@@ -114,6 +116,16 @@ pricing:
   monthly_h: Pro mensuel
   monthly_sub: Facturé chaque mois. Résiliable à tout moment.
   per_month: / mois
+  lifetime_h: Pro à vie
+  lifetime_sub: Payez une fois, gardez Pro pour toujours.
+  per_lifetime: paiement unique
+  yearly_cta: Passer à Pro
+  monthly_cta: Passer à Pro
+  lifetime_cta: Passer à Pro
+  free_badge: ''
+  yearly_badge: ''
+  monthly_badge: ''
+  lifetime_badge: ''
   howpro_h2: Comment fonctionne Pro
   howpro_p: Aucun compte à créer, aucun mot de passe. Votre clé de licence sert d’identifiant.
   howpro_steps:
@@ -126,3 +138,6 @@ pricing:
   - t: Gérez à tout moment
     d: Utilisez « Gérer le compte » pour voir vos factures, résilier ou retrouver votre clé. Déconnectez-vous sur un appareil pour utiliser Pro sur un autre.
   fine: Les paiements et les clés de licence de Pro sont gérés par notre revendeur et marchand officiel, Freemius, Inc. Des taxes peuvent s’ajouter au paiement selon votre lieu de résidence. Consultez les <a href="%terms_url%">Conditions d’utilisation</a> (en anglais). Les droits légaux des consommateurs, lorsqu’ils s’appliquent, ne sont pas affectés.
+maint:
+  title: De retour très vite
+  message: Le site est en cours de mise à jour. Revenez dans quelques instants.
