@@ -20,7 +20,7 @@
 <meta property="og:url" content="{{ page.url | replace: 'index.html', '' | absolute_url }}">
 <meta property="og:image" content="{{ '/assets/images/logo.png' | absolute_url }}">
 <meta name="theme-color" content="#7c3aed">
-<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 </head>
 <body class="{{ page.body_class }}">
 {% include header.html %}
