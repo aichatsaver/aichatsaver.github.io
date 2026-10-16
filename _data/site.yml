@@ -17,13 +17,21 @@ edge_store_url: ""
 extension_version: ""
 policies_updated: 2026-10-16
 free_features:
-  - Save chats from all 18 supported AIs
-  - Local folder on your computer (Downloads or a folder you connect)
-  - One-click incremental Update, plus schedules
-  - Images, videos, files, thinking, code, sources and artifacts kept
-  - Export to PDF, Word (DOCX), HTML, Markdown, TXT, JSON, PNG and JPG
-  - Full-text search and the Command Center
-  - Everything stays on your device
+  - "Save chats from all 18 supported AIs"
+  - "8 new chats a day in total across all AIs. Re-saving a chat you already saved doesn't count."
+  - "Save manually, one open chat at a time, from that AI's own page"
+  - "Images, files and media from every AI (except Grok images and media)"
+  - "8 exports a day in any format (PDF, Word, HTML, Markdown, TXT, JSON, PNG, JPG)"
+  - "Saved and exported files include a small AI Chat Saver logo and a link to the Chrome extension"
+  - "Saves go to Downloads/AI Chat Saver"
+  - "Read, search and view your saved chats in the Command Center, plus Studio and highlights"
+  - "Everything stays on your device"
 pro_features:
-  - Everything in Free
-  - Pro-only features will be announced at launch
+  - "Everything in Free"
+  - "Unlimited saves and exports"
+  - "No watermark"
+  - "Save and sync from the Command Center, including bulk “Sync everything”"
+  - "Auto-sync, incremental updates and schedules"
+  - "Grok images and media, plus recovery of deleted Grok chats"
+  - "Choose any folder on your computer"
+  - "One licence key per device"
