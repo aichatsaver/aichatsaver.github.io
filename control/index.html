@@ -11,7 +11,7 @@
 <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg">
 <script src="/control/theme.js"></script>
 <link rel="stylesheet" href="/assets/css/style.css">
-<link rel="stylesheet" href="/control/admin.css?v=20261016b">
+<link rel="stylesheet" href="/control/admin.css?v=20261016c">
 </head>
 <body class="cp">
 <header class="cp-head">
@@ -94,7 +94,7 @@
     <div class="cp-pane" data-pane="site">
       <div class="cp-card">
         <h2>Site settings</h2>
-        <p class="muted small">Saved to <code>_data/site.yml</code>. Prices: write TBD (or leave empty) to show “Coming soon”. Store links: leave empty to show a “Coming soon” badge. If you change the tagline, description, Pro status or feature lists, every language shows your new English text until you update that language under Translations (the <code>meta</code> keys).</p>
+        <p class="muted small">Saved to <code>_data/site.yml</code>. Prices: write TBD (or leave empty) to show “Coming soon”. Store links: leave empty to show a “Coming soon” badge. English pages always show these values. If you change the tagline, description, Pro status or feature lists, the other languages show your new English text until you update that language under Translations (the <code>meta</code> keys).</p>
         <div id="siteForm" class="cp-form"></div>
       </div>
       <div class="cp-savebar"><span class="cp-state" id="siteState"></span><button class="cp-btn ghost" type="button" id="siteReload">Reload</button><button class="cp-btn" type="button" id="siteSave">Save</button></div>
@@ -195,6 +195,6 @@
 </template>
 
 <script src="/control/js-yaml.min.js"></script>
-<script src="/control/app.js?v=20261016b"></script>
+<script src="/control/app.js?v=20261016c"></script>
 </body>
 </html>
