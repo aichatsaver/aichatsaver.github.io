@@ -32,16 +32,24 @@ meta:
   description: AI Chat Saver ist eine Browsererweiterung, die deine Chats aus 18 KI-Assistenten in einem lokalen Ordner speichert – mit Aktualisierung per Klick, Suche und Exporten, die wie die Originalseiten aussehen.
   pro_status: Pro – bald verfügbar
   free_features:
-  - Chats aus allen 18 unterstützten KIs speichern
-  - Lokaler Ordner auf deinem Computer (Downloads oder ein verbundener Ordner)
-  - Inkrementelle Aktualisierung per Klick, dazu Zeitpläne
-  - Bilder, Videos, Dateien, Denkprozesse, Code, Quellen und Artefakte bleiben erhalten
-  - Export als PDF, Word (DOCX), HTML, Markdown, TXT, JSON, PNG und JPG
-  - Volltextsuche und das Command Center
-  - Alles bleibt auf deinem Gerät
+  - "Chats aus allen 18 unterstützten KIs speichern"
+  - "8 neue Chats pro Tag insgesamt über alle KIs. Einen bereits gespeicherten Chat erneut zu speichern, zählt nicht."
+  - "Manuell speichern, jeweils einen geöffneten Chat, direkt auf der Seite der jeweiligen KI"
+  - "Bilder, Dateien und Medien aller KIs (außer Bilder und Medien von Grok)"
+  - "8 Exporte pro Tag in jedem Format (PDF, Word, HTML, Markdown, TXT, JSON, PNG, JPG)"
+  - "Gespeicherte und exportierte Dateien enthalten ein kleines AI-Chat-Saver-Logo und einen Link zur Chrome-Erweiterung"
+  - "Gespeichert wird in Downloads/AI Chat Saver"
+  - "Gespeicherte Chats im Command Center lesen, durchsuchen und ansehen, dazu Studio und Markierungen"
+  - "Alles bleibt auf deinem Gerät"
   pro_features:
-  - Alles aus Free
-  - Pro-exklusive Funktionen werden zum Start bekannt gegeben
+  - "Alles aus Free"
+  - "Unbegrenzt speichern und exportieren"
+  - "Kein Wasserzeichen"
+  - "Speichern und Synchronisieren aus dem Command Center, auch gesammelt mit „Alles synchronisieren“"
+  - "Automatische Synchronisierung, inkrementelle Updates und Zeitpläne"
+  - "Bilder und Medien von Grok sowie Wiederherstellung gelöschter Grok-Chats"
+  - "Beliebigen Ordner auf deinem Computer wählen"
+  - "Ein Lizenzschlüssel pro Gerät"
 home:
   title: Produkt
   logo_alt: '%name%-Logo'
@@ -92,7 +100,7 @@ home:
   - q: Brauche ich ein Konto?
     a: Nein. %name% nutzt die Sitzungen, die du auf jeder KI-Seite bereits hast. Pro verwendet einen Lizenzschlüssel unseres Zahlungspartners Freemius. Füge ihn einmal in die Erweiterung ein, und du bist angemeldet.
   - q: Wo werden meine Chats gespeichert?
-    a: In Downloads/AI Chat Saver auf deinem Computer (ein Ordner pro KI) oder in einem Ordner, den du verbindest. Eine Kopie liegt außerdem im lokalen Speicher deines Browsers, damit die Suche sofort funktioniert.
+    a: "In Downloads/AI Chat Saver auf deinem Computer (ein Ordner pro KI). Mit Pro kannst du stattdessen jeden beliebigen Ordner auf deinem Computer wählen. Eine Kopie liegt außerdem im lokalen Speicher deines Browsers, damit die Suche sofort funktioniert."
   - q: Was passiert, wenn sich eine KI-Seite ändert?
     a: Nach jeder Synchronisierung prüft die Erweiterung alle KIs. Hat sich eine Seite geändert und das Speichern funktioniert nicht mehr, bekommst du eine Benachrichtigung und einen Hinweis, und ein fehlerhafter Durchlauf überschreibt nie einen korrekt gespeicherten Chat.
   - q: Ist es kostenlos?
