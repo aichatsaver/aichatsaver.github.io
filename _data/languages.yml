@@ -1,0 +1,33 @@
+# Site languages, in dropdown order. English is the default and lives at /.
+# Each code needs _data/i18n/<code>.yml and the pages /<code>/index.html and /<code>/pricing.html.
+- code: en
+  name: English
+  hreflang: en
+- code: es
+  name: Español
+  hreflang: es
+- code: pt
+  name: Português
+  hreflang: pt
+- code: fr
+  name: Français
+  hreflang: fr
+- code: de
+  name: Deutsch
+  hreflang: de
+- code: hi
+  name: हिन्दी
+  hreflang: hi
+- code: ru
+  name: Русский
+  hreflang: ru
+- code: ar
+  name: العربية
+  hreflang: ar
+  dir: rtl
+- code: zh
+  name: 简体中文
+  hreflang: zh-Hans
+- code: ja
+  name: 日本語
+  hreflang: ja
