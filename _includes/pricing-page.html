@@ -1,6 +1,10 @@
 {%- include i18n.html -%}
 {%- assign tpr = tr.pricing -%}
 {%- assign terms_url = "/terms.html" | relative_url -%}
+{%- comment -%} Plan settings (launch switch, checkout links, highlighted plan, Lifetime card) come from _data/pricing.yml (admin panel: Pricing). {%- endcomment -%}
+{%- assign pz = site.data.pricing -%}
+{%- assign hl = pz.highlighted | default: "yearly" -%}
+{%- assign free_href = pz.free_url | default: s.chrome_store_url -%}
 <section>
   <div class="wrap">
     <div class="section-head">
@@ -9,12 +13,12 @@
       <p>{{ tpr.intro | replace: '%currency%', s.price_currency }}</p>
     </div>
 
-    <div class="plans">
-      <div class="plan">
+    <div class="plans{% if pz.lifetime_enabled %} plans-4{% endif %}">
+      <div class="plan{% if hl == "free" %} featured{% endif %}">{% if tpr.free_badge and tpr.free_badge != "" %}<span class="badge">{{ tpr.free_badge }}</span>{% endif %}
         <h2>{{ tpr.free_h }}</h2>
         <p class="sub">{{ tpr.free_sub }}</p>
-        <div class="price"><span class="price-num">$0</span><span class="price-per">{{ tpr.forever }}</span></div>
-        {% if s.chrome_store_url and s.chrome_store_url != "" %}<a class="btn ghost" href="{{ s.chrome_store_url }}">{{ tpr.get_free }}</a>{% else %}<span class="btn ghost" aria-disabled="true">{{ tr.stores.soon }}</span>{% endif %}
+        <div class="price">{% include price.html value="0" per=tpr.forever %}</div>
+        {% if free_href and free_href != "" %}<a class="btn ghost" href="{{ free_href }}">{{ tpr.get_free }}</a>{% else %}<span class="btn ghost" aria-disabled="true">{{ tr.stores.soon }}</span>{% endif %}
         <ul>
           {% for f in free_features %}<li>{{ f }}</li>
           {% endfor %}
@@ -23,31 +27,14 @@
 
       <!--PRICE-->
       {% comment %}Pro price and feature split: set price_monthly, price_yearly and pro_features in _data/site.yml (admin panel: Site settings).{% endcomment %}
-      <div class="plan featured">
-        <span class="status">{{ pro_status }}</span>
-        <h2>{{ tpr.yearly_h }}</h2>
-        <p class="sub">{{ tpr.yearly_sub }}</p>
-        <!--PRICE_YEARLY-->
-        <div class="price">{% include price.html value=s.price_yearly per=tpr.per_year soon=tr.stores.soon %}</div>
-        <span class="btn" aria-disabled="true">{{ pro_status }}</span>
-        <ul>
-          {% for f in pro_features %}<li>{{ f }}</li>
-          {% endfor %}
-        </ul>
-      </div>
+      {% include plan-pro.html id="yearly" mark="YEARLY" price=s.price_yearly per=tpr.per_year %}
 
-      <div class="plan">
-        <span class="status">{{ pro_status }}</span>
-        <h2>{{ tpr.monthly_h }}</h2>
-        <p class="sub">{{ tpr.monthly_sub }}</p>
-        <!--PRICE_MONTHLY-->
-        <div class="price">{% include price.html value=s.price_monthly per=tpr.per_month soon=tr.stores.soon %}</div>
-        <span class="btn" aria-disabled="true">{{ pro_status }}</span>
-        <ul>
-          {% for f in pro_features %}<li>{{ f }}</li>
-          {% endfor %}
-        </ul>
-      </div>
+      {% include plan-pro.html id="monthly" mark="MONTHLY" price=s.price_monthly per=tpr.per_month %}
+
+      {%- if pz.lifetime_enabled %}
+
+      {% include plan-pro.html id="lifetime" mark="LIFETIME" price=pz.price_lifetime per=tpr.per_lifetime %}
+      {%- endif %}
 
     </div>
 
