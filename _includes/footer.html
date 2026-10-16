@@ -1,0 +1,15 @@
+{%- assign s = site.data.site -%}
+<footer class="site-foot">
+  <div class="wrap foot-row">
+    <div class="foot-brand"><img src="{{ '/assets/images/logo.png' | relative_url }}" width="24" height="24" alt=""><span>{{ s.product_name }}</span></div>
+    <nav class="foot-nav" aria-label="Footer">
+      <a href="{{ '/' | relative_url }}">Product</a>
+      <a href="{{ '/pricing.html' | relative_url }}">Pricing</a>
+      <a href="{{ '/privacy.html' | relative_url }}">Privacy Policy</a>
+      <a href="{{ '/terms.html' | relative_url }}">Terms of Service</a>
+      <a href="{{ '/refund.html' | relative_url }}">Refund Policy</a>
+      <a href="mailto:{{ s.support_email }}">Contact</a>
+    </nav>
+    <p class="foot-note">© {{ site.time | date: "%Y" }} {{ s.product_name }}. Support: <a href="mailto:{{ s.support_email }}">{{ s.support_email }}</a>.<br>{{ s.product_name }} is an independent product and is not affiliated with or endorsed by the AI services it works with. Their names and logos belong to their owners.</p>
+  </div>
+</footer>
