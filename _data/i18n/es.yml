@@ -32,16 +32,24 @@ meta:
   description: AI Chat Saver es una extensión del navegador que guarda tus chats de 18 asistentes de IA en una carpeta local, con actualizaciones en un clic, búsqueda y exportaciones con el aspecto de los sitios originales.
   pro_status: 'Pro: lanzamiento próximamente'
   free_features:
-  - Guarda chats de las 18 IA compatibles
-  - Carpeta local en tu ordenador (Descargas o una carpeta que conectes)
-  - Actualización incremental en un clic, además de programaciones
-  - Se conservan imágenes, vídeos, archivos, razonamiento, código, fuentes y artefactos
-  - Exporta a PDF, Word (DOCX), HTML, Markdown, TXT, JSON, PNG y JPG
-  - Búsqueda de texto completo y el Centro de comandos
-  - Todo se queda en tu dispositivo
+  - "Guarda chats de las 18 IA compatibles"
+  - "8 chats nuevos al día en total entre todas las IA. Volver a guardar un chat que ya guardaste no cuenta."
+  - "Guardado manual, un chat abierto a la vez, desde la propia página de esa IA"
+  - "Imágenes, archivos y multimedia de todas las IA (excepto imágenes y multimedia de Grok)"
+  - "8 exportaciones al día en cualquier formato (PDF, Word, HTML, Markdown, TXT, JSON, PNG, JPG)"
+  - "Los archivos guardados y exportados incluyen un pequeño logotipo de AI Chat Saver y un enlace a la extensión de Chrome"
+  - "Se guarda en Downloads/AI Chat Saver"
+  - "Lee, busca y consulta tus chats guardados en el Centro de comandos, además de Studio y los resaltados"
+  - "Todo se queda en tu dispositivo"
   pro_features:
-  - Todo lo del plan Free
-  - Las funciones exclusivas de Pro se anunciarán en el lanzamiento
+  - "Todo lo del plan Free"
+  - "Guardados y exportaciones ilimitados"
+  - "Sin marca de agua"
+  - "Guarda y sincroniza desde el Centro de comandos, incluido «Sincronizar todo» en bloque"
+  - "Sincronización automática, actualizaciones incrementales y programaciones"
+  - "Imágenes y multimedia de Grok, además de recuperar chats de Grok eliminados"
+  - "Elige cualquier carpeta de tu ordenador"
+  - "Una clave de licencia por dispositivo"
 home:
   title: Producto
   logo_alt: Logotipo de %name%
@@ -92,7 +100,7 @@ home:
   - q: ¿Necesito una cuenta?
     a: No. %name% usa las sesiones que ya tienes en cada sitio de IA. Pro usa una clave de licencia de nuestro socio de pagos, Freemius. Pégala una vez en la extensión y ya tendrás la sesión iniciada.
   - q: ¿Dónde se guardan mis chats?
-    a: En Downloads/AI Chat Saver en tu ordenador (una carpeta por IA), o en una carpeta que conectes. También se guarda una copia en el almacenamiento local de tu navegador para que la búsqueda sea instantánea.
+    a: "En Downloads/AI Chat Saver en tu ordenador (una carpeta por IA). Con Pro puedes elegir cualquier carpeta de tu ordenador. También se guarda una copia en el almacenamiento local de tu navegador para que la búsqueda sea instantánea."
   - q: ¿Qué pasa si un sitio de IA cambia?
     a: Después de cada sincronización, la extensión comprueba todas las IA. Si un sitio ha cambiado y el guardado deja de funcionar, recibes una notificación y un aviso, y una ejecución fallida nunca sobrescribe un chat guardado correctamente.
   - q: ¿Es gratis?
