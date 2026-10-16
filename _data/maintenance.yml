@@ -1,0 +1,5 @@
+# Maintenance mode — edit in the admin panel ("Maintenance"). When on, every public page shows a short "back soon" page. /control/ keeps working.
+enabled: false
+# Empty = the translated default text.
+title: ""
+message: ""
