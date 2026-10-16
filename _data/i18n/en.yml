@@ -32,16 +32,24 @@ meta:
   description: AI Chat Saver is a browser extension that saves your chats from 18 AI assistants into a local folder, with one-click updates, search and exports that look like the original sites.
   pro_status: Pro — launching soon
   free_features:
-  - Save chats from all 18 supported AIs
-  - Local folder on your computer (Downloads or a folder you connect)
-  - One-click incremental Update, plus schedules
-  - Images, videos, files, thinking, code, sources and artifacts kept
-  - Export to PDF, Word (DOCX), HTML, Markdown, TXT, JSON, PNG and JPG
-  - Full-text search and the Command Center
-  - Everything stays on your device
+  - "Save chats from all 18 supported AIs"
+  - "8 new chats a day in total across all AIs. Re-saving a chat you already saved doesn't count."
+  - "Save manually, one open chat at a time, from that AI's own page"
+  - "Images, files and media from every AI (except Grok images and media)"
+  - "8 exports a day in any format (PDF, Word, HTML, Markdown, TXT, JSON, PNG, JPG)"
+  - "Saved and exported files include a small AI Chat Saver logo and a link to the Chrome extension"
+  - "Saves go to Downloads/AI Chat Saver"
+  - "Read, search and view your saved chats in the Command Center, plus Studio and highlights"
+  - "Everything stays on your device"
   pro_features:
-  - Everything in Free
-  - Pro-only features will be announced at launch
+  - "Everything in Free"
+  - "Unlimited saves and exports"
+  - "No watermark"
+  - "Save and sync from the Command Center, including bulk “Sync everything”"
+  - "Auto-sync, incremental updates and schedules"
+  - "Grok images and media, plus recovery of deleted Grok chats"
+  - "Choose any folder on your computer"
+  - "One licence key per device"
 home:
   title: Product
   logo_alt: '%name% logo'
@@ -92,7 +100,7 @@ home:
   - q: Do I need an account?
     a: No. %name% uses the sessions you already have on each AI site. Pro uses a licence key from our payment partner, Freemius. Paste it into the extension once and you are signed in.
   - q: Where are my chats saved?
-    a: In Downloads/AI Chat Saver on your computer (one folder per AI), or in a folder you connect. A copy is also kept in your browser’s local storage so search is instant.
+    a: "In Downloads/AI Chat Saver on your computer (one folder per AI). With Pro you can choose any folder on your computer instead. A copy is also kept in your browser’s local storage so search is instant."
   - q: What happens if an AI site changes?
     a: After each sync the extension checks every AI. If a site changed and saving stops working, you get one notification and a banner, and a broken run never overwrites a good saved chat.
   - q: Is it free?
