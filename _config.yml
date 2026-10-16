@@ -1,6 +1,6 @@
 # Jekyll config. GitHub Pages builds this site natively (no Actions needed).
 # Editable product values live in _data/site.yml (Pages CMS: "Site settings").
-title: AI Chat Vault
+title: AI Chat Saver
 url: "https://aichatsaver.github.io"
 baseurl: ""
 markdown: kramdown
