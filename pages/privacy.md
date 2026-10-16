@@ -1,6 +1,6 @@
 ---
 title: Privacy Policy
-description: How the AI Chat Vault browser extension handles your data. Your chats stay on your device.
+description: How the AI Chat Saver browser extension handles your data. Your chats stay on your device.
 permalink: /privacy.html
 ---
 {% assign s = site.data.site %}
@@ -14,7 +14,7 @@ The Extension saves conversations from AI services you use (ChatGPT, Claude, Gem
 
 - **Where chats are read from.** Chats are read only from AI sites you are already signed in to in your browser. The Extension uses your existing session on that site, in your browser, the same way the site's own page does. It never asks for, sees or stores your passwords for those sites.
 - **Where chats are written to.** Chats, and the images, files and other media in them, are written only to:
-  - your own **Downloads folder** (in `Downloads/AI Chat Vault/`), or a **folder you choose to connect**; and
+  - your own **Downloads folder** (in `Downloads/AI Chat Saver/`), or a **folder you choose to connect**; and
   - your **browser's local storage** on your device (extension storage and IndexedDB), so that search and the Command Center work.
 - **What is saved.** Messages, attachments and generated media, thinking or reasoning, tool calls and code output, sources and citations, artifacts, and some account extras the AI site shows you (for example project instructions, memories or custom instructions), depending on the AI and your settings.
 - **Settings** (including highlights, notes, tags and an optional PIN lock) are kept in local browser storage on your device. They are not synced to your browser account.
@@ -61,7 +61,7 @@ This website is hosted on GitHub Pages. It uses no cookies, no analytics and no 
 
 Because your data is stored only on your device, you control how long it is kept:
 
-- **Delete the saved files:** delete the `AI Chat Vault` folder in your Downloads folder (or the folder you connected).
+- **Delete the saved files:** delete the `AI Chat Saver` folder in your Downloads folder (or the folder you connected).
 - **Delete the in-browser vault:** use **Settings → Clear vault** in the Command Center, or **uninstall the Extension**. Uninstalling removes the Extension's local browser storage. Files already written to your folder are not deleted by uninstalling; delete the folder to remove them.
 - **Pro purchase data** is kept by Freemius as required for billing, tax and legal reasons. To ask for it to be deleted, contact Freemius or us at {{ s.support_email }}.
 
