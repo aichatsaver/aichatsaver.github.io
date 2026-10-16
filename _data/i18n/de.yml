@@ -37,7 +37,6 @@ meta:
   - "8 Speicherungen pro Tag"
   - "8 Exporte pro Tag, jedes Format"
   - "Medien aller KIs (außer Grok)"
-  - "Vault-Look"
   - "Speichert in Downloads"
   - "Kleines Logo als Wasserzeichen"
   pro_features:
