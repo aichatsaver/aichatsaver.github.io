@@ -1,0 +1,128 @@
+# Deutsch strings for the AI Chat Saver site. Placeholders such as %name%, %email% and %shortcut% are filled in by the templates.
+# The meta lists are translations of the English values in _data/site.yml; if those are edited in Pages CMS, the edited English text is shown until this file is updated.
+nav:
+  product: Produkt
+  pricing: Preise
+  privacy: Datenschutz
+  terms: AGB
+  privacy_policy: Datenschutzerklärung
+  terms_of_service: Nutzungsbedingungen
+  refund_policy: Rückerstattung
+  contact: Kontakt
+ui:
+  skip: Zum Inhalt springen
+  theme_dark: Zum dunklen Modus wechseln
+  theme_light: Zum hellen Modus wechseln
+  language: Sprache
+  main_nav: Hauptmenü
+  footer_nav: Fußzeile
+foot:
+  support: 'Support:'
+  disclaimer: '%name% ist ein unabhängiges Produkt und steht in keiner Verbindung zu den KI-Diensten, mit denen es funktioniert, und wird von ihnen nicht unterstützt. Ihre Namen und Logos gehören ihren Eigentümern.'
+stores:
+  available_in: Erhältlich im
+  get_from: Erhältlich bei
+  soon: Demnächst
+  chrome_soon_aria: 'Chrome Web Store: demnächst'
+  edge_soon_aria: 'Microsoft Edge Add-ons: demnächst'
+meta:
+  tagline: Speichere jeden KI-Chat in einem Ordner auf deinem eigenen Computer.
+  description: AI Chat Saver ist eine Browsererweiterung, die deine Chats aus 18 KI-Assistenten in einem lokalen Ordner speichert – mit Aktualisierung per Klick, Suche und Exporten, die wie die Originalseiten aussehen.
+  pro_status: Pro – bald verfügbar
+  free_features:
+  - Chats aus allen 18 unterstützten KIs speichern
+  - Lokaler Ordner auf deinem Computer (Downloads oder ein verbundener Ordner)
+  - Inkrementelle Aktualisierung per Klick, dazu Zeitpläne
+  - Bilder, Videos, Dateien, Denkprozesse, Code, Quellen und Artefakte bleiben erhalten
+  - Export als PDF, Word (DOCX), HTML, Markdown, TXT, JSON, PNG und JPG
+  - Volltextsuche und das Command Center
+  - Alles bleibt auf deinem Gerät
+  pro_features:
+  - Alles aus Free
+  - Pro-exklusive Funktionen werden zum Start bekannt gegeben
+home:
+  title: Produkt
+  logo_alt: '%name%-Logo'
+  h1_a: 'Jeder KI-Chat, '
+  h1_b: gespeichert auf deinem Computer
+  h1_c: .
+  lede: '%name% ist eine Browsererweiterung, die deine Chats aus 18 KI-Assistenten in einem Ordner auf deinem eigenen Computer speichert. Ein Klick hält alles aktuell, und nichts verlässt dein Gerät.'
+  hero_note: Für Google Chrome und Microsoft Edge.
+  ais_h2: Funktioniert mit 18 KIs
+  ais_p: Melde dich wie gewohnt in deinem Browser bei den KIs an, die du nutzt. %name% speichert die Chats jeder KI in einem eigenen Ordner.
+  features_h2: Alles aus dem Chat, nicht nur der Text
+  features_p: 'Deine Chats werden zu echten Dateien, die dir gehören: offline lesbar, durchsuchbar und bereit zum Export.'
+  f1_h: Ein lokaler Ordner, der dir gehört
+  f1_p: Chats werden in <strong>Downloads/AI Chat Saver</strong> geschrieben, ein Ordner pro KI, als Markdown, HTML und JSON, mit den Medien daneben. Oder verbinde einmalig einen Ordner, und die Dateien landen direkt darin – ohne „Speichern unter“-Dialoge.
+  f2_h: Inkrementelle Aktualisierung per Klick
+  f2_p: Eine einzige Aktualisieren-Schaltfläche synchronisiert alle KIs und speichert nur neue oder geänderte Chats, sodass nichts doppelt heruntergeladen wird. Starte sie im Pop-up, drücke <kbd>Alt+Shift+U</kbd> oder plane sie stündlich, alle 6 Stunden, täglich oder wöchentlich.
+  f3_h: Medien, Denkprozesse, Code und Artefakte bleiben erhalten
+  f3_items:
+  - Hochgeladene und generierte Bilder, Videos und Dateien
+  - Denkprozesse und Begründungen, Tool-Aufrufe, von der KI ausgeführter Code und seine Ausgabe
+  - Webquellen und Zitate
+  - Claude-Artefakte und ChatGPT-Canvas als echte Dateien
+  - Auf der Website gelöschte Nachrichten bleiben erhalten und werden als „Auf der Website gelöscht“ markiert; bearbeitete Prompts werden als Versionen aufbewahrt
+  f4_h: Exporte, die wie das Original aussehen
+  f4_p: Exportiere als <strong>HTML, Markdown, PDF, Word (DOCX) und TXT</strong>, dazu JSON, PNG und JPG. Jeder Export kann das Aussehen der jeweiligen KI-Seite behalten, hell oder dunkel. PDFs entstehen auf deinem Computer mit echtem, markierbarem Text – ganz ohne Druckdialog.
+  f5_h: Suche und das Command Center
+  f5_p: 'Drücke <kbd>%shortcut%</kbd>, um das Command Center im Vollbild zu öffnen: sofortige Volltextsuche über alle KIs, Filter wie <code>provider:</code> und <code>has:code</code>, eine Befehlspalette (<kbd>Ctrl+K</kbd>), eine Zeitleiste, Markierungen und Notizen sowie ein Lesemodus.'
+  f6_h: Privat durch Design
+  f6_p: 'Alles läuft in deinem Browser mit deinen eigenen angemeldeten Sitzungen. Deine Chats bleiben auf deinem Gerät: kein Konto bei uns, keine Server, keine Analysen.'
+  how_h2: So funktioniert’s
+  steps:
+  - t: Erweiterung installieren
+    d: Füge sie zu Chrome oder Edge hinzu und hefte das Symbol an.
+  - t: Bei deinen KIs angemeldet bleiben
+    d: Nutze die KI-Seiten im selben Browserprofil, so wie bisher.
+  - t: Auf Aktualisieren klicken
+    d: Deine Chats werden in deinem Ordner gespeichert. Klicke jederzeit erneut; gespeichert werden nur neue und geänderte Chats.
+  priv_eyebrow: Datenschutz
+  priv_h2: Deine Chats erreichen uns nie
+  priv_p: '%name% liest deine Chats über deinen Browser von den KI-Seiten, bei denen du angemeldet bist, und schreibt sie nur in deinen eigenen Ordner und in den lokalen Speicher deines Browsers. Lies die vollständige <a href="%privacy_url%">Datenschutzerklärung</a> (auf Englisch).'
+  priv_items:
+  - Keine Chat-Inhalte gehen an den Entwickler
+  - Keine Analysen, kein Tracking
+  - Kein Verkauf von Daten, niemals
+  - Deinstallieren oder den Ordner löschen entfernt alles
+  faq_h2: Fragen
+  faq:
+  - q: Brauche ich ein Konto?
+    a: Nein. %name% nutzt die Sitzungen, die du auf jeder KI-Seite bereits hast. Pro verwendet einen Lizenzschlüssel unseres Zahlungspartners Freemius. Füge ihn einmal in die Erweiterung ein, und du bist angemeldet.
+  - q: Wo werden meine Chats gespeichert?
+    a: In Downloads/AI Chat Saver auf deinem Computer (ein Ordner pro KI) oder in einem Ordner, den du verbindest. Eine Kopie liegt außerdem im lokalen Speicher deines Browsers, damit die Suche sofort funktioniert.
+  - q: Was passiert, wenn sich eine KI-Seite ändert?
+    a: Nach jeder Synchronisierung prüft die Erweiterung alle KIs. Hat sich eine Seite geändert und das Speichern funktioniert nicht mehr, bekommst du eine Benachrichtigung und einen Hinweis, und ein fehlerhafter Durchlauf überschreibt nie einen korrekt gespeicherten Chat.
+  - q: Ist es kostenlos?
+    a: Ja, es gibt einen Free-Tarif. %pro_status%. Siehe <a href="%pricing_url%">Preise</a>.
+  - q: Ich habe meinen Lizenzschlüssel verloren oder die falsche E-Mail eingegeben
+    a: Schreib an <a href="mailto:%email%">%email%</a> und füge deinen Zahlungsbeleg bei. Wir korrigieren die E-Mail-Adresse deiner Lizenz und senden dir den Schlüssel erneut.
+  cta_h2: Behalte jedes Gespräch
+pricing:
+  title: Preise
+  description: Preise von AI Chat Saver – ein Free-Tarif und ein Pro-Tarif, monatlich oder jährlich.
+  eyebrow: Preise
+  h1: Einfache Tarife
+  intro: Starte kostenlos. Pro bringt mehr, sobald es erscheint. Preise in %currency%.
+  free_h: Free
+  free_sub: Alles, was du brauchst, um deine Chats zu behalten.
+  forever: für immer
+  get_free: Kostenlos holen
+  yearly_h: Pro jährlich
+  yearly_sub: Einmal im Jahr abgerechnet.
+  per_year: / Jahr
+  monthly_h: Pro monatlich
+  monthly_sub: Monatlich abgerechnet. Jederzeit kündbar.
+  per_month: / Monat
+  howpro_h2: So funktioniert Pro
+  howpro_p: Kein Konto, kein Passwort. Dein Lizenzschlüssel ist deine Anmeldung.
+  howpro_steps:
+  - t: Tarif wählen
+    d: Klicke hier auf „Pro holen“ oder in der Erweiterung auf „Upgrade“. Ein sicherer Bezahlvorgang von Freemius öffnet sich. Bezahle per Karte oder PayPal.
+  - t: Lizenzschlüssel erhalten
+    d: Er erscheint sofort auf der Dankesseite und wird an die E-Mail-Adresse geschickt, die du beim Bezahlen angegeben hast.
+  - t: In der Erweiterung aktivieren
+    d: Öffne Pro, füge deinen Schlüssel ein und klicke auf „Aktivieren“. Du siehst dann „Angemeldet als“ mit deiner E-Mail-Adresse, deinem Tarif und dem Verlängerungsdatum.
+  - t: Jederzeit verwalten
+    d: Unter „Konto verwalten“ siehst du Rechnungen, kannst kündigen oder deinen Schlüssel wiederfinden. Melde dich auf einem Gerät ab, um Pro auf einem anderen zu nutzen.
+  fine: Zahlungen und Lizenzschlüssel für Pro wickelt unser Wiederverkäufer und Händler (Merchant of Record), Freemius, Inc., ab. Je nach Wohnort können beim Bezahlen Steuern hinzukommen. Siehe die <a href="%terms_url%">Nutzungsbedingungen</a> (auf Englisch). Gesetzliche Verbraucherrechte bleiben, soweit anwendbar, unberührt.
