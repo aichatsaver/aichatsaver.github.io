@@ -1,0 +1,10 @@
+<section{% if halt %} class="alt"{% endif %} id="how">
+  <div class="wrap">
+    <div class="section-head"><h2>{{ th.how_h2 }}</h2></div>
+    <ol class="steps">
+      {%- for st in th.steps %}
+      <li><strong>{{ st.t }}</strong><span>{{ st.d }}</span></li>
+      {%- endfor %}
+    </ol>
+  </div>
+</section>
