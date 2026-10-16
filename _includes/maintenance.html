@@ -1,0 +1,18 @@
+{%- comment -%} Shown instead of every public page while _data/maintenance.yml has enabled: true (admin panel: Maintenance). {%- endcomment -%}
+{%- assign mt = site.data.maintenance -%}
+{%- if mt.title and mt.title != "" %}{% assign m_title = mt.title | escape %}{% else %}{% assign m_title = tr.maint.title | default: tren.maint.title %}{% endif -%}
+{%- if mt.message and mt.message != "" %}{% assign m_msg = mt.message | escape %}{% else %}{% assign m_msg = tr.maint.message | default: tren.maint.message %}{% endif -%}
+<header class="site-head">
+  <div class="wrap head-row">
+    <span class="brand"><img src="{{ '/assets/images/logo.svg' | relative_url }}" width="32" height="32" alt=""><span>{{ s.product_name }}</span></span>
+    <nav class="nav"><button class="theme-toggle" type="button" aria-label="{{ tr.ui.theme_dark }}" onclick="var d=document.documentElement,on=d.getAttribute('data-theme')!=='dark';if(on)d.setAttribute('data-theme','dark');else d.removeAttribute('data-theme');try{localStorage.setItem('theme',on?'dark':'light')}catch(e){}this.setAttribute('aria-label',on?'{{ tr.ui.theme_light }}':'{{ tr.ui.theme_dark }}')"><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button></nav>
+  </div>
+</header>
+<main id="main" class="maint">
+  <div class="wrap narrow maint-box">
+    <img class="hero-logo" src="{{ '/assets/images/logo.svg' | relative_url }}" width="96" height="96" alt="">
+    <h1>{{ m_title }}</h1>
+    <p class="lede">{{ m_msg }}</p>
+    <p class="muted"><a href="mailto:{{ s.support_email }}">{{ s.support_email }}</a></p>
+  </div>
+</main>
