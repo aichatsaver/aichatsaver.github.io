@@ -1,0 +1,5 @@
+# Search and link-preview settings — edit in the admin panel ("SEO").
+# default_og_image: the image shown when a page is shared; empty = the logo.
+default_og_image: ""
+# pages: per page (home, pricing, privacy, terms, refund): og_image, and per language code {title, description}. Empty = automatic.
+pages: {}
