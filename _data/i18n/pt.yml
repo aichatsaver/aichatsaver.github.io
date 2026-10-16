@@ -1,0 +1,128 @@
+# Português strings for the AI Chat Saver site. Placeholders such as %name%, %email% and %shortcut% are filled in by the templates.
+# The meta lists are translations of the English values in _data/site.yml; if those are edited in Pages CMS, the edited English text is shown until this file is updated.
+nav:
+  product: Produto
+  pricing: Preços
+  privacy: Privacidade
+  terms: Termos
+  privacy_policy: Política de Privacidade
+  terms_of_service: Termos de Serviço
+  refund_policy: Política de Reembolso
+  contact: Contato
+ui:
+  skip: Pular para o conteúdo
+  theme_dark: Mudar para o modo escuro
+  theme_light: Mudar para o modo claro
+  language: Idioma
+  main_nav: Principal
+  footer_nav: Rodapé
+foot:
+  support: 'Suporte:'
+  disclaimer: '%name% é um produto independente e não é afiliado nem endossado pelos serviços de IA com os quais funciona. Os nomes e logotipos deles pertencem aos seus donos.'
+stores:
+  available_in: Disponível na
+  get_from: Baixe em
+  soon: Em breve
+  chrome_soon_aria: 'Chrome Web Store: em breve'
+  edge_soon_aria: 'Microsoft Edge Add-ons: em breve'
+meta:
+  tagline: Salve cada chat de IA em uma pasta no seu próprio computador.
+  description: AI Chat Saver é uma extensão de navegador que salva seus chats de 18 assistentes de IA em uma pasta local, com atualização em um clique, busca e exportações com a aparência dos sites originais.
+  pro_status: Pro — lançamento em breve
+  free_features:
+  - Salve chats de todas as 18 IAs compatíveis
+  - Pasta local no seu computador (Downloads ou uma pasta que você conectar)
+  - Atualização incremental em um clique, além de agendamentos
+  - Imagens, vídeos, arquivos, raciocínio, código, fontes e artefatos preservados
+  - Exporte para PDF, Word (DOCX), HTML, Markdown, TXT, JSON, PNG e JPG
+  - Busca em texto completo e a Central de Comandos
+  - Tudo fica no seu dispositivo
+  pro_features:
+  - Tudo do plano Free
+  - Os recursos exclusivos do Pro serão anunciados no lançamento
+home:
+  title: Produto
+  logo_alt: Logotipo do %name%
+  h1_a: 'Cada chat de IA, '
+  h1_b: salvo no seu computador
+  h1_c: .
+  lede: '%name% é uma extensão de navegador que salva seus chats de 18 assistentes de IA em uma pasta no seu próprio computador. Um clique mantém tudo atualizado, e nada sai do seu dispositivo.'
+  hero_note: Para Google Chrome e Microsoft Edge.
+  ais_h2: Funciona com 18 IAs
+  ais_p: Entre nas IAs que você usa no navegador, como sempre. O %name% salva os chats de cada uma em sua própria pasta.
+  features_h2: Tudo o que está no chat, não só o texto
+  features_p: 'Seus chats viram arquivos reais que são seus: legíveis offline, pesquisáveis e prontos para exportar.'
+  f1_h: Uma pasta local que é sua
+  f1_p: Os chats são gravados em <strong>Downloads/AI Chat Saver</strong>, uma pasta por IA, em Markdown, HTML e JSON, com a mídia ao lado. Ou conecte uma pasta uma única vez e os arquivos são salvos direto nela, sem janelas de “Salvar como”.
+  f2_h: Atualização incremental em um clique
+  f2_p: Um único botão de atualizar sincroniza todas as IAs e salva só os chats novos ou alterados, então nada é baixado duas vezes. Execute pelo pop-up, pressione <kbd>Alt+Shift+U</kbd> ou agende a cada hora, a cada 6 horas, diariamente ou semanalmente.
+  f3_h: Mídia, raciocínio, código e artefatos preservados
+  f3_items:
+  - Imagens, vídeos e arquivos enviados e gerados
+  - Raciocínio, chamadas de ferramentas, o código que a IA executou e o resultado
+  - Fontes da web e citações
+  - Artefatos do Claude e canvas do ChatGPT como arquivos reais
+  - Mensagens apagadas no site continuam, marcadas como “Apagada no site”; prompts editados são guardados como versões
+  f4_h: Exportações com a cara do original
+  f4_p: Exporte para <strong>HTML, Markdown, PDF, Word (DOCX) e TXT</strong>, além de JSON, PNG e JPG. Cada exportação pode manter a aparência do próprio site de IA, no modo claro ou escuro. Os PDFs são criados no seu computador com texto real e selecionável, sem caixa de impressão.
+  f5_h: Busca e a Central de Comandos
+  f5_p: 'Pressione <kbd>%shortcut%</kbd> para abrir a Central de Comandos em tela cheia: busca instantânea em texto completo em todas as IAs, filtros como <code>provider:</code> e <code>has:code</code>, uma paleta de comandos (<kbd>Ctrl+K</kbd>), uma linha do tempo, destaques e notas, e modo de leitura.'
+  f6_h: Privado desde a concepção
+  f6_p: 'Tudo roda no seu navegador usando as suas próprias sessões conectadas. Seus chats ficam no seu dispositivo: sem conta conosco, sem servidores, sem análises.'
+  how_h2: Como funciona
+  steps:
+  - t: Instale a extensão
+    d: Adicione ao Chrome ou ao Edge e fixe o ícone.
+  - t: Continue conectado às suas IAs
+    d: Use os sites de IA no mesmo perfil do navegador, como você já faz.
+  - t: Clique em Atualizar
+    d: Seus chats são salvos na sua pasta. Clique de novo quando quiser; só os chats novos e alterados são salvos.
+  priv_eyebrow: Privacidade
+  priv_h2: Seus chats nunca chegam até nós
+  priv_p: O %name% lê seus chats pelo seu navegador, a partir dos sites de IA em que você está conectado, e os grava apenas na sua própria pasta e no armazenamento local do navegador. Leia a <a href="%privacy_url%">Política de Privacidade</a> completa (em inglês).
+  priv_items:
+  - Nenhum conteúdo de chat é enviado ao desenvolvedor
+  - Sem análises nem rastreamento
+  - Nunca vendemos dados
+  - Desinstale ou apague a pasta para remover tudo
+  faq_h2: Perguntas
+  faq:
+  - q: Preciso de uma conta?
+    a: Não. O %name% usa as sessões que você já tem em cada site de IA. O Pro usa uma chave de licença do nosso parceiro de pagamentos, a Freemius. Cole-a na extensão uma vez e pronto, você está conectado.
+  - q: Onde meus chats são salvos?
+    a: Em Downloads/AI Chat Saver no seu computador (uma pasta por IA), ou em uma pasta que você conectar. Uma cópia também fica no armazenamento local do navegador para que a busca seja instantânea.
+  - q: O que acontece se um site de IA mudar?
+    a: Depois de cada sincronização, a extensão verifica todas as IAs. Se um site mudou e o salvamento parar de funcionar, você recebe uma notificação e um aviso, e uma execução com falha nunca sobrescreve um chat salvo corretamente.
+  - q: É grátis?
+    a: Sim, existe um plano Free. %pro_status%. Veja os <a href="%pricing_url%">Preços</a>.
+  - q: Perdi minha chave de licença ou digitei o e-mail errado
+    a: Escreva para <a href="mailto:%email%">%email%</a> com o seu recibo de pagamento. Vamos corrigir o e-mail da sua licença e enviar a chave novamente.
+  cta_h2: Guarde cada conversa
+pricing:
+  title: Preços
+  description: Preços do AI Chat Saver — um plano Free e um plano Pro, mensal ou anual.
+  eyebrow: Preços
+  h1: Planos simples
+  intro: Comece de graça. O Pro vai trazer mais quando for lançado. Os preços estão em %currency%.
+  free_h: Free
+  free_sub: Tudo de que você precisa para guardar seus chats.
+  forever: para sempre
+  get_free: Baixe grátis
+  yearly_h: Pro Anual
+  yearly_sub: Cobrado uma vez por ano.
+  per_year: / ano
+  monthly_h: Pro Mensal
+  monthly_sub: Cobrado todo mês. Cancele quando quiser.
+  per_month: / mês
+  howpro_h2: Como o Pro funciona
+  howpro_p: Sem conta para criar e sem senha. Sua chave de licença é o seu login.
+  howpro_steps:
+  - t: Escolha um plano
+    d: Clique em “Obter Pro” aqui ou em “Fazer upgrade” dentro da extensão. Abre-se um checkout seguro da Freemius. Pague com cartão ou PayPal.
+  - t: Receba sua chave de licença
+    d: Ela aparece na hora na tela de agradecimento e é enviada para o e-mail que você usou no checkout.
+  - t: Ative na extensão
+    d: Abra o Pro, cole sua chave e clique em “Ativar”. Você verá “Conectado como” com seu e-mail, seu plano e a data de renovação.
+  - t: Gerencie quando quiser
+    d: Use “Gerenciar conta” para ver faturas, cancelar ou encontrar sua chave de novo. Saia em um dispositivo para usar o Pro em outro.
+  fine: Os pagamentos e as chaves de licença do Pro são processados pelo nosso revendedor e comerciante registrado, Freemius, Inc. Impostos podem ser adicionados no checkout, dependendo de onde você mora. Veja os <a href="%terms_url%">Termos de Serviço</a> (em inglês). Os direitos legais do consumidor, quando aplicáveis, não são afetados.
