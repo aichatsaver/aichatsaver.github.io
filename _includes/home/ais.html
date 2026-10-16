@@ -1,0 +1,13 @@
+<section{% if halt %} class="alt"{% endif %} id="ais">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>{{ th.ais_h2 }}</h2>
+      <p>{{ th.ais_p | replace: '%name%', s.product_name }}</p>
+    </div>
+    <ul class="ai-list">
+      {%- for ai in site.data.ais.ais %}
+      <li tabindex="0" data-name="{{ ai.name | escape }}"><img src="{{ ai.logo | escape }}" alt="{{ ai.name | escape }}" title="{{ ai.name | escape }}" width="36" height="36" loading="lazy"></li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
