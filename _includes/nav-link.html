@@ -1,0 +1,12 @@
+{%- comment -%} One navigation link from _data/navigation.yml. include.it = the item, include.area = header or footer. {%- endcomment -%}
+{%- assign it = include.it -%}
+{%- assign nl_attr = "" -%}{%- assign nl_cur = false -%}
+{%- if it.link == "home" -%}{%- assign nl_href = tp | append: "/" | relative_url -%}{%- assign nl_attr = ll_home -%}{%- if page.i18n_key == "home" or page.url == "/" or page.url == "/index.html" -%}{%- assign nl_cur = true -%}{%- endif -%}
+{%- elsif it.link == "pricing" -%}{%- assign nl_href = tp | append: "/pricing.html" | relative_url -%}{%- assign nl_attr = ll_pricing -%}{%- if page.i18n_key == "pricing" or page.url == "/pricing.html" -%}{%- assign nl_cur = true -%}{%- endif -%}
+{%- elsif it.link == "email" -%}{%- assign nl_href = "mailto:" | append: s.support_email -%}
+{%- else -%}{%- assign nl_first = it.link | slice: 0 -%}{%- if nl_first == "/" -%}{%- assign nl_href = it.link | relative_url -%}{%- if page.url == it.link -%}{%- assign nl_cur = true -%}{%- endif -%}{%- else -%}{%- assign nl_href = it.link -%}{%- assign nl_attr = ' rel="noopener"' -%}{%- endif -%}
+{%- endif -%}
+{%- if it.labels[tlang] and it.labels[tlang] != "" -%}{%- assign nl_label = it.labels[tlang] | escape -%}
+{%- elsif it.key -%}{%- assign nl_label = tr.nav[it.key] | default: tren.nav[it.key] | default: it.key -%}
+{%- else -%}{%- assign nl_label = it.label | escape -%}{%- endif -%}
+<a href="{{ nl_href }}"{{ nl_attr }}{% if include.area == "header" and nl_cur %} aria-current="page"{% endif %}>{{ nl_label }}</a>
