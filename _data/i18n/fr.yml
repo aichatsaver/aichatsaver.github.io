@@ -32,25 +32,22 @@ meta:
   description: AI Chat Saver est une extension de navigateur qui enregistre vos conversations de 18 assistants d’IA dans un dossier local, avec mise à jour en un clic, recherche et exports fidèles aux sites d’origine.
   pro_status: Pro — bientôt disponible
   free_features:
-  - "Enregistrez les chats des 18 IA prises en charge"
-  - "8 nouveaux chats par jour au total, toutes IA confondues. Réenregistrer un chat déjà enregistré ne compte pas."
-  - "Enregistrement manuel, un chat ouvert à la fois, depuis la page de l’IA concernée"
-  - "Images, fichiers et médias de toutes les IA (sauf les images et médias de Grok)"
-  - "8 exports par jour dans n’importe quel format (PDF, Word, HTML, Markdown, TXT, JSON, PNG, JPG)"
-  - "Les fichiers enregistrés et exportés comportent un petit logo AI Chat Saver et un lien vers l’extension Chrome"
-  - "Les chats vont dans Downloads/AI Chat Saver"
-  - "Lisez, recherchez et consultez vos chats enregistrés avec l’apparence propre à chaque IA dans le Centre de commande, avec Studio et les surlignages"
-  - "Tout reste sur votre appareil"
+  - "Les 18 IA"
+  - "8 enregistrements par jour"
+  - "8 exports par jour, tout format"
+  - "Médias de toutes les IA (sauf Grok)"
+  - "L’apparence propre à chaque IA"
+  - "Enregistrement dans Téléchargements"
+  - "Petit logo en filigrane"
   pro_features:
   - "Tout ce qu’offre Free"
   - "Enregistrements et exports illimités"
   - "Sans filigrane"
-  - "Style Vault : un style épuré unique pour toutes les IA, dans le lecteur et les exports"
-  - "Enregistrez et synchronisez depuis le Centre de commande, y compris en masse avec « Tout synchroniser »"
-  - "Synchronisation automatique, mises à jour incrémentales et planifications"
-  - "Images et médias de Grok, plus la récupération des chats Grok supprimés"
-  - "Choisissez n’importe quel dossier de votre ordinateur"
-  - "Une clé de licence par appareil"
+  - "Style Vault"
+  - "Synchro, synchro auto et planifications"
+  - "Médias Grok et récupération des chats supprimés"
+  - "N’importe quel dossier"
+  - "Une clé par appareil"
 home:
   title: Produit
   logo_alt: Logo de %name%
@@ -101,7 +98,7 @@ home:
   - q: Ai-je besoin d’un compte ?
     a: Non. %name% utilise les sessions que vous avez déjà sur chaque site d’IA. Pro utilise une clé de licence fournie par notre partenaire de paiement, Freemius. Collez-la une fois dans l’extension et vous êtes connecté.
   - q: Où mes conversations sont-elles enregistrées ?
-    a: "Dans Downloads/AI Chat Saver sur votre ordinateur (un dossier par IA). Avec Pro, vous pouvez choisir n’importe quel dossier de votre ordinateur. Une copie est aussi gardée dans le stockage local du navigateur pour une recherche instantanée."
+    a: "Dans Downloads/AI Chat Saver. Avec Pro, vous pouvez choisir n’importe quel dossier."
   - q: Que se passe-t-il si un site d’IA change ?
     a: Après chaque synchronisation, l’extension vérifie toutes les IA. Si un site a changé et que l’enregistrement ne fonctionne plus, vous recevez une notification et un bandeau, et une exécution défaillante n’écrase jamais une conversation correctement enregistrée.
   - q: Est-ce gratuit ?
