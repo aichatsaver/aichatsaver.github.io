@@ -16,6 +16,7 @@ ui:
   language: 语言
   main_nav: 主导航
   footer_nav: 页脚
+  dismiss: 关闭
 foot:
   support: 支持：
   disclaimer: '%name% 是一款独立产品，与其所支持的 AI 服务没有任何隶属关系，也未获得其认可。相关名称和标志归其各自所有者所有。'
@@ -25,6 +26,7 @@ stores:
   soon: 即将推出
   chrome_soon_aria: Chrome Web Store：即将推出
   edge_soon_aria: Microsoft Edge Add-ons：即将推出
+  version: 版本 %version%
 meta:
   tagline: 把每一段 AI 对话保存到你自己电脑上的文件夹里。
   description: AI Chat Saver 是一款浏览器扩展，可将你在 18 个 AI 助手中的对话保存到本地文件夹，支持一键更新、搜索，以及与原网站外观一致的导出。
@@ -114,6 +116,16 @@ pricing:
   monthly_h: Pro 月付
   monthly_sub: 每月付费，可随时取消。
   per_month: / 月
+  lifetime_h: Pro 终身版
+  lifetime_sub: 一次付费，永久使用 Pro。
+  per_lifetime: 一次性
+  yearly_cta: 获取 Pro
+  monthly_cta: 获取 Pro
+  lifetime_cta: 获取 Pro
+  free_badge: ''
+  yearly_badge: ''
+  monthly_badge: ''
+  lifetime_badge: ''
   howpro_h2: Pro 如何运作
   howpro_p: 无需创建账户，也无需密码。你的许可证密钥就是你的登录凭证。
   howpro_steps:
@@ -126,3 +138,6 @@ pricing:
   - t: 随时管理
     d: 使用“管理账户”查看发票、取消订阅或找回密钥。在一台设备上退出登录，即可在另一台设备上使用 Pro。
   fine: Pro 的付款和许可证密钥由我们的经销商兼记录商户 Freemius, Inc. 处理。根据你所在的地区，结账时可能会加收税费。请参阅<a href="%terms_url%">服务条款</a>（英文）。在适用的情况下，消费者的法定权利不受影响。
+maint:
+  title: 我们马上回来
+  message: 网站正在进行短暂更新，请稍后再来。
