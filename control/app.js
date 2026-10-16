@@ -117,7 +117,7 @@
     return { text: b64ToUtf8(r.data.content || ""), sha: r.data.sha };
   }
   // One commit per save, strictly one at a time.
-  var saveChain = Promise.resolve();
+  var saveChain = Promise.resolve(), lastCommitSha = null;
   function putFile(path, text, sha, message, tokOverride) {
     var job = saveChain.then(async function () {
       var body = { message: message, content: utf8ToB64(text), branch: BRANCH };
@@ -125,6 +125,7 @@
       var r = await gh(RP + "/contents/" + encPath(path), { method: "PUT", body: body, token: tokOverride });
       if (!r.ok) throw new Error(apiErr(r));
       startBuildWatch();
+      lastCommitSha = r.data.commit && r.data.commit.sha;
       return r.data.content.sha;
     });
     saveChain = job.catch(function () {});
@@ -443,9 +444,63 @@
     try {
       var ns = await putFile(path, text, sha, "Admin: update " + path);
       after(ns); markDirty(sec, false);
-      setState(stateId, "Saved. The live site updates in a minute or two (see Status).", "ok");
+      setState(stateId, "Saved. " + LIVE_NOTE, "ok");
+      if (lastCommitSha) trackBuild(lastCommitSha);
     } catch (e) { setState(stateId, e.message, "err"); }
     finally { btn.disabled = false; }
+  }
+
+  /* ---------- build result after each save ---------- */
+  var LIVE_NOTE = "Live in ~1 min; press Ctrl+Shift+R if you don’t see it.";
+  var buildTrack = null, buildPollT = null;
+  function buildBanner(text, cls, withRetry) {
+    var b = $("banner"); b.textContent = ""; b.hidden = false; b.className = "cp-banner" + (cls ? " " + cls : "");
+    b.appendChild(document.createTextNode(text));
+    if (withRetry) b.appendChild(el("button", { type: "button", class: "cp-btn small", id: "rebuildBtn", onclick: rebuildSite }, ["Retry build"]));
+  }
+  function trackBuild(sha) {
+    buildTrack = { sha: sha, t0: Date.now() };
+    buildBanner("Saved. The site is rebuilding… " + LIVE_NOTE, "");
+    clearTimeout(buildPollT); buildPollT = setTimeout(pollBuild, 4000);
+  }
+  async function getBuilds() {
+    var r = await gh(RP + "/pages/builds?per_page=10");
+    if (!r.ok) r = await gh(RP + "/pages/builds?per_page=10", { auth: false });
+    return r.ok && Array.isArray(r.data) ? r.data : null;
+  }
+  function buildErr(b) { return (b && b.error && b.error.message) || "GitHub didn’t give a reason."; }
+  async function pollBuild() {
+    var bt = buildTrack; if (!bt) return;
+    var list = null; try { list = await getBuilds(); } catch (e) {}
+    if (bt !== buildTrack) return;
+    var mine = list && list.filter(function (b) { return b.commit === bt.sha; })[0];
+    if (mine && mine.status === "built") {
+      buildBanner("Live: the site was rebuilt with your change" + (mine.duration ? " in " + Math.round(mine.duration / 1000) + " s" : "") + ". Press Ctrl+Shift+R on the site if you still see the old version (browsers may keep a copy for up to 10 minutes).", "ok");
+      buildTrack = null; return;
+    }
+    if (mine && mine.status === "errored") {
+      var newer = list.filter(function (b) { return b !== mine && new Date(b.created_at) > new Date(mine.created_at); })[0];
+      if (newer && newer.status !== "errored") { bt.sha = newer.commit; buildBanner("A newer save replaced this build; waiting for it… " + LIVE_NOTE, ""); }
+      else {
+        buildBanner("The site build failed: " + buildErr(mine) + " Your change is saved on GitHub, but the live site still shows the previous version. This often happens when saves come quickly one after another; press Retry build.", "warn", true);
+        buildTrack = null; return;
+      }
+    }
+    if (Date.now() - bt.t0 > 8 * 60 * 1000) { buildBanner("The site build is taking longer than usual. Check Status in a few minutes.", "warn"); buildTrack = null; return; }
+    buildPollT = setTimeout(pollBuild, 8000);
+  }
+  // A commit with no file changes makes GitHub Pages build the site again.
+  function rebuildSite() {
+    var btn = $("rebuildBtn"); if (btn) btn.disabled = true;
+    var job = saveChain.then(async function () {
+      var ref = await gh(RP + "/git/ref/heads/" + BRANCH); if (!ref.ok) throw new Error(apiErr(ref));
+      var head = ref.data.object.sha, c = await gh(RP + "/git/commits/" + head); if (!c.ok) throw new Error(apiErr(c));
+      var nc = await gh(RP + "/git/commits", { method: "POST", body: { message: "Admin: rebuild the site", tree: c.data.tree.sha, parents: [head] } }); if (!nc.ok) throw new Error(apiErr(nc));
+      var u = await gh(RP + "/git/refs/heads/" + BRANCH, { method: "PATCH", body: { sha: nc.data.sha, force: false } }); if (!u.ok) throw new Error(apiErr(u));
+      startBuildWatch(); trackBuild(nc.data.sha);
+    });
+    saveChain = job.catch(function () {});
+    job.catch(function (e) { buildBanner("Couldn’t start a new build: " + e.message, "warn", true); });
   }
 
   /* ---------- 2. Policies ---------- */
