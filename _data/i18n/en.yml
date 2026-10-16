@@ -16,6 +16,7 @@ ui:
   language: Language
   main_nav: Main
   footer_nav: Footer
+  dismiss: Dismiss
 foot:
   support: 'Support:'
   disclaimer: '%name% is an independent product and is not affiliated with or endorsed by the AI services it works with. Their names and logos belong to their owners.'
@@ -25,6 +26,7 @@ stores:
   soon: Coming soon
   chrome_soon_aria: 'Chrome Web Store: coming soon'
   edge_soon_aria: 'Microsoft Edge Add-ons: coming soon'
+  version: Version %version%
 meta:
   tagline: Save every AI chat to a folder on your own computer.
   description: AI Chat Saver is a browser extension that saves your chats from 18 AI assistants into a local folder, with one-click updates, search and exports that look like the original sites.
@@ -114,6 +116,16 @@ pricing:
   monthly_h: Pro Monthly
   monthly_sub: Billed every month. Cancel any time.
   per_month: / month
+  lifetime_h: Pro Lifetime
+  lifetime_sub: Pay once, keep Pro for good.
+  per_lifetime: one-time
+  yearly_cta: Get Pro
+  monthly_cta: Get Pro
+  lifetime_cta: Get Pro
+  free_badge: ''
+  yearly_badge: ''
+  monthly_badge: ''
+  lifetime_badge: ''
   howpro_h2: How Pro works
   howpro_p: No account to create and no password. Your licence key is your sign-in.
   howpro_steps:
@@ -126,3 +138,6 @@ pricing:
   - t: Manage any time
     d: Use Manage account to see invoices, cancel or find your key again. Sign out on one device to use Pro on another.
   fine: Payments and licence keys for Pro are handled by our reseller and merchant of record, Freemius, Inc. Taxes may be added at checkout depending on where you live. See the <a href="%terms_url%">Terms of Service</a>. Statutory consumer rights, where they apply, are not affected.
+maint:
+  title: We’ll be back soon
+  message: The site is getting a quick update. Please check back in a little while.
