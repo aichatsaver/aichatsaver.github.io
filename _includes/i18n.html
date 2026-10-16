@@ -1,0 +1,13 @@
+{%- assign s = site.data.site -%}
+{%- assign tlang = page.lang | default: "en" -%}
+{%- assign tr = site.data.i18n[tlang] | default: site.data.i18n.en -%}
+{%- assign tren = site.data.i18n.en -%}
+{%- if tlang == "en" %}{% assign tp = "" %}{% else %}{% assign tp = "/" | append: tlang %}{% endif -%}
+{%- assign lgcur = site.data.languages | first -%}
+{%- for lg in site.data.languages %}{% if lg.code == tlang %}{% assign lgcur = lg %}{% endif %}{% endfor -%}
+{%- comment -%} Values edited in Pages CMS (_data/site.yml) win: the translation is used only while the English value is unchanged. {%- endcomment -%}
+{%- if s.tagline == tren.meta.tagline %}{% assign tagline = tr.meta.tagline %}{% else %}{% assign tagline = s.tagline %}{% endif -%}
+{%- if s.description == tren.meta.description %}{% assign tdesc = tr.meta.description %}{% else %}{% assign tdesc = s.description %}{% endif -%}
+{%- if s.pro_status == tren.meta.pro_status %}{% assign pro_status = tr.meta.pro_status %}{% else %}{% assign pro_status = s.pro_status %}{% endif -%}
+{%- if s.free_features == tren.meta.free_features %}{% assign free_features = tr.meta.free_features %}{% else %}{% assign free_features = s.free_features %}{% endif -%}
+{%- if s.pro_features == tren.meta.pro_features %}{% assign pro_features = tr.meta.pro_features %}{% else %}{% assign pro_features = s.pro_features %}{% endif -%}
