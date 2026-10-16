@@ -1,0 +1,16 @@
+{%- comment -%} One Pro plan card. include.id = yearly, monthly or lifetime. Texts come from _data/i18n (pricing: <id>_h, <id>_sub, <id>_cta, <id>_badge). {%- endcomment -%}
+{%- assign pp_id = include.id -%}{%- assign pp_mark = include.mark -%}{%- assign pp_price = include.price -%}{%- assign pp_per = include.per -%}
+{%- assign pp_hk = pp_id | append: "_h" -%}{%- assign pp_sk = pp_id | append: "_sub" -%}{%- assign pp_ck = pp_id | append: "_cta" -%}{%- assign pp_bk = pp_id | append: "_badge" -%}{%- assign pp_uk = "checkout_" | append: pp_id -%}
+{%- assign pp_badge = tpr[pp_bk] -%}{%- assign pp_url = pz[pp_uk] -%}
+<div class="plan{% if hl == pp_id %} featured{% endif %}">{% if pp_badge and pp_badge != "" %}<span class="badge">{{ pp_badge }}</span>{% endif %}
+        {% unless pz.launched %}<span class="status">{{ pro_status }}</span>
+        {% endunless %}<h2>{{ tpr[pp_hk] | default: tren.pricing[pp_hk] }}</h2>
+        <p class="sub">{{ tpr[pp_sk] | default: tren.pricing[pp_sk] }}</p>
+        <!--PRICE_{{ pp_mark }}-->
+        <div class="price">{% include price.html value=pp_price per=pp_per soon=tr.stores.soon %}</div>
+        {% if pz.launched and pp_url and pp_url != "" %}<a class="btn" href="{{ pp_url | escape }}">{{ tpr[pp_ck] | default: tren.pricing[pp_ck] }}</a>{% else %}<span class="btn" aria-disabled="true">{{ pro_status }}</span>{% endif %}
+        <ul>
+          {% for f in pro_features %}<li>{{ f }}</li>
+          {% endfor %}
+        </ul>
+      </div>
