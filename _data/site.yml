@@ -1,0 +1,27 @@
+# Site settings — edit these in Pages CMS ("Site settings") or here.
+product_name: AI Chat Vault
+tagline: Save every AI chat to a folder on your own computer.
+description: AI Chat Vault is a browser extension that saves your chats from 18 AI assistants into a local folder, with one-click updates, search and exports that look like the original sites.
+support_email: CONTACT_EMAIL_PLACEHOLDER
+# Prices: write TBD (or leave empty) to show "Coming soon".
+price_monthly: TBD
+price_yearly: TBD
+price_currency: USD
+pro_status: Pro — launching soon
+refund_days: 14
+command_center_shortcut: Alt+Shift+V
+# Store links: leave empty to show a "Coming soon" badge.
+chrome_store_url: ""
+edge_store_url: ""
+policies_updated: 2026-10-16
+free_features:
+  - Save chats from all 18 supported AIs
+  - Local folder on your computer (Downloads or a folder you connect)
+  - One-click incremental Update, plus schedules
+  - Images, videos, files, thinking, code, sources and artifacts kept
+  - Export to PDF, Word (DOCX), HTML, Markdown, TXT, JSON, PNG and JPG
+  - Full-text search and the Command Center
+  - Everything stays on your device
+pro_features:
+  - Everything in Free
+  - Pro-only features will be announced at launch
