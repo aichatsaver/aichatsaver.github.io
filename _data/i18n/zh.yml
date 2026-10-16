@@ -1,0 +1,128 @@
+# 简体中文 strings for the AI Chat Saver site. Placeholders such as %name%, %email% and %shortcut% are filled in by the templates.
+# The meta lists are translations of the English values in _data/site.yml; if those are edited in Pages CMS, the edited English text is shown until this file is updated.
+nav:
+  product: 产品
+  pricing: 价格
+  privacy: 隐私
+  terms: 条款
+  privacy_policy: 隐私政策
+  terms_of_service: 服务条款
+  refund_policy: 退款政策
+  contact: 联系我们
+ui:
+  skip: 跳到正文
+  theme_dark: 切换到深色模式
+  theme_light: 切换到浅色模式
+  language: 语言
+  main_nav: 主导航
+  footer_nav: 页脚
+foot:
+  support: 支持：
+  disclaimer: '%name% 是一款独立产品，与其所支持的 AI 服务没有任何隶属关系，也未获得其认可。相关名称和标志归其各自所有者所有。'
+stores:
+  available_in: 现已上架
+  get_from: 立即获取
+  soon: 即将推出
+  chrome_soon_aria: Chrome Web Store：即将推出
+  edge_soon_aria: Microsoft Edge Add-ons：即将推出
+meta:
+  tagline: 把每一段 AI 对话保存到你自己电脑上的文件夹里。
+  description: AI Chat Saver 是一款浏览器扩展，可将你在 18 个 AI 助手中的对话保存到本地文件夹，支持一键更新、搜索，以及与原网站外观一致的导出。
+  pro_status: Pro 即将推出
+  free_features:
+  - 保存全部 18 个受支持 AI 的对话
+  - 保存在你电脑上的本地文件夹（“下载”文件夹或你连接的文件夹）
+  - 一键增量更新，并支持定时
+  - 保留图片、视频、文件、思考过程、代码、来源和 Artifacts
+  - 导出为 PDF、Word (DOCX)、HTML、Markdown、TXT、JSON、PNG 和 JPG
+  - 全文搜索与命令中心
+  - 所有数据都留在你的设备上
+  pro_features:
+  - 包含 Free 的全部功能
+  - Pro 专属功能将在发布时公布
+home:
+  title: 产品
+  logo_alt: '%name% 标志'
+  h1_a: 每一段 AI 对话，
+  h1_b: 都保存在你的电脑上
+  h1_c: 。
+  lede: '%name% 是一款浏览器扩展，可将你在 18 个 AI 助手中的对话保存到你自己电脑上的文件夹。一键即可保持最新，任何内容都不会离开你的设备。'
+  hero_note: 适用于 Google Chrome 和 Microsoft Edge。
+  ais_h2: 支持 18 个 AI
+  ais_p: 像平时一样在浏览器中登录你使用的 AI。%name% 会把每个 AI 的对话分别保存到各自的文件夹。
+  features_h2: 完整保存对话，不只是文字
+  features_p: 你的对话会变成真正属于你的文件：可离线阅读、可搜索、可随时导出。
+  f1_h: 属于你的本地文件夹
+  f1_p: 对话会写入 <strong>Downloads/AI Chat Saver</strong>，每个 AI 一个文件夹，格式为 Markdown、HTML 和 JSON，媒体文件放在旁边。也可以只连接一次文件夹，之后文件会直接保存进去，不再弹出“另存为”窗口。
+  f2_h: 一键增量更新
+  f2_p: 一个更新按钮即可同步所有 AI，只保存新增或有改动的对话，绝不重复下载。可以在弹出窗口中运行、按 <kbd>Alt+Shift+U</kbd>，或设置为每小时、每 6 小时、每天或每周自动运行。
+  f3_h: 保留媒体、思考过程、代码和 Artifacts
+  f3_items:
+  - 上传和生成的图片、视频与文件
+  - 思考与推理过程、工具调用、AI 运行的代码及其输出
+  - 网页来源与引用
+  - 以真实文件保存 Claude Artifacts 和 ChatGPT Canvas
+  - 在网站上删除的消息仍会保留，并标记为“已在网站上删除”；编辑过的提示会作为不同版本保留
+  f4_h: 导出效果与原网站一致
+  f4_p: 可导出为 <strong>HTML、Markdown、PDF、Word (DOCX) 和 TXT</strong>，以及 JSON、PNG 和 JPG。每次导出都可以保留该 AI 网站本身的外观，浅色或深色均可。PDF 在你的电脑上生成，文字真实可选，无需打印对话框。
+  f5_h: 搜索与命令中心
+  f5_p: 按 <kbd>%shortcut%</kbd> 打开全屏命令中心：在所有 AI 中即时全文搜索，使用 <code>provider:</code> 和 <code>has:code</code> 等筛选条件，还有命令面板（<kbd>Ctrl+K</kbd>）、时间线、高亮与笔记，以及阅读模式。
+  f6_h: 隐私从设计开始
+  f6_p: 一切都在你的浏览器中运行，使用你自己已登录的会话。你的对话只留在你的设备上：无需在我们这里注册账户，没有服务器，没有数据分析。
+  how_h2: 使用方法
+  steps:
+  - t: 安装扩展
+    d: 将其添加到 Chrome 或 Edge，并固定图标。
+  - t: 保持 AI 的登录状态
+    d: 像平常一样，在同一个浏览器配置文件中使用各个 AI 网站。
+  - t: 点击“更新”
+    d: 你的对话会保存到你的文件夹。随时可以再次点击；只会保存新增和有改动的对话。
+  priv_eyebrow: 隐私
+  priv_h2: 你的对话永远不会传给我们
+  priv_p: '%name% 通过你的浏览器，从你已登录的 AI 网站读取对话，并且只写入你自己的文件夹和浏览器的本地存储。阅读完整的<a href="%privacy_url%">隐私政策</a>（英文）。'
+  priv_items:
+  - 不会向开发者发送任何对话内容
+  - 没有数据分析，也没有跟踪
+  - 绝不出售数据
+  - 卸载扩展或删除文件夹即可清除一切
+  faq_h2: 常见问题
+  faq:
+  - q: 需要注册账户吗？
+    a: 不需要。%name% 使用你在各个 AI 网站上已有的登录会话。Pro 使用我们的支付合作伙伴 Freemius 提供的许可证密钥。只需在扩展中粘贴一次，即可完成登录。
+  - q: 我的对话保存在哪里？
+    a: 保存在你电脑上的 Downloads/AI Chat Saver 中（每个 AI 一个文件夹），或你连接的文件夹中。浏览器的本地存储中也会保留一份副本，让搜索即时完成。
+  - q: 如果某个 AI 网站改版了怎么办？
+    a: 每次同步后，扩展都会检查所有 AI。如果某个网站改版导致无法保存，你会收到一条通知和一个提示横幅，而且失败的运行绝不会覆盖已正确保存的对话。
+  - q: 是免费的吗？
+    a: 是的，提供 Free 方案。%pro_status%。请查看<a href="%pricing_url%">价格</a>。
+  - q: 我丢失了许可证密钥或填错了邮箱
+    a: 请附上付款收据，发送邮件至 <a href="mailto:%email%">%email%</a>。我们会更正你许可证上的邮箱，并重新发送密钥。
+  cta_h2: 留住每一段对话
+pricing:
+  title: 价格
+  description: AI Chat Saver 价格：Free 方案和 Pro 方案，按月或按年付费。
+  eyebrow: 价格
+  h1: 简单的方案
+  intro: 免费开始使用。Pro 发布后会带来更多功能。价格以 %currency% 计。
+  free_h: Free
+  free_sub: 保存对话所需的一切。
+  forever: 永久免费
+  get_free: 免费获取
+  yearly_h: Pro 年付
+  yearly_sub: 每年付费一次。
+  per_year: / 年
+  monthly_h: Pro 月付
+  monthly_sub: 每月付费，可随时取消。
+  per_month: / 月
+  howpro_h2: Pro 如何运作
+  howpro_p: 无需创建账户，也无需密码。你的许可证密钥就是你的登录凭证。
+  howpro_steps:
+  - t: 选择方案
+    d: 在此处点击“获取 Pro”，或在扩展内点击“升级”。将打开由 Freemius 提供的安全结账页面。可使用银行卡或 PayPal 付款。
+  - t: 获取许可证密钥
+    d: 密钥会立即显示在感谢页面上，并发送到你结账时使用的邮箱。
+  - t: 在扩展中激活
+    d: 打开 Pro，粘贴密钥并点击“激活”。你会看到“已登录为”以及你的邮箱、方案和续订日期。
+  - t: 随时管理
+    d: 使用“管理账户”查看发票、取消订阅或找回密钥。在一台设备上退出登录，即可在另一台设备上使用 Pro。
+  fine: Pro 的付款和许可证密钥由我们的经销商兼记录商户 Freemius, Inc. 处理。根据你所在的地区，结账时可能会加收税费。请参阅<a href="%terms_url%">服务条款</a>（英文）。在适用的情况下，消费者的法定权利不受影响。
