@@ -108,8 +108,7 @@ kbd{font:600 .85em var(--mono);padding:2px 7px;border-radius:6px;border:1px soli
 .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
 @media (max-width:900px){.plans{grid-template-columns:1fr;max-width:480px;margin:0 auto}}
 .plan{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:var(--shadow);position:relative}
-.plan.featured{border:2px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box,var(--grad) border-box;transform:scale(1.06);z-index:1;box-shadow:0 18px 50px rgba(124,58,237,.25),0 4px 12px rgba(23,20,43,.08)}
-@media (max-width:900px){.plan.featured{transform:none}}
+.plan.featured{box-shadow:-16px 14px 50px -4px rgba(124,58,237,.6),16px 14px 50px -4px rgba(242,98,46,.55),0 2px 8px rgba(23,20,43,.06)}
 .plan h2{font-size:22px;margin:0 0 4px}
 .plan .sub{color:var(--muted);margin:0 0 18px;font-size:15px}
 .price{display:flex;align-items:baseline;gap:6px;min-height:52px;margin-bottom:6px}
