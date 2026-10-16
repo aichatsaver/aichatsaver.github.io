@@ -16,6 +16,7 @@ ui:
   language: 言語
   main_nav: メイン
   footer_nav: フッター
+  dismiss: 閉じる
 foot:
   support: サポート：
   disclaimer: '%name% は独立した製品であり、連携する AI サービスとは提携しておらず、その承認も受けていません。各サービスの名称とロゴはそれぞれの所有者に帰属します。'
@@ -25,6 +26,7 @@ stores:
   soon: 近日公開
   chrome_soon_aria: Chrome Web Store：近日公開
   edge_soon_aria: Microsoft Edge Add-ons：近日公開
+  version: バージョン %version%
 meta:
   tagline: すべての AI チャットを、自分のパソコンのフォルダに保存。
   description: AI Chat Saver は、18 の AI アシスタントとのチャットをローカルフォルダに保存するブラウザ拡張機能です。ワンクリック更新、検索、元のサイトそのままの見た目でのエクスポートに対応。
@@ -114,6 +116,16 @@ pricing:
   monthly_h: Pro 月払い
   monthly_sub: 毎月のお支払い。いつでも解約できます。
   per_month: / 月
+  lifetime_h: Pro 買い切り
+  lifetime_sub: 一度の支払いで Pro をずっと使えます。
+  per_lifetime: 買い切り
+  yearly_cta: Pro を入手
+  monthly_cta: Pro を入手
+  lifetime_cta: Pro を入手
+  free_badge: ''
+  yearly_badge: ''
+  monthly_badge: ''
+  lifetime_badge: ''
   howpro_h2: Pro のしくみ
   howpro_p: アカウント作成もパスワードも不要。ライセンスキーがそのままログインになります。
   howpro_steps:
@@ -126,3 +138,6 @@ pricing:
   - t: いつでも管理
     d: 「アカウントを管理」から請求書の確認、解約、キーの再確認ができます。別のデバイスで Pro を使うには、今のデバイスでログアウトしてください。
   fine: Pro の決済とライセンスキーは、当社の再販業者・販売責任者（Merchant of Record）である Freemius, Inc. が取り扱います。お住まいの地域によっては、決済時に税金が加算される場合があります。<a href="%terms_url%">利用規約</a>（英語）をご覧ください。適用される場合、消費者の法的権利は影響を受けません。
+maint:
+  title: まもなく再開します
+  message: サイトを少しの間更新しています。しばらくしてからもう一度お越しください。
