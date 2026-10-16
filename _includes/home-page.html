@@ -1,0 +1,131 @@
+{%- include i18n.html -%}
+{%- assign th = tr.home -%}
+{%- assign privacy_url = '/privacy.html' | relative_url -%}
+{%- assign pricing_url = tp | append: '/pricing.html' | relative_url -%}
+<section class="hero">
+  <div class="wrap">
+    <img class="hero-logo" src="{{ '/assets/images/logo.svg' | relative_url }}" width="96" height="96" alt="{{ th.logo_alt | replace: '%name%', s.product_name }}">
+    <h1>{{ th.h1_a }}<span class="grad-text">{{ th.h1_b }}</span>{{ th.h1_c }}</h1>
+    <p class="lede">{{ th.lede | replace: '%name%', s.product_name }}</p>
+    {% include store-badges.html %}
+    <p class="hero-note">{{ th.hero_note }}</p>
+  </div>
+</section>
+
+<section class="alt" id="ais">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>{{ th.ais_h2 }}</h2>
+      <p>{{ th.ais_p | replace: '%name%', s.product_name }}</p>
+    </div>
+    <ul class="ai-list">
+      <li tabindex="0" data-name="ChatGPT"><img src="/assets/images/ai/chatgpt.svg" alt="ChatGPT" title="ChatGPT" width="36" height="36" loading="lazy"></li>
+      <li tabindex="0" data-name="Claude"><img src="/assets/images/ai/claude.svg" alt="Claude" title="Claude" width="36" height="36" loading="lazy"></li>
+      <li tabindex="0" data-name="Gemini"><img src="/assets/images/ai/gemini.svg" alt="Gemini" title="Gemini" width="36" height="36" loading="lazy"></li>
+      <li tabindex="0" data-name="Google AI Mode"><img src="/assets/images/ai/aimode.svg" alt="Google AI Mode" title="Google AI Mode" width="36" height="36" loading="lazy"></li>
+      <li tabindex="0" data-name="Google AI Studio"><img src="/assets/images/ai/aistudio.svg" alt="Google AI Studio" title="Google AI Studio" width="36" height="36" loading="lazy"></li>
+      <li tabindex="0" data-name="Gemini Notebook"><img src="/assets/images/ai/gemininotebook.svg" alt="Gemini Notebook" title="Gemini Notebook" width="36" height="36" loading="lazy"></li>
+      <li tabindex="0" data-name="Qwen"><img src="/assets/images/ai/qwen.svg" alt="Qwen" title="Qwen" width="36" height="36" loading="lazy"></li>
+      <li tabindex="0" data-name="DeepSeek"><img src="/assets/images/ai/deepseek.svg" alt="DeepSeek" title="DeepSeek" width="36" height="36" loading="lazy"></li>
+      <li tabindex="0" data-name="Kimi"><img src="/assets/images/ai/kimi.svg" alt="Kimi" title="Kimi" width="36" height="36" loading="lazy"></li>
+      <li tabindex="0" data-name="Z.ai"><img src="/assets/images/ai/zai.svg" alt="Z.ai" title="Z.ai" width="36" height="36" loading="lazy"></li>
+      <li tabindex="0" data-name="Grok"><img src="/assets/images/ai/grok.svg" alt="Grok" title="Grok" width="36" height="36" loading="lazy"></li>
+      <li tabindex="0" data-name="Microsoft Copilot"><img src="/assets/images/ai/copilot.svg" alt="Microsoft Copilot" title="Microsoft Copilot" width="36" height="36" loading="lazy"></li>
+      <li tabindex="0" data-name="GitHub Copilot"><img src="/assets/images/ai/ghcopilot.svg" alt="GitHub Copilot" title="GitHub Copilot" width="36" height="36" loading="lazy"></li>
+      <li tabindex="0" data-name="Meta AI"><img src="/assets/images/ai/metaai.svg" alt="Meta AI" title="Meta AI" width="36" height="36" loading="lazy"></li>
+      <li tabindex="0" data-name="MiniMax"><img src="/assets/images/ai/minimax.svg" alt="MiniMax" title="MiniMax" width="36" height="36" loading="lazy"></li>
+      <li tabindex="0" data-name="Manus"><img src="/assets/images/ai/manus.svg" alt="Manus" title="Manus" width="36" height="36" loading="lazy"></li>
+      <li tabindex="0" data-name="Perplexity"><img src="/assets/images/ai/perplexity.svg" alt="Perplexity" title="Perplexity" width="36" height="36" loading="lazy"></li>
+      <li tabindex="0" data-name="Doubao"><img src="/assets/images/ai/doubao.svg" alt="Doubao" title="Doubao" width="36" height="36" loading="lazy"></li>
+      <li tabindex="0" data-name="Tencent Yuanbao"><img src="/assets/images/ai/yuanbao.svg" alt="Tencent Yuanbao" title="Tencent Yuanbao" width="36" height="36" loading="lazy"></li>
+    </ul>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>{{ th.features_h2 }}</h2>
+      <p>{{ th.features_p }}</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+        <h3>{{ th.f1_h }}</h3>
+        <p>{{ th.f1_p }}</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></div>
+        <h3>{{ th.f2_h }}</h3>
+        <p>{{ th.f2_p }}</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg></div>
+        <h3>{{ th.f3_h }}</h3>
+        <ul>
+          {%- for li in th.f3_items %}
+          <li>{{ li }}</li>
+          {%- endfor %}
+        </ul>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M12 12v6"/><path d="m9 15 3 3 3-3"/></svg></div>
+        <h3>{{ th.f4_h }}</h3>
+        <p>{{ th.f4_p }}</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+        <h3>{{ th.f5_h }}</h3>
+        <p>{{ th.f5_p | replace: '%shortcut%', s.command_center_shortcut }}</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>{{ th.f6_h }}</h3>
+        <p>{{ th.f6_p }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="how">
+  <div class="wrap">
+    <div class="section-head"><h2>{{ th.how_h2 }}</h2></div>
+    <ol class="steps">
+      {%- for st in th.steps %}
+      <li><strong>{{ st.t }}</strong><span>{{ st.d }}</span></li>
+      {%- endfor %}
+    </ol>
+  </div>
+</section>
+
+<section id="privacy">
+  <div class="wrap privacy-band">
+    <div>
+      <p class="eyebrow">{{ th.priv_eyebrow }}</p>
+      <h2>{{ th.priv_h2 }}</h2>
+      <p class="muted">{{ th.priv_p | replace: '%name%', s.product_name | replace: '%privacy_url%', privacy_url }}</p>
+    </div>
+    <ul>
+      {%- for li in th.priv_items %}
+      <li>{{ li }}</li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="alt faq" id="faq">
+  <div class="wrap narrow">
+    <div class="section-head"><h2>{{ th.faq_h2 }}</h2></div>
+    {%- for f in th.faq %}
+    <details><summary>{{ f.q }}</summary><p>{{ f.a | replace: '%name%', s.product_name | replace: '%pro_status%', pro_status | replace: '%pricing_url%', pricing_url | replace: '%email%', s.support_email }}</p></details>
+    {%- endfor %}
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>{{ th.cta_h2 }}</h2>
+    <p class="muted">{{ tagline }}</p>
+    {% include store-badges.html %}
+  </div>
+</section>
