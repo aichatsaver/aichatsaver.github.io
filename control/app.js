@@ -105,7 +105,7 @@
   function encPath(p) { return p.split("/").map(encodeURIComponent).join("/"); }
   function apiErr(r) {
     if (r.status === 401) return "GitHub did not accept the token (it may have expired). Use Replace token.";
-    if (r.status === 403) return "GitHub refused this (the token may lack Contents: Read and write, or the rate limit was hit).";
+    if (r.status === 403) return "GitHub refused to save" + (r.data && r.data.message ? " (“" + r.data.message + "”)" : "") + ". The token can read but not write this repository. Make the token with Resource owner = aichatsaver, Only select repositories = aichatsaver.github.io, and Contents = Read and write. Or use a classic token with the public_repo scope.";
     if (r.status === 404) return "Not found, or the token can’t see this repository.";
     if (r.status === 409 || r.status === 422) return "This file changed on GitHub since you opened it. Press Reload, redo your change, then save.";
     if (!r.status) return "Network problem. Check your connection.";
@@ -131,7 +131,7 @@
     return job;
   }
   async function verifyToken(t) {
-    if (!/^(github_pat_|ghp_|gho_|ghu_|ghs_)/.test(t)) return "That doesn’t look like a GitHub token. It should start with github_pat_.";
+    if (!/^(github_pat_|ghp_|gho_|ghu_|ghs_)/.test(t)) return "That doesn’t look like a GitHub token. It should start with github_pat_ or ghp_.";
     var r;
     try { r = await gh(RP, { token: t }); } catch (e) { return "Couldn’t reach GitHub. Check your connection."; }
     if (r.status === 401) return "GitHub did not accept this token. Check you copied all of it, and that it hasn’t expired.";
