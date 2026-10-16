@@ -79,4 +79,4 @@ If we change this policy we will update this page and the "Last updated" date ab
 
 ## 11. Contact
 
-Questions about privvvvacy: **{{ s.support_email }}**.
+Questions about privacy: **{{ s.support_email }}**.
