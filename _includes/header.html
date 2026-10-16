@@ -1,0 +1,14 @@
+{%- assign s = site.data.site -%}
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="{{ '/' | relative_url }}"><img src="{{ '/assets/images/logo.png' | relative_url }}" width="32" height="32" alt=""><span>{{ s.product_name }}</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="{{ '/' | relative_url }}"{% if page.url == '/' or page.url == '/index.html' %} aria-current="page"{% endif %}>Product</a>
+      <a href="{{ '/pricing.html' | relative_url }}"{% if page.url == '/pricing.html' %} aria-current="page"{% endif %}>Pricing</a>
+      <a href="{{ '/privacy.html' | relative_url }}"{% if page.url == '/privacy.html' %} aria-current="page"{% endif %}>Privacy</a>
+      <a href="{{ '/terms.html' | relative_url }}"{% if page.url == '/terms.html' %} aria-current="page"{% endif %}>Terms</a>
+      <a href="{{ '/refund.html' | relative_url }}"{% if page.url == '/refund.html' %} aria-current="page"{% endif %}>Refunds</a>
+    </nav>
+  </div>
+</header>
