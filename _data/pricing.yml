@@ -1,0 +1,14 @@
+# Pricing settings — edit in the admin panel ("Pricing"). Prices, currency and feature lists stay in _data/site.yml.
+# Plan names, subtitles, button texts and badges are translated in _data/i18n/<language>.yml (pricing: keys).
+# launched: false shows the Pro status on disabled buttons; true turns Pro buttons into checkout links (when a link is set).
+launched: false
+checkout_yearly: ""
+checkout_monthly: ""
+checkout_lifetime: ""
+# highlighted: which plan gets the side glow (free, yearly, monthly or lifetime).
+highlighted: yearly
+# Optional Lifetime plan card, placed after Monthly. Off by default.
+lifetime_enabled: false
+price_lifetime: TBD
+# Free plan button link; empty = the Chrome Web Store link.
+free_url: ""
