@@ -1,6 +1,6 @@
 ---
 title: Terms of Service
-description: The terms for using the AI Chat Vault browser extension and the Pro plan.
+description: The terms for using the AI Chat Saver browser extension and the Pro plan.
 permalink: /terms.html
 ---
 {% assign s = site.data.site %}
