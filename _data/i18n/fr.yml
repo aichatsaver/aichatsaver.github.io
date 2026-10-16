@@ -1,0 +1,128 @@
+# Français strings for the AI Chat Saver site. Placeholders such as %name%, %email% and %shortcut% are filled in by the templates.
+# The meta lists are translations of the English values in _data/site.yml; if those are edited in Pages CMS, the edited English text is shown until this file is updated.
+nav:
+  product: Produit
+  pricing: Tarifs
+  privacy: Confidentialité
+  terms: Conditions
+  privacy_policy: Politique de confidentialité
+  terms_of_service: Conditions d’utilisation
+  refund_policy: Politique de remboursement
+  contact: Contact
+ui:
+  skip: Aller au contenu
+  theme_dark: Passer en mode sombre
+  theme_light: Passer en mode clair
+  language: Langue
+  main_nav: Principale
+  footer_nav: Pied de page
+foot:
+  support: 'Assistance :'
+  disclaimer: '%name% est un produit indépendant, ni affilié aux services d’IA avec lesquels il fonctionne, ni approuvé par eux. Leurs noms et logos appartiennent à leurs propriétaires.'
+stores:
+  available_in: Disponible sur le
+  get_from: Disponible sur
+  soon: Bientôt disponible
+  chrome_soon_aria: 'Chrome Web Store : bientôt disponible'
+  edge_soon_aria: 'Microsoft Edge Add-ons : bientôt disponible'
+meta:
+  tagline: Enregistrez chaque conversation d’IA dans un dossier sur votre propre ordinateur.
+  description: AI Chat Saver est une extension de navigateur qui enregistre vos conversations de 18 assistants d’IA dans un dossier local, avec mise à jour en un clic, recherche et exports fidèles aux sites d’origine.
+  pro_status: Pro — bientôt disponible
+  free_features:
+  - Enregistrez les conversations des 18 IA prises en charge
+  - Dossier local sur votre ordinateur (Téléchargements ou un dossier que vous connectez)
+  - Mise à jour incrémentale en un clic, et planifications
+  - Images, vidéos, fichiers, réflexion, code, sources et artefacts conservés
+  - Export en PDF, Word (DOCX), HTML, Markdown, TXT, JSON, PNG et JPG
+  - Recherche en texte intégral et le Centre de commande
+  - Tout reste sur votre appareil
+  pro_features:
+  - Tout le contenu de Free
+  - Les fonctions réservées à Pro seront annoncées au lancement
+home:
+  title: Produit
+  logo_alt: Logo de %name%
+  h1_a: 'Chaque conversation d’IA, '
+  h1_b: enregistrée sur votre ordinateur
+  h1_c: .
+  lede: '%name% est une extension de navigateur qui enregistre vos conversations de 18 assistants d’IA dans un dossier sur votre propre ordinateur. Un clic suffit pour tout mettre à jour, et rien ne quitte votre appareil.'
+  hero_note: Pour Google Chrome et Microsoft Edge.
+  ais_h2: Compatible avec 18 IA
+  ais_p: Connectez-vous comme d’habitude aux IA que vous utilisez dans votre navigateur. %name% enregistre les conversations de chacune dans son propre dossier.
+  features_h2: Tout le contenu de la conversation, pas seulement le texte
+  features_p: 'Vos conversations deviennent de vrais fichiers qui vous appartiennent : lisibles hors ligne, consultables et prêts à exporter.'
+  f1_h: Un dossier local qui vous appartient
+  f1_p: Les conversations sont écrites dans <strong>Downloads/AI Chat Saver</strong>, un dossier par IA, en Markdown, HTML et JSON, avec les médias à côté. Ou connectez un dossier une seule fois et les fichiers y sont enregistrés directement, sans fenêtre « Enregistrer sous ».
+  f2_h: Mise à jour incrémentale en un clic
+  f2_p: 'Un seul bouton de mise à jour synchronise toutes les IA et n’enregistre que les conversations nouvelles ou modifiées : rien n’est téléchargé deux fois. Lancez-la depuis la fenêtre de l’extension, appuyez sur <kbd>Alt+Shift+U</kbd> ou planifiez-la toutes les heures, toutes les 6 heures, chaque jour ou chaque semaine.'
+  f3_h: Médias, réflexion, code et artefacts conservés
+  f3_items:
+  - Images, vidéos et fichiers envoyés et générés
+  - Réflexion et raisonnement, appels d’outils, code exécuté par l’IA et son résultat
+  - Sources web et citations
+  - Artefacts de Claude et canevas de ChatGPT sous forme de vrais fichiers
+  - Les messages supprimés sur le site restent, marqués « Supprimé sur le site » ; les invites modifiées sont conservées en versions
+  f4_h: Des exports fidèles à l’original
+  f4_p: Exportez en <strong>HTML, Markdown, PDF, Word (DOCX) et TXT</strong>, ainsi qu’en JSON, PNG et JPG. Chaque export peut garder l’apparence du site d’IA, en clair ou en sombre. Les PDF sont créés sur votre ordinateur avec un vrai texte sélectionnable, sans boîte d’impression.
+  f5_h: La recherche et le Centre de commande
+  f5_p: 'Appuyez sur <kbd>%shortcut%</kbd> pour ouvrir le Centre de commande en plein écran : recherche instantanée en texte intégral dans toutes les IA, filtres comme <code>provider:</code> et <code>has:code</code>, une palette de commandes (<kbd>Ctrl+K</kbd>), une chronologie, des surlignages et des notes, et un mode lecture.'
+  f6_h: Confidentiel dès la conception
+  f6_p: 'Tout fonctionne dans votre navigateur avec vos propres sessions connectées. Vos conversations restent sur votre appareil : aucun compte chez nous, aucun serveur, aucune mesure d’audience.'
+  how_h2: Comment ça marche
+  steps:
+  - t: Installez l’extension
+    d: Ajoutez-la à Chrome ou à Edge et épinglez l’icône.
+  - t: Restez connecté à vos IA
+    d: Utilisez les sites d’IA dans le même profil de navigateur, comme vous le faites déjà.
+  - t: Appuyez sur Mettre à jour
+    d: 'Vos conversations sont enregistrées dans votre dossier. Recommencez quand vous voulez : seules les conversations nouvelles et modifiées sont enregistrées.'
+  priv_eyebrow: Confidentialité
+  priv_h2: Vos conversations ne nous parviennent jamais
+  priv_p: '%name% lit vos conversations via votre navigateur, sur les sites d’IA auxquels vous êtes connecté, et les écrit uniquement dans votre propre dossier et dans le stockage local de votre navigateur. Lisez la <a href="%privacy_url%">Politique de confidentialité</a> complète (en anglais).'
+  priv_items:
+  - Aucun contenu de conversation n’est envoyé au développeur
+  - Aucune mesure d’audience ni aucun pistage
+  - Aucune vente de données, jamais
+  - Désinstallez l’extension ou supprimez le dossier pour tout effacer
+  faq_h2: Questions
+  faq:
+  - q: Ai-je besoin d’un compte ?
+    a: Non. %name% utilise les sessions que vous avez déjà sur chaque site d’IA. Pro utilise une clé de licence fournie par notre partenaire de paiement, Freemius. Collez-la une fois dans l’extension et vous êtes connecté.
+  - q: Où mes conversations sont-elles enregistrées ?
+    a: Dans Downloads/AI Chat Saver sur votre ordinateur (un dossier par IA), ou dans un dossier que vous connectez. Une copie est aussi gardée dans le stockage local du navigateur pour une recherche instantanée.
+  - q: Que se passe-t-il si un site d’IA change ?
+    a: Après chaque synchronisation, l’extension vérifie toutes les IA. Si un site a changé et que l’enregistrement ne fonctionne plus, vous recevez une notification et un bandeau, et une exécution défaillante n’écrase jamais une conversation correctement enregistrée.
+  - q: Est-ce gratuit ?
+    a: Oui, il existe un forfait Free. %pro_status%. Consultez les <a href="%pricing_url%">Tarifs</a>.
+  - q: J’ai perdu ma clé de licence ou mal saisi mon e-mail
+    a: Écrivez à <a href="mailto:%email%">%email%</a> avec votre reçu de paiement. Nous corrigerons l’e-mail de votre licence et vous renverrons la clé.
+  cta_h2: Gardez chaque conversation
+pricing:
+  title: Tarifs
+  description: Tarifs d’AI Chat Saver — un forfait Free et un forfait Pro, mensuel ou annuel.
+  eyebrow: Tarifs
+  h1: Des forfaits simples
+  intro: Commencez gratuitement. Pro apportera davantage à son lancement. Les prix sont en %currency%.
+  free_h: Free
+  free_sub: Tout ce qu’il faut pour garder vos conversations.
+  forever: pour toujours
+  get_free: Obtenir gratuitement
+  yearly_h: Pro annuel
+  yearly_sub: Facturé une fois par an.
+  per_year: / an
+  monthly_h: Pro mensuel
+  monthly_sub: Facturé chaque mois. Résiliable à tout moment.
+  per_month: / mois
+  howpro_h2: Comment fonctionne Pro
+  howpro_p: Aucun compte à créer, aucun mot de passe. Votre clé de licence sert d’identifiant.
+  howpro_steps:
+  - t: Choisissez un forfait
+    d: Cliquez sur « Obtenir Pro » ici ou sur « Passer à Pro » dans l’extension. Un paiement sécurisé par Freemius s’ouvre. Payez par carte ou PayPal.
+  - t: Recevez votre clé de licence
+    d: Elle s’affiche aussitôt sur l’écran de remerciement et vous est envoyée par e-mail à l’adresse utilisée lors du paiement.
+  - t: Activez-la dans l’extension
+    d: Ouvrez Pro, collez votre clé et cliquez sur « Activer ». Vous verrez « Connecté en tant que » avec votre e-mail, votre forfait et sa date de renouvellement.
+  - t: Gérez à tout moment
+    d: Utilisez « Gérer le compte » pour voir vos factures, résilier ou retrouver votre clé. Déconnectez-vous sur un appareil pour utiliser Pro sur un autre.
+  fine: Les paiements et les clés de licence de Pro sont gérés par notre revendeur et marchand officiel, Freemius, Inc. Des taxes peuvent s’ajouter au paiement selon votre lieu de résidence. Consultez les <a href="%terms_url%">Conditions d’utilisation</a> (en anglais). Les droits légaux des consommateurs, lorsqu’ils s’appliquent, ne sont pas affectés.
