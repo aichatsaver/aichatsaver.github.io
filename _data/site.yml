@@ -13,6 +13,8 @@ command_center_shortcut: Alt+Shift+V
 # Store links: leave empty to show a "Coming soon" badge.
 chrome_store_url: ""
 edge_store_url: ""
+# Extension version shown under the store buttons on the homepage; empty = hidden.
+extension_version: ""
 policies_updated: 2026-10-16
 free_features:
   - Save chats from all 18 supported AIs
