@@ -1,0 +1,17 @@
+{%- comment -%} Site-wide bar from _data/announcement.yml (admin panel: Announcement). Only included when enabled. {%- endcomment -%}
+{%- assign an = site.data.announcement -%}
+{%- assign an_text = an.texts[tlang] | default: an.text -%}
+{%- assign an_lt = an.link_texts[tlang] | default: an.link_text -%}
+{%- if an_text and an_text != "" %}
+<div class="announce" id="announce" role="region" aria-label="{{ s.product_name | escape }}" style="--ann-bg:{{ an.color | default: '#6d28d9' | escape }};--ann-fg:{{ an.text_color | default: '#ffffff' | escape }}" data-key="{{ an_text | append: '|' | append: an.link | escape }}">
+  <div class="wrap announce-row">
+    <p>{% if an.link and an.link != "" %}{% if an_lt and an_lt != "" %}{{ an_text | escape }} <a href="{{ an.link | escape }}">{{ an_lt | escape }}</a>{% else %}<a href="{{ an.link | escape }}">{{ an_text | escape }}</a>{% endif %}{% else %}{{ an_text | escape }}{% endif %}</p>
+    {%- if an.dismissible %}
+    <button type="button" class="announce-x" aria-label="{{ tr.ui.dismiss | default: tren.ui.dismiss }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    {%- endif %}
+  </div>
+</div>
+{%- if an.dismissible %}
+<script>(function(){var a=document.getElementById("announce");if(!a)return;var k=a.getAttribute("data-key");try{if(localStorage.getItem("announce_closed")===k){a.remove();return}}catch(e){}a.querySelector(".announce-x").addEventListener("click",function(){try{localStorage.setItem("announce_closed",k)}catch(e){}a.remove()})})();</script>
+{%- endif %}
+{%- endif %}
