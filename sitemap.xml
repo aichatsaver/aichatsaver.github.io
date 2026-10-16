@@ -5,7 +5,7 @@ sitemap: false
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-{%- for p in site.pages %}{% unless p.sitemap == false %}
+{%- for p in site.pages %}{% unless p.sitemap == false or p.url contains '/control' %}
   <url><loc>{{ p.url | replace: 'index.html', '' | absolute_url }}</loc><lastmod>{{ site.data.site.policies_updated | date: "%Y-%m-%d" }}</lastmod>
   {%- if p.i18n_key %}{% if p.i18n_key == 'pricing' %}{% assign ipath = '/pricing.html' %}{% else %}{% assign ipath = '/' %}{% endif %}
     {%- for lg in site.data.languages %}{% if lg.code == 'en' %}{% assign lhref = ipath %}{% else %}{% assign lhref = '/' | append: lg.code | append: ipath %}{% endif %}<xhtml:link rel="alternate" hreflang="{{ lg.hreflang }}" href="{{ lhref | absolute_url }}"/>{% endfor %}<xhtml:link rel="alternate" hreflang="x-default" href="{{ ipath | absolute_url }}"/>
