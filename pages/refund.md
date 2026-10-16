@@ -1,6 +1,6 @@
 ---
 title: Refund Policy
-description: Refunds for AI Chat Saver Pro. The Yearly plan has a 14-day refund; monthly payments are not refunded.
+description: Refunds for AI Chat Saver Pro. The Yearly plan has a 7-day refund; monthly payments are not refunded.
 permalink: /refund.html
 ---
 {% assign s = site.data.site %}
