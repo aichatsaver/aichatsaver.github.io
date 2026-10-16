@@ -1,0 +1,14 @@
+<section{% if halt %} class="alt"{% endif %} id="privacy">
+  <div class="wrap privacy-band">
+    <div>
+      <p class="eyebrow">{{ th.priv_eyebrow }}</p>
+      <h2>{{ th.priv_h2 }}</h2>
+      <p class="muted">{{ th.priv_p | replace: '%name%', s.product_name | replace: '%privacy_url%', privacy_url }}</p>
+    </div>
+    <ul>
+      {%- for li in th.priv_items %}
+      <li>{{ li }}</li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
