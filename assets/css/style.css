@@ -1,4 +1,4 @@
-/* AI Chat Vault site — light by default, dark via the header toggle (html[data-theme=dark]). */
+/* AI Chat Saver site — light by default, dark via the header toggle (html[data-theme=dark]). */
 :root{
   --bg:#fbfaff; --bg2:#f3f0fb; --card:#ffffff; --text:#17142b; --muted:#5d5873; --line:#e6e1f2;
   --a1:#7c3aed; --a2:#f2622e; --accent:#6d28d9; --accent-ink:#ffffff; --ok:#0f8a5f;
