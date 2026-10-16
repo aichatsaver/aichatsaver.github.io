@@ -1,5 +1,5 @@
-{%- assign s = site.data.site -%}
+{%- include i18n.html -%}
 <div class="stores">
-  {% if s.chrome_store_url and s.chrome_store_url != "" %}<a class="store" href="{{ s.chrome_store_url }}" rel="noopener">{% include chrome.svg %}<span><small>Available in the</small>Chrome Web Store</span></a>{% else %}<span class="store soon" aria-label="Chrome Web Store: coming soon">{% include chrome.svg %}<span><small>Chrome Web Store</small>Coming soon</span></span>{% endif %}
-  {% if s.edge_store_url and s.edge_store_url != "" %}<a class="store" href="{{ s.edge_store_url }}" rel="noopener">{% include edge.svg %}<span><small>Get it from</small>Microsoft Edge Add-ons</span></a>{% else %}<span class="store soon" aria-label="Microsoft Edge Add-ons: coming soon">{% include edge.svg %}<span><small>Edge Add-ons</small>Coming soon</span></span>{% endif %}
+  {% if s.chrome_store_url and s.chrome_store_url != "" %}<a class="store" href="{{ s.chrome_store_url }}" rel="noopener">{% include chrome.svg %}<span><small>{{ tr.stores.available_in }}</small>Chrome Web Store</span></a>{% else %}<span class="store soon" aria-label="{{ tr.stores.chrome_soon_aria }}">{% include chrome.svg %}<span><small>Chrome Web Store</small>{{ tr.stores.soon }}</span></span>{% endif %}
+  {% if s.edge_store_url and s.edge_store_url != "" %}<a class="store" href="{{ s.edge_store_url }}" rel="noopener">{% include edge.svg %}<span><small>{{ tr.stores.get_from }}</small>Microsoft Edge Add-ons</span></a>{% else %}<span class="store soon" aria-label="{{ tr.stores.edge_soon_aria }}">{% include edge.svg %}<span><small>Edge Add-ons</small>{{ tr.stores.soon }}</span></span>{% endif %}
 </div>
