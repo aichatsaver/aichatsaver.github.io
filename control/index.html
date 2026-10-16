@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://api.github.com; base-uri 'none'; form-action 'none'">
+<meta name="color-scheme" content="light dark">
+<title>Admin</title>
+<link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg">
+<script src="/control/theme.js"></script>
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/control/admin.css">
+</head>
+<body class="cp">
+<header class="cp-head">
+  <div class="cp-row">
+    <a class="brand" href="/" target="_blank" rel="noopener"><img src="/assets/images/logo.svg" width="28" height="28" alt=""><span>Admin</span></a>
+    <div class="cp-head-actions">
+      <button class="cp-btn ghost small" id="lockBtn" type="button" hidden>Lock</button>
+      <button class="theme-toggle" id="themeBtn" type="button" aria-label="Switch to dark mode"><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main class="cp-main" id="main">
+  <noscript><p class="cp-card">This page needs JavaScript.</p></noscript>
+
+  <!-- Loading -->
+  <section id="vLoading" class="cp-card cp-narrow"><p class="muted">Loading…</p></section>
+
+  <!-- Load error -->
+  <section id="vError" class="cp-card cp-narrow" hidden>
+    <h1>Can’t reach GitHub</h1>
+    <p class="muted" id="errText"></p>
+    <p><button class="cp-btn" id="retryBtn" type="button">Try again</button></p>
+  </section>
+
+  <!-- Unlock -->
+  <section id="vLock" class="cp-card cp-narrow" hidden>
+    <h1>Admin</h1>
+    <form id="lockForm" autocomplete="on">
+      <input type="text" name="username" value="admin" autocomplete="username" hidden>
+      <label class="cp-field"><span>Password</span><input type="password" id="lockPw" autocomplete="current-password" required></label>
+      <label class="cp-check"><input type="checkbox" id="lockRemember"> Remember on this device until I close this tab</label>
+      <p class="cp-msg" id="lockMsg" role="alert"></p>
+      <p><button class="cp-btn" id="lockSubmit" type="submit">Unlock</button></p>
+    </form>
+    <details class="cp-more" id="lockReplace">
+      <summary>Token expired? Replace token</summary>
+      <form id="lrForm">
+        <input type="text" name="username" value="admin" autocomplete="username" hidden>
+        <p class="muted small">Make a new token (see “How to create the token” below), then choose a password. This replaces the saved token and password.</p>
+        <label class="cp-field"><span>New fine-grained token</span><input type="password" id="lrTok" autocomplete="off" spellcheck="false" required></label>
+        <label class="cp-field"><span>Password (new or the same as before)</span><input type="password" id="lrPw" autocomplete="new-password" required></label>
+        <div class="cp-meter" id="lrMeter"><i></i><span></span></div>
+        <label class="cp-field"><span>Confirm password</span><input type="password" id="lrPw2" autocomplete="new-password" required></label>
+        <p class="cp-msg" id="lrMsg" role="alert"></p>
+        <p><button class="cp-btn" type="submit">Verify and save</button></p>
+      </form>
+    </details>
+    <div data-help></div>
+  </section>
+
+  <!-- First-run setup -->
+  <section id="vSetup" class="cp-card cp-narrow" hidden>
+    <h1>Set up the admin panel</h1>
+    <p class="muted">This runs once. Your GitHub token is encrypted with your password in this browser, and only the encrypted copy is saved to the site’s repository.</p>
+    <form id="setupForm">
+        <input type="text" name="username" value="admin" autocomplete="username" hidden>
+      <label class="cp-field"><span>Fine-grained GitHub token</span><input type="password" id="suTok" autocomplete="off" spellcheck="false" placeholder="github_pat_…" required></label>
+      <label class="cp-field"><span>New password (at least 12 characters)</span><input type="password" id="suPw" autocomplete="new-password" required></label>
+      <div class="cp-meter" id="suMeter"><i></i><span></span></div>
+      <label class="cp-field"><span>Confirm password</span><input type="password" id="suPw2" autocomplete="new-password" required></label>
+      <p class="cp-msg" id="suMsg" role="alert"></p>
+      <p><button class="cp-btn" id="suSubmit" type="submit">Verify token and save</button></p>
+    </form>
+    <div data-help></div>
+  </section>
+
+  <!-- Panel -->
+  <section id="vPanel" hidden>
+    <nav class="cp-tabs" role="tablist" aria-label="Sections">
+      <button role="tab" type="button" data-tab="site" aria-selected="true">Site settings</button>
+      <button role="tab" type="button" data-tab="policies">Policies</button>
+      <button role="tab" type="button" data-tab="i18n">Translations</button>
+      <button role="tab" type="button" data-tab="files">Other files</button>
+      <button role="tab" type="button" data-tab="status">Status</button>
+      <button role="tab" type="button" data-tab="security">Security</button>
+    </nav>
+    <p class="cp-banner" id="banner" role="status" hidden></p>
+
+    <div class="cp-pane" data-pane="site">
+      <div class="cp-card">
+        <h2>Site settings</h2>
+        <p class="muted small">Saved to <code>_data/site.yml</code>. Prices: write TBD (or leave empty) to show “Coming soon”. Store links: leave empty to show a “Coming soon” badge. If you change the tagline, description, Pro status or feature lists, every language shows your new English text until you update that language under Translations (the <code>meta</code> keys).</p>
+        <div id="siteForm" class="cp-form"></div>
+      </div>
+      <div class="cp-savebar"><span class="cp-state" id="siteState"></span><button class="cp-btn ghost" type="button" id="siteReload">Reload</button><button class="cp-btn" type="button" id="siteSave">Save</button></div>
+    </div>
+
+    <div class="cp-pane" data-pane="policies" hidden>
+      <div class="cp-card">
+        <h2>Policies</h2>
+        <div class="cp-seg" id="polPick">
+          <button type="button" data-pol="privacy" aria-pressed="true">Privacy</button>
+          <button type="button" data-pol="terms" aria-pressed="false">Terms</button>
+          <button type="button" data-pol="refund" aria-pressed="false">Refund</button>
+        </div>
+        <p class="muted small">Saved to <code id="polPath">pages/privacy.md</code>. Text like <code>{{ s.product_name }}</code> is filled in from Site settings when the site builds. Remember to update “Policies updated” in Site settings after a real change.</p>
+        <div id="polFm" class="cp-form"></div>
+        <div class="cp-split">
+          <label class="cp-field"><span>Text (Markdown)</span><textarea id="polBody" rows="24" spellcheck="true"></textarea></label>
+          <div class="cp-field"><span>Preview</span><div class="cp-preview prose" id="polPrev"></div></div>
+        </div>
+      </div>
+      <div class="cp-savebar"><span class="cp-state" id="polState"></span><button class="cp-btn ghost" type="button" id="polReload">Reload</button><button class="cp-btn" type="button" id="polSave">Save</button></div>
+    </div>
+
+    <div class="cp-pane" data-pane="i18n" hidden>
+      <div class="cp-card">
+        <h2>Translations</h2>
+        <label class="cp-field cp-inline"><span>Language</span><select id="langPick"></select></label>
+        <p class="muted small">Saved to <code id="i18nPath">_data/i18n/es.yml</code>. Keep placeholders such as <code>%name%</code>, <code>%email%</code>, <code>%shortcut%</code> and any HTML tags exactly as in English.</p>
+        <input type="search" id="i18nFilter" class="cp-input" placeholder="Filter keys or text">
+        <div id="i18nForm" class="cp-tr"></div>
+      </div>
+      <div class="cp-savebar"><span class="cp-state" id="i18nState"></span><button class="cp-btn ghost" type="button" id="i18nReload">Reload</button><button class="cp-btn" type="button" id="i18nSave">Save</button></div>
+    </div>
+
+    <div class="cp-pane" data-pane="files" hidden>
+      <div class="cp-card">
+        <h2>Other files</h2>
+        <p class="muted small">For anything not covered above: page templates, styles, the language list, and so on. Edits here are saved exactly as typed, so take care.</p>
+        <label class="cp-field"><span>File</span><select id="filePick"></select></label>
+        <label class="cp-field"><span>Content</span><textarea id="fileBody" rows="26" spellcheck="false" class="cp-mono"></textarea></label>
+      </div>
+      <div class="cp-savebar"><span class="cp-state" id="fileState"></span><button class="cp-btn ghost" type="button" id="fileReload">Reload</button><button class="cp-btn" type="button" id="fileSave">Save</button></div>
+    </div>
+
+    <div class="cp-pane" data-pane="status" hidden>
+      <div class="cp-card">
+        <h2>Status</h2>
+        <div class="cp-status" id="buildBox"><p class="muted">Loading…</p></div>
+        <p class="cp-actions"><button class="cp-btn ghost" type="button" id="statusRefresh">Refresh</button><a class="cp-btn" href="https://aichatsaver.github.io/" target="_blank" rel="noopener">View site</a></p>
+        <h3>Last 10 changes</h3>
+        <ol class="cp-commits" id="commitList"></ol>
+      </div>
+    </div>
+
+    <div class="cp-pane" data-pane="security" hidden>
+      <div class="cp-card">
+        <h2>Change password</h2>
+        <form id="cpwForm">
+          <input type="text" name="username" value="admin" autocomplete="username" hidden>
+          <label class="cp-field"><span>Current password</span><input type="password" id="cpwOld" autocomplete="current-password" required></label>
+          <label class="cp-field"><span>New password (at least 12 characters)</span><input type="password" id="cpwNew" autocomplete="new-password" required></label>
+          <div class="cp-meter" id="cpwMeter"><i></i><span></span></div>
+          <label class="cp-field"><span>Confirm new password</span><input type="password" id="cpwNew2" autocomplete="new-password" required></label>
+          <p class="cp-msg" id="cpwMsg" role="alert"></p>
+          <p><button class="cp-btn" type="submit">Change password</button></p>
+        </form>
+      </div>
+      <div class="cp-card">
+        <h2>Replace token</h2>
+        <form id="rtForm">
+        <input type="text" name="username" value="admin" autocomplete="username" hidden>
+          <p class="muted small">Use this when your token is about to expire. The new token is checked, then saved encrypted with your current password.</p>
+          <label class="cp-field"><span>New fine-grained token</span><input type="password" id="rtTok" autocomplete="off" spellcheck="false" required></label>
+          <label class="cp-field"><span>Current password</span><input type="password" id="rtPw" autocomplete="current-password" required></label>
+          <p class="cp-msg" id="rtMsg" role="alert"></p>
+          <p><button class="cp-btn" type="submit">Verify and replace</button></p>
+        </form>
+      </div>
+      <div class="cp-card" data-help></div>
+    </div>
+  </section>
+</main>
+
+<template id="helpTpl">
+  <details class="cp-more cp-help">
+    <summary>How to create the token</summary>
+    <ol>
+      <li>On github.com, open your profile picture menu, then <b>Settings</b> → <b>Developer settings</b> → <b>Personal access tokens</b> → <b>Fine-grained tokens</b> → <b>Generate new token</b>.</li>
+      <li>Name it (for example “Site admin”) and pick an <b>Expiration</b> you are happy with. When it expires, make a new one and use “Replace token”.</li>
+      <li><b>Resource owner</b>: the <b>aichatsaver</b> organization.</li>
+      <li><b>Repository access</b>: <b>Only select repositories</b> → <b>aichatsaver.github.io</b>.</li>
+      <li><b>Permissions</b> → Repository permissions → <b>Contents: Read and write</b>. Nothing else is needed.</li>
+      <li>Press <b>Generate token</b>, copy it (it starts with <code>github_pat_</code>) and paste it here. GitHub shows it only once.</li>
+      <li>If GitHub says the token needs approval, approve it in the organization’s <b>Settings</b> → <b>Personal access tokens</b> → <b>Pending requests</b>.</li>
+    </ol>
+    <p class="muted small">The token is never saved in readable form. If you forget the password, make a new token and use “Replace token”.</p>
+  </details>
+</template>
+
+<script src="/control/js-yaml.min.js"></script>
+<script src="/control/app.js"></script>
+</body>
+</html>
