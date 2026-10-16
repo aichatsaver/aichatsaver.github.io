@@ -16,6 +16,7 @@ ui:
   language: Sprache
   main_nav: Hauptmenü
   footer_nav: Fußzeile
+  dismiss: Schließen
 foot:
   support: 'Support:'
   disclaimer: '%name% ist ein unabhängiges Produkt und steht in keiner Verbindung zu den KI-Diensten, mit denen es funktioniert, und wird von ihnen nicht unterstützt. Ihre Namen und Logos gehören ihren Eigentümern.'
@@ -25,6 +26,7 @@ stores:
   soon: Demnächst
   chrome_soon_aria: 'Chrome Web Store: demnächst'
   edge_soon_aria: 'Microsoft Edge Add-ons: demnächst'
+  version: Version %version%
 meta:
   tagline: Speichere jeden KI-Chat in einem Ordner auf deinem eigenen Computer.
   description: AI Chat Saver ist eine Browsererweiterung, die deine Chats aus 18 KI-Assistenten in einem lokalen Ordner speichert – mit Aktualisierung per Klick, Suche und Exporten, die wie die Originalseiten aussehen.
@@ -114,6 +116,16 @@ pricing:
   monthly_h: Pro monatlich
   monthly_sub: Monatlich abgerechnet. Jederzeit kündbar.
   per_month: / Monat
+  lifetime_h: Pro auf Lebenszeit
+  lifetime_sub: Einmal zahlen, Pro für immer behalten.
+  per_lifetime: einmalig
+  yearly_cta: Pro holen
+  monthly_cta: Pro holen
+  lifetime_cta: Pro holen
+  free_badge: ''
+  yearly_badge: ''
+  monthly_badge: ''
+  lifetime_badge: ''
   howpro_h2: So funktioniert Pro
   howpro_p: Kein Konto, kein Passwort. Dein Lizenzschlüssel ist deine Anmeldung.
   howpro_steps:
@@ -126,3 +138,6 @@ pricing:
   - t: Jederzeit verwalten
     d: Unter „Konto verwalten“ siehst du Rechnungen, kannst kündigen oder deinen Schlüssel wiederfinden. Melde dich auf einem Gerät ab, um Pro auf einem anderen zu nutzen.
   fine: Zahlungen und Lizenzschlüssel für Pro wickelt unser Wiederverkäufer und Händler (Merchant of Record), Freemius, Inc., ab. Je nach Wohnort können beim Bezahlen Steuern hinzukommen. Siehe die <a href="%terms_url%">Nutzungsbedingungen</a> (auf Englisch). Gesetzliche Verbraucherrechte bleiben, soweit anwendbar, unberührt.
+maint:
+  title: Wir sind gleich zurück
+  message: Die Website wird gerade kurz aktualisiert. Bitte schau in Kürze wieder vorbei.
