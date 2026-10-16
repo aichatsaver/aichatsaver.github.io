@@ -1,0 +1,41 @@
+# Supported AIs shown as logo tiles on the homepage, in this order — edit in the admin panel ("Supported AIs").
+# logo: an image path on this site (36×36 display size; SVG or PNG work best).
+ais:
+- name: ChatGPT
+  logo: /assets/images/ai/chatgpt.svg
+- name: Claude
+  logo: /assets/images/ai/claude.svg
+- name: Gemini
+  logo: /assets/images/ai/gemini.svg
+- name: Google AI Mode
+  logo: /assets/images/ai/aimode.svg
+- name: Google AI Studio
+  logo: /assets/images/ai/aistudio.svg
+- name: Gemini Notebook
+  logo: /assets/images/ai/gemininotebook.svg
+- name: Qwen
+  logo: /assets/images/ai/qwen.svg
+- name: DeepSeek
+  logo: /assets/images/ai/deepseek.svg
+- name: Kimi
+  logo: /assets/images/ai/kimi.svg
+- name: Z.ai
+  logo: /assets/images/ai/zai.svg
+- name: Grok
+  logo: /assets/images/ai/grok.svg
+- name: Microsoft Copilot
+  logo: /assets/images/ai/copilot.svg
+- name: GitHub Copilot
+  logo: /assets/images/ai/ghcopilot.svg
+- name: Meta AI
+  logo: /assets/images/ai/metaai.svg
+- name: MiniMax
+  logo: /assets/images/ai/minimax.svg
+- name: Manus
+  logo: /assets/images/ai/manus.svg
+- name: Perplexity
+  logo: /assets/images/ai/perplexity.svg
+- name: Doubao
+  logo: /assets/images/ai/doubao.svg
+- name: Tencent Yuanbao
+  logo: /assets/images/ai/yuanbao.svg
