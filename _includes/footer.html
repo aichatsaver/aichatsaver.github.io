@@ -1,15 +1,30 @@
-{%- assign s = site.data.site -%}
+{%- include i18n.html -%}
+{%- unless page.i18n_key %}{% assign ll_home = ' data-lang-link="home"' %}{% assign ll_pricing = ' data-lang-link="pricing"' %}{% else %}{% assign ll_home = "" %}{% assign ll_pricing = "" %}{% endunless -%}
 <footer class="site-foot">
   <div class="wrap foot-row">
     <div class="foot-brand"><img src="{{ '/assets/images/logo.svg' | relative_url }}" width="24" height="24" alt=""><span>{{ s.product_name }}</span></div>
-    <nav class="foot-nav" aria-label="Footer">
-      <a href="{{ '/' | relative_url }}">Product</a>
-      <a href="{{ '/pricing.html' | relative_url }}">Pricing</a>
-      <a href="{{ '/privacy.html' | relative_url }}">Privacy Policy</a>
-      <a href="{{ '/terms.html' | relative_url }}">Terms of Service</a>
-      <a href="{{ '/refund.html' | relative_url }}">Refund Policy</a>
-      <a href="mailto:{{ s.support_email }}">Contact</a>
+    <nav class="foot-nav" aria-label="{{ tr.ui.footer_nav }}">
+      <a href="{{ tp | append: '/' | relative_url }}"{{ ll_home }}>{{ tr.nav.product }}</a>
+      <a href="{{ tp | append: '/pricing.html' | relative_url }}"{{ ll_pricing }}>{{ tr.nav.pricing }}</a>
+      <a href="{{ '/privacy.html' | relative_url }}">{{ tr.nav.privacy_policy }}</a>
+      <a href="{{ '/terms.html' | relative_url }}">{{ tr.nav.terms_of_service }}</a>
+      <a href="{{ '/refund.html' | relative_url }}">{{ tr.nav.refund_policy }}</a>
+      <a href="mailto:{{ s.support_email }}">{{ tr.nav.contact }}</a>
     </nav>
-    <p class="foot-note">© {{ site.time | date: "%Y" }} {{ s.product_name }}. Support: <a href="mailto:{{ s.support_email }}">{{ s.support_email }}</a>.<br>{{ s.product_name }} is an independent product and is not affiliated with or endorsed by the AI services it works with. Their names and logos belong to their owners.</p>
+    <p class="foot-note">© {{ site.time | date: "%Y" }} {{ s.product_name }}. {{ tr.foot.support }} <a href="mailto:{{ s.support_email }}">{{ s.support_email }}</a>.<br>{{ tr.foot.disclaimer | replace: "%name%", s.product_name }}</p>
   </div>
 </footer>
+<script>
+/* Language menu: opens on click or keyboard, closes on outside click, Esc or focus leaving. The choice is saved; there is no automatic redirect. */
+(function(){var w=document.querySelector("[data-lang-switch]");if(!w)return;var b=w.querySelector("button"),m=w.querySelector("ul"),it=[].slice.call(m.querySelectorAll("a"));
+function op(f){m.hidden=false;b.setAttribute("aria-expanded","true");if(f)(m.querySelector("[aria-current]")||it[0]).focus()}
+function cl(f){if(m.hidden)return;m.hidden=true;b.setAttribute("aria-expanded","false");if(f)b.focus()}
+b.addEventListener("click",function(e){if(m.hidden)op(e.detail===0);else cl(false)});
+b.addEventListener("keydown",function(e){if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();op(true)}});
+m.addEventListener("keydown",function(e){var i=it.indexOf(document.activeElement),n=it.length,j=-1;if(e.key==="ArrowDown")j=(i+1)%n;else if(e.key==="ArrowUp")j=(i-1+n)%n;else if(e.key==="Home")j=0;else if(e.key==="End")j=n-1;if(j>-1){e.preventDefault();it[j].focus()}});
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!m.hidden){e.preventDefault();cl(true)}});
+document.addEventListener("pointerdown",function(e){if(!w.contains(e.target))cl(false)});
+w.addEventListener("focusout",function(e){if(e.relatedTarget&&!w.contains(e.relatedTarget))cl(false)});
+it.forEach(function(a){a.addEventListener("click",function(){try{localStorage.setItem("lang",a.getAttribute("data-lang"))}catch(x){}})});
+try{var sl=localStorage.getItem("lang");if(sl&&sl!=="en"&&m.querySelector('[data-lang="'+sl+'"]')){[].forEach.call(document.querySelectorAll("[data-lang-link]"),function(a){a.href="/"+sl+(a.getAttribute("data-lang-link")==="pricing"?"/pricing.html":"/")})}}catch(x){}})();
+</script>
