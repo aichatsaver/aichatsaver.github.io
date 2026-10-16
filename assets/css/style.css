@@ -61,7 +61,7 @@ section{padding:56px 0}
 .section-head p{color:var(--muted);margin:0}
 .alt{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 
-.ai-list{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;list-style:none;padding:0;margin:0 auto;max-width:760px}
+.ai-list{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;list-style:none;padding:0;margin:0 auto;max-width:780px}
 .ai-list li{position:relative;width:64px;height:64px;display:grid;place-items:center;border-radius:16px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);transition:transform .15s ease;cursor:default;outline:none}
 .ai-list li img{width:36px;height:36px;display:block}
 .ai-list li:hover,.ai-list li:focus-visible{transform:translateY(-3px)}
