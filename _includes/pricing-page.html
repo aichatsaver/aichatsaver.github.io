@@ -1,0 +1,63 @@
+{%- include i18n.html -%}
+{%- assign tpr = tr.pricing -%}
+{%- assign terms_url = "/terms.html" | relative_url -%}
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">{{ tpr.eyebrow }}</p>
+      <h1>{{ tpr.h1 }}</h1>
+      <p>{{ tpr.intro | replace: '%currency%', s.price_currency }}</p>
+    </div>
+
+    <div class="plans">
+      <div class="plan">
+        <h2>{{ tpr.free_h }}</h2>
+        <p class="sub">{{ tpr.free_sub }}</p>
+        <div class="price"><span class="price-num">$0</span><span class="price-per">{{ tpr.forever }}</span></div>
+        {% if s.chrome_store_url and s.chrome_store_url != "" %}<a class="btn ghost" href="{{ s.chrome_store_url }}">{{ tpr.get_free }}</a>{% else %}<span class="btn ghost" aria-disabled="true">{{ tr.stores.soon }}</span>{% endif %}
+        <ul>
+          {% for f in free_features %}<li>{{ f }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!--PRICE-->
+      <!-- Pro price and feature split: set price_monthly, price_yearly and pro_features in _data/site.yml (Pages CMS: Site settings). -->
+      <div class="plan featured">
+        <span class="status">{{ pro_status }}</span>
+        <h2>{{ tpr.yearly_h }}</h2>
+        <p class="sub">{{ tpr.yearly_sub }}</p>
+        <!--PRICE_YEARLY-->
+        <div class="price">{% include price.html value=s.price_yearly per=tpr.per_year soon=tr.stores.soon %}</div>
+        <span class="btn" aria-disabled="true">{{ pro_status }}</span>
+        <ul>
+          {% for f in pro_features %}<li>{{ f }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="plan">
+        <span class="status">{{ pro_status }}</span>
+        <h2>{{ tpr.monthly_h }}</h2>
+        <p class="sub">{{ tpr.monthly_sub }}</p>
+        <!--PRICE_MONTHLY-->
+        <div class="price">{% include price.html value=s.price_monthly per=tpr.per_month soon=tr.stores.soon %}</div>
+        <span class="btn" aria-disabled="true">{{ pro_status }}</span>
+        <ul>
+          {% for f in pro_features %}<li>{{ f }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="section-head" id="how-pro" style="margin-top:56px"><h2>{{ tpr.howpro_h2 }}</h2><p>{{ tpr.howpro_p }}</p></div>
+    <ol class="steps">
+      {%- for st in tpr.howpro_steps %}
+      <li><strong>{{ st.t }}</strong><span>{{ st.d }}</span></li>
+      {%- endfor %}
+    </ol>
+
+    <p class="fine">{{ tpr.fine | replace: '%terms_url%', terms_url }}</p>
+  </div>
+</section>
