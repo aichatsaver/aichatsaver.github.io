@@ -16,6 +16,7 @@ ui:
   language: Idioma
   main_nav: Principal
   footer_nav: Pie de página
+  dismiss: Cerrar
 foot:
   support: 'Soporte:'
   disclaimer: '%name% es un producto independiente y no está afiliado ni respaldado por los servicios de IA con los que funciona. Sus nombres y logotipos pertenecen a sus propietarios.'
@@ -25,6 +26,7 @@ stores:
   soon: Muy pronto
   chrome_soon_aria: 'Chrome Web Store: muy pronto'
   edge_soon_aria: 'Microsoft Edge Add-ons: muy pronto'
+  version: Versión %version%
 meta:
   tagline: Guarda cada chat de IA en una carpeta de tu propio ordenador.
   description: AI Chat Saver es una extensión del navegador que guarda tus chats de 18 asistentes de IA en una carpeta local, con actualizaciones en un clic, búsqueda y exportaciones con el aspecto de los sitios originales.
@@ -114,6 +116,16 @@ pricing:
   monthly_h: Pro mensual
   monthly_sub: Se factura cada mes. Cancela cuando quieras.
   per_month: / mes
+  lifetime_h: Pro de por vida
+  lifetime_sub: Paga una vez y conserva Pro para siempre.
+  per_lifetime: pago único
+  yearly_cta: Obtener Pro
+  monthly_cta: Obtener Pro
+  lifetime_cta: Obtener Pro
+  free_badge: ''
+  yearly_badge: ''
+  monthly_badge: ''
+  lifetime_badge: ''
   howpro_h2: Cómo funciona Pro
   howpro_p: Sin cuenta que crear y sin contraseña. Tu clave de licencia es tu inicio de sesión.
   howpro_steps:
@@ -126,3 +138,6 @@ pricing:
   - t: Gestiónalo cuando quieras
     d: Usa «Gestionar cuenta» para ver facturas, cancelar o recuperar tu clave. Cierra la sesión en un dispositivo para usar Pro en otro.
   fine: Los pagos y las claves de licencia de Pro los gestiona nuestro revendedor y comerciante registrado, Freemius, Inc. Pueden añadirse impuestos al pagar según dónde vivas. Consulta los <a href="%terms_url%">Términos del servicio</a> (en inglés). No se ven afectados los derechos legales del consumidor, cuando sean aplicables.
+maint:
+  title: Volvemos enseguida
+  message: Estamos actualizando el sitio. Vuelve a intentarlo dentro de un rato.
