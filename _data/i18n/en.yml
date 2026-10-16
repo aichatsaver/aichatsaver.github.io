@@ -1,0 +1,128 @@
+# English strings for the AI Chat Saver site. Placeholders such as %name%, %email% and %shortcut% are filled in by the templates.
+# The meta lists are translations of the English values in _data/site.yml; if those are edited in Pages CMS, the edited English text is shown until this file is updated.
+nav:
+  product: Product
+  pricing: Pricing
+  privacy: Privacy
+  terms: Terms
+  privacy_policy: Privacy Policy
+  terms_of_service: Terms of Service
+  refund_policy: Refund Policy
+  contact: Contact
+ui:
+  skip: Skip to content
+  theme_dark: Switch to dark mode
+  theme_light: Switch to light mode
+  language: Language
+  main_nav: Main
+  footer_nav: Footer
+foot:
+  support: 'Support:'
+  disclaimer: '%name% is an independent product and is not affiliated with or endorsed by the AI services it works with. Their names and logos belong to their owners.'
+stores:
+  available_in: Available in the
+  get_from: Get it from
+  soon: Coming soon
+  chrome_soon_aria: 'Chrome Web Store: coming soon'
+  edge_soon_aria: 'Microsoft Edge Add-ons: coming soon'
+meta:
+  tagline: Save every AI chat to a folder on your own computer.
+  description: AI Chat Saver is a browser extension that saves your chats from 18 AI assistants into a local folder, with one-click updates, search and exports that look like the original sites.
+  pro_status: Pro — launching soon
+  free_features:
+  - Save chats from all 18 supported AIs
+  - Local folder on your computer (Downloads or a folder you connect)
+  - One-click incremental Update, plus schedules
+  - Images, videos, files, thinking, code, sources and artifacts kept
+  - Export to PDF, Word (DOCX), HTML, Markdown, TXT, JSON, PNG and JPG
+  - Full-text search and the Command Center
+  - Everything stays on your device
+  pro_features:
+  - Everything in Free
+  - Pro-only features will be announced at launch
+home:
+  title: Product
+  logo_alt: '%name% logo'
+  h1_a: 'Every AI chat, '
+  h1_b: saved on your computer
+  h1_c: .
+  lede: '%name% is a browser extension that saves your chats from 18 AI assistants into a folder on your own computer. One click keeps it up to date, and nothing leaves your device.'
+  hero_note: For Google Chrome and Microsoft Edge.
+  ais_h2: Works with 18 AIs
+  ais_p: Sign in to the AIs you use in your browser as usual. %name% saves the chats from each one into its own folder.
+  features_h2: Everything in the chat, not just the text
+  features_p: 'Your chats become real files you own: readable offline, searchable, and ready to export.'
+  f1_h: A local folder you own
+  f1_p: Chats are written to <strong>Downloads/AI Chat Saver</strong>, one folder per AI, as Markdown, HTML and JSON, with media alongside. Or connect a folder once and files save straight into it, with no Save-As boxes.
+  f2_h: One-click incremental Update
+  f2_p: One Update button syncs every AI and saves only chats that are new or changed, so nothing is downloaded twice. Run it from the popup, press <kbd>Alt+Shift+U</kbd>, or schedule it hourly, every 6 hours, daily or weekly.
+  f3_h: Media, thinking, code and artifacts kept
+  f3_items:
+  - Uploaded and generated images, videos and files
+  - Thinking and reasoning, tool calls, code the AI ran and its output
+  - Web sources and citations
+  - Claude artifacts and ChatGPT canvases as real files
+  - Messages deleted on the site stay, marked “Deleted on site”; edited prompts are kept as versions
+  f4_h: Exports that look like the original
+  f4_p: Export to <strong>HTML, Markdown, PDF, Word (DOCX) and TXT</strong>, plus JSON, PNG and JPG. Each export can keep the AI site’s own look, in light or dark. PDFs are made on your computer with real, selectable text, with no print dialog.
+  f5_h: Search and the Command Center
+  f5_p: 'Press <kbd>%shortcut%</kbd> to open the full-screen Command Center: instant full-text search across every AI, filters like <code>provider:</code> and <code>has:code</code>, a command palette (<kbd>Ctrl+K</kbd>), a Timeline, highlights and notes, and Reading mode.'
+  f6_h: Private by design
+  f6_p: 'Everything runs in your browser using your own signed-in sessions. Your chats stay on your device: no account with us, no servers, no analytics.'
+  how_h2: How it works
+  steps:
+  - t: Install the extension
+    d: Add it to Chrome or Edge and pin the icon.
+  - t: Stay signed in to your AIs
+    d: Use the AI sites in the same browser profile, as you already do.
+  - t: Press Update
+    d: Your chats are saved to your folder. Press it again any time; only new and changed chats are saved.
+  priv_eyebrow: Privacy
+  priv_h2: Your chats never come to us
+  priv_p: '%name% reads your chats through your browser from the AI sites you are signed in to, and writes them only to your own folder and your browser’s local storage. Read the full <a href="%privacy_url%">Privacy Policy</a>.'
+  priv_items:
+  - No chat content is sent to the developer
+  - No analytics or tracking
+  - No selling of data, ever
+  - Uninstall or delete the folder to remove everything
+  faq_h2: Questions
+  faq:
+  - q: Do I need an account?
+    a: No. %name% uses the sessions you already have on each AI site. Pro uses a licence key from our payment partner, Freemius. Paste it into the extension once and you are signed in.
+  - q: Where are my chats saved?
+    a: In Downloads/AI Chat Saver on your computer (one folder per AI), or in a folder you connect. A copy is also kept in your browser’s local storage so search is instant.
+  - q: What happens if an AI site changes?
+    a: After each sync the extension checks every AI. If a site changed and saving stops working, you get one notification and a banner, and a broken run never overwrites a good saved chat.
+  - q: Is it free?
+    a: Yes, there is a Free plan. %pro_status%. See <a href="%pricing_url%">Pricing</a>.
+  - q: I lost my licence key or typed the wrong email
+    a: Email <a href="mailto:%email%">%email%</a> with your payment receipt. We'll correct the email on your licence and send the key again.
+  cta_h2: Keep every conversation
+pricing:
+  title: Pricing
+  description: AI Chat Saver pricing — a Free plan and a Pro plan, monthly or yearly.
+  eyebrow: Pricing
+  h1: Simple plans
+  intro: Start free. Pro adds more when it launches. Prices are in %currency%.
+  free_h: Free
+  free_sub: Everything you need to keep your chats.
+  forever: forever
+  get_free: Get it free
+  yearly_h: Pro Yearly
+  yearly_sub: Billed once a year.
+  per_year: / year
+  monthly_h: Pro Monthly
+  monthly_sub: Billed every month. Cancel any time.
+  per_month: / month
+  howpro_h2: How Pro works
+  howpro_p: No account to create and no password. Your licence key is your sign-in.
+  howpro_steps:
+  - t: Choose a plan
+    d: Press Get Pro here or Upgrade inside the extension. A secure checkout by Freemius opens. Pay by card or PayPal.
+  - t: Get your licence key
+    d: It shows on the thank-you screen right away and is emailed to the address you used at checkout.
+  - t: Activate in the extension
+    d: Open Pro, paste your key and press Activate. You'll see "Signed in as" your email, your plan and its renewal date.
+  - t: Manage any time
+    d: Use Manage account to see invoices, cancel or find your key again. Sign out on one device to use Pro on another.
+  fine: Payments and licence keys for Pro are handled by our reseller and merchant of record, Freemius, Inc. Taxes may be added at checkout depending on where you live. See the <a href="%terms_url%">Terms of Service</a>. Statutory consumer rights, where they apply, are not affected.
