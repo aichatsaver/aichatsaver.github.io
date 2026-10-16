@@ -6,12 +6,11 @@
   <div class="wrap head-row">
     <a class="brand" href="{{ tp | append: '/' | relative_url }}"{{ ll_home }}><img src="{{ '/assets/images/logo.svg' | relative_url }}" width="32" height="32" alt=""><span>{{ s.product_name }}</span></a>
     <nav class="nav" aria-label="{{ tr.ui.main_nav }}">
-      <a href="{{ tp | append: '/' | relative_url }}"{{ ll_home }}{% if page.i18n_key == 'home' or page.url == '/' or page.url == '/index.html' %} aria-current="page"{% endif %}>{{ tr.nav.product }}</a>
-      <a href="{{ tp | append: '/pricing.html' | relative_url }}"{{ ll_pricing }}{% if page.i18n_key == 'pricing' or page.url == '/pricing.html' %} aria-current="page"{% endif %}>{{ tr.nav.pricing }}</a>
-      <a href="{{ '/privacy.html' | relative_url }}"{% if page.url == '/privacy.html' %} aria-current="page"{% endif %}>{{ tr.nav.privacy }}</a>
-      <a href="{{ '/terms.html' | relative_url }}"{% if page.url == '/terms.html' %} aria-current="page"{% endif %}>{{ tr.nav.terms }}</a>
+      {%- for it in site.data.navigation.header %}
+      {% include nav-link.html it=it area="header" %}
+      {%- endfor %}
       <div class="lang" data-lang-switch><button class="lang-toggle" type="button" aria-expanded="false" aria-controls="lang-menu" aria-label="{{ tr.ui.language }}: {{ lgcur.name }}" title="{{ tr.ui.language }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></svg></button><ul class="lang-menu" id="lang-menu" hidden>
-        {%- for lg in site.data.languages %}{% if lg.code == "en" %}{% assign lhref = ipath %}{% else %}{% assign lhref = "/" | append: lg.code | append: ipath %}{% endif %}
+        {%- for lg in site.data.languages %}{% if lg.enabled == false %}{% continue %}{% endif %}{% if lg.code == "en" %}{% assign lhref = ipath %}{% else %}{% assign lhref = "/" | append: lg.code | append: ipath %}{% endif %}
         <li><a href="{{ lhref | relative_url }}" hreflang="{{ lg.hreflang }}" lang="{{ lg.hreflang }}"{% if lg.dir %} dir="{{ lg.dir }}"{% endif %} data-lang="{{ lg.code }}"{% if lg.code == tlang %} aria-current="true"{% endif %}>{{ lg.name }}</a></li>
         {%- endfor %}
       </ul></div>
