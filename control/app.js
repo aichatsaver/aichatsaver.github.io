@@ -137,6 +137,15 @@
     if (r.status === 401) return "GitHub did not accept this token. Check you copied all of it, and that it hasn’t expired.";
     if (!r.ok) return "This token can’t see the aichatsaver.github.io repository. Set Repository access to that repository.";
     if (r.data && r.data.permissions && r.data.permissions.push === false) return "This token can only read the repository. Give it Contents: Read and write.";
+    // Write probe that changes nothing: an invalid ref name gets 422 when the token may write, 403/404 when it may not.
+    var w;
+    try { w = await gh(RP + "/git/refs", { method: "POST", token: t, body: { ref: "refs/heads/..invalid..", sha: "0000000000000000000000000000000000000000" } }); } catch (e) { return "Couldn’t reach GitHub. Check your connection."; }
+    if (w.status === 403 || w.status === 404) {
+      var gm = w.data && w.data.message ? " GitHub says: “" + w.data.message + "”." : "";
+      if (/^github_pat_/.test(t)) return "This token can read the repository but GitHub won’t let it write." + gm + " On the token page check: Resource owner = aichatsaver (not your own account), Repository access = Only select repositories → aichatsaver.github.io, Repository permissions → Contents = Read and write. Resource owner can’t be edited later, so make a new token if it’s wrong. A classic token with the public_repo scope also works.";
+      return "This token can read the repository but GitHub won’t let it write." + gm + " For a classic token, tick the public_repo (or repo) scope.";
+    }
+    if (w.status === 401) return "GitHub did not accept this token. Check you copied all of it, and that it hasn’t expired.";
     return "";
   }
 
