@@ -8,7 +8,7 @@ price_monthly: TBD
 price_yearly: TBD
 price_currency: USD
 pro_status: Pro — launching soon
-refund_days: 14
+refund_days: 7
 command_center_shortcut: Alt+Shift+V
 # Store links: leave empty to show a "Coming soon" badge.
 chrome_store_url: ""
