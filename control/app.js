@@ -617,11 +617,12 @@
       var sel = $("langPick"); sel.textContent = "";
       tr.langs.forEach(function (l) { sel.appendChild(el("option", { value: l.code, text: l.name + " (" + l.code + ")" })); });
       var enf = await getFile("_data/i18n/en.yml"); tr.en = Y.load(enf.text, YOPT);
-      var first = (tr.langs.filter(function (l) { return l.code !== "en"; })[0] || tr.langs[0]).code;
+      var saved = null; try { saved = localStorage.getItem(LANG_KEY); } catch (e) {}
+      var first = tr.langs.some(function (l) { return l.code === saved; }) ? saved : "en";
       sel.value = first; await loadLang(first);
     } catch (e) { setState("i18nState", e.message, "err"); loaded.i18n = false; }
   }
-  var lastLang = "";
+  var lastLang = "", LANG_KEY = "acs_admin_i18n_lang";
   $("langPick").addEventListener("change", async function () {
     var c = $("langPick").value;
     if (dirtyMap.i18n && !confirm("Discard your unsaved translation changes?")) { $("langPick").value = lastLang; return; }
@@ -630,6 +631,10 @@
   async function loadLang(code) {
     setState("i18nState", "Loading…"); $("i18nForm").textContent = "";
     var path = "_data/i18n/" + code + ".yml"; $("i18nPath").textContent = path;
+    var lg = tr.langs.filter(function (l) { return l.code === code; })[0] || { name: code };
+    $("i18nEditing").textContent = "Editing: " + lg.name + " (" + code + ") — shows on " + (code === "en" ? "the English pages (/ and /pricing.html)" : "/" + code + "/ pages");
+    $("i18nEditing").setAttribute("lang", lg.hreflang || code); if (lg.dir) $("i18nEditing").setAttribute("dir", lg.dir); else $("i18nEditing").removeAttribute("dir");
+    try { localStorage.setItem(LANG_KEY, code); } catch (e) {}
     try {
       var f = await getFile(path);
       tr.code = code; lastLang = code; tr.text = f.text; tr.sha = f.sha; tr.data = Y.load(f.text, YOPT) || {}; tr.cur = clone(tr.data);
