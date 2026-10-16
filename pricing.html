@@ -27,6 +27,19 @@ description: AI Chat Saver pricing — a Free plan and a Pro plan, monthly or ye
 
       <!--PRICE-->
       <!-- Pro price and feature split: set price_monthly, price_yearly and pro_features in _data/site.yml (Pages CMS: Site settings). -->
+      <div class="plan featured">
+        <span class="status">{{ s.pro_status }}</span>
+        <h2>Pro Yearly</h2>
+        <p class="sub">Billed once a year.</p>
+        <!--PRICE_YEARLY-->
+        <div class="price">{% include price.html value=s.price_yearly per="/ year" %}</div>
+        <ul>
+          {% for f in s.pro_features %}<li>{{ f }}</li>
+          {% endfor %}
+        </ul>
+        <span class="btn" aria-disabled="true">{{ s.pro_status }}</span>
+      </div>
+
       <div class="plan">
         <span class="status">{{ s.pro_status }}</span>
         <h2>Pro Monthly</h2>
@@ -38,25 +51,10 @@ description: AI Chat Saver pricing — a Free plan and a Pro plan, monthly or ye
           {% endfor %}
         </ul>
         <span class="btn" aria-disabled="true">{{ s.pro_status }}</span>
-        <p class="fine" style="text-align:left;margin-top:14px">No refunds on monthly payments. Cancel any time and you keep Pro until the end of the month you paid for.</p>
       </div>
 
-      <div class="plan featured">
-        <span class="badge">{{ s.refund_days }}-day refund</span>
-        <span class="status">{{ s.pro_status }}</span>
-        <h2>Pro Yearly</h2>
-        <p class="sub">Billed once a year.</p>
-        <!--PRICE_YEARLY-->
-        <div class="price">{% include price.html value=s.price_yearly per="/ year" %}</div>
-        <ul>
-          {% for f in s.pro_features %}<li>{{ f }}</li>
-          {% endfor %}
-        </ul>
-        <span class="btn" aria-disabled="true">{{ s.pro_status }}</span>
-        <p class="fine" style="text-align:left;margin-top:14px">Full refund if you ask within {{ s.refund_days }} days of your first yearly payment.</p>
-      </div>
     </div>
 
-    <p class="fine">Payments, licence keys and refunds for Pro are handled by our reseller and merchant of record, Freemius, Inc. Taxes may be added at checkout depending on where you live. See the <a href="{{ '/refund.html' | relative_url }}">Refund Policy</a> and <a href="{{ '/terms.html' | relative_url }}">Terms of Service</a>. Statutory consumer rights, where they apply, are not affected.</p>
+    <p class="fine">Payments and licence keys for Pro are handled by our reseller and merchant of record, Freemius, Inc. Taxes may be added at checkout depending on where you live. See the <a href="{{ '/terms.html' | relative_url }}">Terms of Service</a>. Statutory consumer rights, where they apply, are not affected.</p>
   </div>
 </section>
