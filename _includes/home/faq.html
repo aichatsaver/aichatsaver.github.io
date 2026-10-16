@@ -1,0 +1,8 @@
+<section class="{% if halt %}alt {% endif %}faq" id="faq">
+  <div class="wrap narrow">
+    <div class="section-head"><h2>{{ th.faq_h2 }}</h2></div>
+    {%- for f in th.faq %}
+    <details><summary>{{ f.q }}</summary><p>{{ f.a | replace: '%name%', s.product_name | replace: '%pro_status%', pro_status | replace: '%pricing_url%', pricing_url | replace: '%email%', s.support_email }}</p></details>
+    {%- endfor %}
+  </div>
+</section>
