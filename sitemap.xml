@@ -1,0 +1,11 @@
+---
+layout: null
+permalink: /sitemap.xml
+sitemap: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for p in site.pages %}{% unless p.sitemap == false %}
+  <url><loc>{{ p.url | replace: 'index.html', '' | absolute_url }}</loc><lastmod>{{ site.data.site.policies_updated | date: "%Y-%m-%d" }}</lastmod></url>
+{%- endunless %}{% endfor %}
+</urlset>
