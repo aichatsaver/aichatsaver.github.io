@@ -4,16 +4,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="light">{% if site.data.maintenance.enabled %}
+<meta name="robots" content="noindex">{% endif %}
 <script>try{if(localStorage.getItem("theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 {%- comment -%} Pricing pages take their title and description from _data/i18n/<lang>.yml (pricing.title / pricing.description), so edits there apply. {%- endcomment -%}
 {%- if page.i18n_key == 'pricing' and tr.pricing.title %}{% assign ptitle = tr.pricing.title %}{% assign pdesc = tr.pricing.description | default: page.description %}{% else %}{% assign ptitle = page.title %}{% assign pdesc = page.description %}{% endif -%}
 {%- if ptitle and page.url != '/' and page.i18n_key != 'home' %}{% assign t = ptitle | append: ' · ' | append: s.product_name %}{% else %}{% assign t = s.product_name | append: ' — ' | append: tagline %}{% endif %}
+{%- comment -%} Per-page overrides from _data/seo.yml (admin panel: SEO). Empty values keep the automatic title, description and logo image. {%- endcomment -%}
+{%- if page.i18n_key %}{% assign skey = page.i18n_key %}{% else %}{% assign skey = page.url | remove: '/' | remove: '.html' %}{% endif -%}
+{%- assign seo_pg = site.data.seo.pages[skey] -%}{%- assign seo_l = seo_pg[tlang] -%}
+{%- if seo_l.title and seo_l.title != "" %}{% assign t = seo_l.title | escape %}{% endif -%}
+{%- if seo_l.description and seo_l.description != "" %}{% assign pdesc = seo_l.description %}{% endif -%}
+{%- assign ogi = seo_pg.og_image | default: site.data.seo.default_og_image | default: '/assets/images/logo.png' -%}
+{%- assign ogi_h = ogi | slice: 0, 4 -%}{%- if ogi_h != 'http' %}{% assign ogi = ogi | absolute_url %}{% endif %}
 <title>{{ t }}</title>
 <meta name="description" content="{{ pdesc | default: tdesc | strip_newlines | escape }}">
 <link rel="canonical" href="{{ page.url | replace: 'index.html', '' | absolute_url }}">
 {%- if page.i18n_key %}{% if page.i18n_key == 'pricing' %}{% assign ipath = '/pricing.html' %}{% else %}{% assign ipath = '/' %}{% endif %}
-{%- for lg in site.data.languages %}{% if lg.code == 'en' %}{% assign lhref = ipath %}{% else %}{% assign lhref = '/' | append: lg.code | append: ipath %}{% endif %}
+{%- for lg in site.data.languages %}{% if lg.enabled == false %}{% continue %}{% endif %}{% if lg.code == 'en' %}{% assign lhref = ipath %}{% else %}{% assign lhref = '/' | append: lg.code | append: ipath %}{% endif %}
 <link rel="alternate" hreflang="{{ lg.hreflang }}" href="{{ lhref | absolute_url }}">
 {%- endfor %}
 <link rel="alternate" hreflang="x-default" href="{{ ipath | absolute_url }}">
@@ -27,15 +35,22 @@
 <meta property="og:title" content="{{ t | escape }}">
 <meta property="og:description" content="{{ pdesc | default: tdesc | strip_newlines | escape }}">
 <meta property="og:url" content="{{ page.url | replace: 'index.html', '' | absolute_url }}">
-<meta property="og:image" content="{{ '/assets/images/logo.png' | absolute_url }}">
+<meta property="og:image" content="{{ ogi | escape }}">
 <meta name="theme-color" content="#7c3aed">
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 </head>
 <body class="{{ page.body_class }}">
+{%- if site.data.maintenance.enabled %}
+{% include maintenance.html %}
+{%- else %}
+{%- if site.data.announcement.enabled %}
+{% include announcement.html %}
+{%- endif %}
 {% include header.html %}
 <main id="main">
 {{ content }}
 </main>
 {% include footer.html %}
+{%- endif %}
 </body>
 </html>
