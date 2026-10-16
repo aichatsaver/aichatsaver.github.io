@@ -188,3 +188,25 @@ kbd{font:600 .85em var(--mono);padding:2px 7px;border-radius:6px;border:1px soli
 [dir="rtl"] .plan .badge{right:auto;left:20px}
 [dir="rtl"] .grad-text{padding:0 0 0 .08em}
 [dir="rtl"] kbd,[dir="rtl"] code{direction:ltr;unicode-bidi:isolate}
+
+/* announcement bar (admin panel: Announcement; off by default) */
+.announce{background:var(--ann-bg,#6d28d9);color:var(--ann-fg,#fff);font-size:15px;line-height:1.45}
+.announce-row{display:flex;align-items:center;justify-content:center;gap:12px;min-height:44px;padding-top:8px;padding-bottom:8px}
+.announce p{margin:0;text-align:center;font-weight:600}
+.announce a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.announce-x{flex:none;display:inline-grid;place-items:center;width:30px;height:30px;border:0;border-radius:999px;background:transparent;color:inherit;cursor:pointer;padding:0;opacity:.85}
+.announce-x:hover{opacity:1;background:rgba(255,255,255,.18)}
+.announce-x svg{width:16px;height:16px}
+
+/* hero extras (admin panel: Homepage hero buttons, Store links version) */
+.hero-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.store-version{margin:12px 0 0;font-size:13px;color:var(--muted)}
+
+/* four plans when the optional Lifetime card is on */
+.plans.plans-4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:1100px){.plans.plans-4{grid-template-columns:repeat(2,1fr);max-width:820px;margin:0 auto}}
+@media (max-width:640px){.plans.plans-4{grid-template-columns:1fr;max-width:480px}}
+
+/* maintenance page */
+.maint-box{text-align:center;padding:96px 20px}
+.maint-box h1{font-size:clamp(30px,5vw,44px);margin:20px 0 10px}
