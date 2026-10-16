@@ -1,0 +1,17 @@
+# Homepage layout — edit in the admin panel ("Homepage"). The texts themselves live in _data/i18n/<language>.yml (home: keys).
+# sections: order of the blocks under the hero; show: false hides a block.
+sections:
+- id: ais
+  show: true
+- id: features
+  show: true
+- id: how
+  show: true
+- id: privacy
+  show: true
+- id: faq
+  show: true
+- id: cta
+  show: true
+# Extra hero buttons shown under the store badges. style: primary or ghost. texts: optional per-language text, e.g. {es: "…"}.
+hero_buttons: []
