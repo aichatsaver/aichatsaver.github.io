@@ -1,0 +1,62 @@
+---
+layout: default
+title: Pricing
+permalink: /pricing.html
+description: AI Chat Vault pricing — a Free plan and a Pro plan, monthly or yearly.
+---
+{%- assign s = site.data.site -%}
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Pricing</p>
+      <h1>Simple plans</h1>
+      <p>Start free. Pro adds more when it launches. Prices are in {{ s.price_currency }}.</p>
+    </div>
+
+    <div class="plans">
+      <div class="plan">
+        <h2>Free</h2>
+        <p class="sub">Everything you need to keep your chats.</p>
+        <div class="price"><span class="price-num">$0</span><span class="price-per">forever</span></div>
+        <ul>
+          {% for f in s.free_features %}<li>{{ f }}</li>
+          {% endfor %}
+        </ul>
+        {% if s.chrome_store_url and s.chrome_store_url != "" %}<a class="btn ghost" href="{{ s.chrome_store_url }}">Get it free</a>{% else %}<span class="btn ghost" aria-disabled="true">Coming soon</span>{% endif %}
+      </div>
+
+      <!--PRICE-->
+      <!-- Pro price and feature split: set price_monthly, price_yearly and pro_features in _data/site.yml (Pages CMS: Site settings). -->
+      <div class="plan">
+        <span class="status">{{ s.pro_status }}</span>
+        <h2>Pro Monthly</h2>
+        <p class="sub">Billed every month. Cancel any time.</p>
+        <!--PRICE_MONTHLY-->
+        <div class="price">{% include price.html value=s.price_monthly per="/ month" %}</div>
+        <ul>
+          {% for f in s.pro_features %}<li>{{ f }}</li>
+          {% endfor %}
+        </ul>
+        <span class="btn" aria-disabled="true">{{ s.pro_status }}</span>
+        <p class="fine" style="text-align:left;margin-top:14px">No refunds on monthly payments. Cancel any time and you keep Pro until the end of the month you paid for.</p>
+      </div>
+
+      <div class="plan featured">
+        <span class="badge">{{ s.refund_days }}-day refund</span>
+        <span class="status">{{ s.pro_status }}</span>
+        <h2>Pro Yearly</h2>
+        <p class="sub">Billed once a year.</p>
+        <!--PRICE_YEARLY-->
+        <div class="price">{% include price.html value=s.price_yearly per="/ year" %}</div>
+        <ul>
+          {% for f in s.pro_features %}<li>{{ f }}</li>
+          {% endfor %}
+        </ul>
+        <span class="btn" aria-disabled="true">{{ s.pro_status }}</span>
+        <p class="fine" style="text-align:left;margin-top:14px">Full refund if you ask within {{ s.refund_days }} days of your first yearly payment.</p>
+      </div>
+    </div>
+
+    <p class="fine">Payments, licence keys and refunds for Pro are handled by our reseller and merchant of record, Freemius, Inc. Taxes may be added at checkout depending on where you live. See the <a href="{{ '/refund.html' | relative_url }}">Refund Policy</a> and <a href="{{ '/terms.html' | relative_url }}">Terms of Service</a>. Statutory consumer rights, where they apply, are not affected.</p>
+  </div>
+</section>
