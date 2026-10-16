@@ -1,0 +1,12 @@
+{%- comment -%} Under the hero store badges: optional extra buttons (_data/home.yml hero_buttons) and the extension version (_data/site.yml extension_version). Outputs nothing when both are empty. {%- endcomment -%}
+{%- assign hb = site.data.home.hero_buttons -%}
+{%- if hb and hb.size > 0 %}
+<div class="hero-buttons">
+  {%- for b in hb %}{% assign bt = b.texts[tlang] | default: b.text %}
+  <a class="btn{% if b.style == "ghost" %} ghost{% endif %}" href="{{ b.url | escape }}">{{ bt | escape }}</a>
+  {%- endfor %}
+</div>
+{%- endif -%}
+{%- if s.extension_version and s.extension_version != "" %}
+<p class="store-version">{{ tr.stores.version | default: tren.stores.version | replace: "%version%", s.extension_version | escape }}</p>
+{%- endif -%}
