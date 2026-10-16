@@ -11,7 +11,7 @@
 <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg">
 <script src="/control/theme.js"></script>
 <link rel="stylesheet" href="/assets/css/style.css">
-<link rel="stylesheet" href="/control/admin.css?v=20261016c">
+<link rel="stylesheet" href="/control/admin.css?v=20261016d">
 </head>
 <body class="cp">
 <header class="cp-head">
@@ -122,6 +122,7 @@
       <div class="cp-card">
         <h2>Translations</h2>
         <label class="cp-field cp-inline"><span>Language</span><select id="langPick"></select></label>
+        <h3 class="cp-editing" id="i18nEditing" aria-live="polite"></h3>
         <p class="muted small">Saved to <code id="i18nPath">_data/i18n/es.yml</code>. Keep placeholders such as <code>%name%</code>, <code>%email%</code>, <code>%shortcut%</code> and any HTML tags exactly as in English.</p>
         <input type="search" id="i18nFilter" class="cp-input" placeholder="Filter keys or text">
         <div id="i18nForm" class="cp-tr"></div>
@@ -195,6 +196,6 @@
 </template>
 
 <script src="/control/js-yaml.min.js"></script>
-<script src="/control/app.js?v=20261016c"></script>
+<script src="/control/app.js?v=20261016d"></script>
 </body>
 </html>
