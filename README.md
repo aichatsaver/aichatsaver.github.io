@@ -1,4 +1,4 @@
-# AI Chat Vault website
+# AI Chat Saver website
 
 Jekyll site served by GitHub Pages at https://aichatsaver.github.io/ (no Actions needed).
 
