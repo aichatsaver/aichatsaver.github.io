@@ -1,0 +1,45 @@
+# Coupon / deal — edit in the admin panel ("Coupon / Deal"). Off by default.
+# The site only pre-applies the code on the Freemius checkout. The discount amount and the REAL redemption limit
+# (e.g. 100 uses) are set in Freemius (Marketing → Coupons); the site can't count uses.
+# starts / ends: ISO date-time with offset (e.g. 2026-10-20T23:59+05:45); empty = no limit. Checked in the visitor's browser.
+# cycles: which buy buttons get the coupon (monthly, yearly, lifetime). limit: a number for %limit% in the deal text (display only).
+enabled: false
+code: ""
+cycles:
+  - yearly
+  - monthly
+  - lifetime
+deal_text: ""
+deal_texts: {}
+starts: ""
+ends: ""
+limit: ""
+# lifetime_card: show a Lifetime card on the pricing page only while the deal is running (needs the Lifetime checkout link in Pricing).
+lifetime_card: false
+# banner: show the deal text in a strip at the top of every page while the deal is running, with a button to the checkout.
+banner: true
+banner_cycle: yearly
+color: "#c2410c"
+text_color: "#ffffff"
+button_text: Get the deal
+button_texts:
+  es: Aprovechar la oferta
+  pt: Aproveitar a oferta
+  fr: Profiter de l'offre
+  de: Angebot sichern
+  hi: ऑफ़र पाएँ
+  ru: Получить скидку
+  ar: احصل على العرض
+  zh: 立即领取优惠
+  ja: セール価格で購入
+note_text: Coupon %code% applied at checkout
+note_texts:
+  es: Cupón %code% aplicado al pagar
+  pt: Cupom %code% aplicado no checkout
+  fr: Code promo %code% appliqué au paiement
+  de: Gutschein %code% wird an der Kasse angewendet
+  hi: कूपन %code% चेकआउट पर लागू होगा
+  ru: Купон %code% применится при оплате
+  ar: سيتم تطبيق القسيمة %code% عند الدفع
+  zh: 结账时自动使用优惠券 %code%
+  ja: クーポン %code% はお支払い時に適用されます
