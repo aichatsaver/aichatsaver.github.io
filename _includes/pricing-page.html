@@ -4,7 +4,9 @@
 {%- comment -%} Plan settings (launch switch, checkout links, highlighted plan, Lifetime card) come from _data/pricing.yml (admin panel: Pricing). {%- endcomment -%}
 {%- assign pz = site.data.pricing -%}
 {%- assign hl = pz.highlighted | default: "yearly" -%}
-{%- assign free_href = pz.free_url | default: s.chrome_store_url -%}
+{%- comment -%} Free button: pricing.yml free_url, else the Chrome Web Store link, else (store link not set yet) this language's homepage install section (#how). {%- endcomment -%}
+{%- assign free_install = tp | append: "/#how" | relative_url -%}
+{%- assign free_href = pz.free_url | default: s.chrome_store_url | default: free_install -%}
 <section>
   <div class="wrap">
     <div class="section-head">
