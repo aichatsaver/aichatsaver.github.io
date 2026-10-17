@@ -46,6 +46,9 @@
 {%- if site.data.announcement.enabled %}
 {% include announcement.html %}
 {%- endif %}
+{%- if site.data.coupon.enabled %}
+{% include coupon.html %}
+{%- endif %}
 {% include header.html %}
 <main id="main">
 {{ content }}
