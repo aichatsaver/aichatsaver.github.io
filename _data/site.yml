@@ -1,7 +1,7 @@
 # Site settings — edit these in the admin panel ("Site settings") or here.
 product_name: AI Chat Saver
 tagline: Save every AI chat to a folder on your own computer.
-description: AI Chat Saver is a browser extension that saves your chats from 18 AI assistants into a local folder, with one-click updates, search and exports that look like the original sites.
+description: "AI Chat Saver is a browser extension that saves your chats from 18 AI assistants into a local folder, with search and exports in every format. Pro adds one-click sync of every AI and exports that look like the original sites."
 support_email: aichatsaver@gmail.com
 # Prices: write TBD (or leave empty) to show "Coming soon".
 price_monthly: "4.99"
@@ -15,21 +15,24 @@ chrome_store_url: ""
 edge_store_url: ""
 # Extension version shown under the store buttons on the homepage; empty = hidden.
 extension_version: ""
-policies_updated: 2026-10-16
+policies_updated: 2026-10-17
 free_features:
   - "All 18 AIs"
   - "Command Center to view your chats"
-  - "8 saves a day"
+  - "Save the open chat manually"
+  - "8 new chats a day"
   - "8 exports a day, any format"
+  - "Studio and highlights"
   - "Media from every AI (except Grok)"
   - "Saves to Downloads"
   - "Small logo watermark"
 pro_features:
   - "Everything in Free"
+  - "Sync everything from the Command Center"
   - "Unlimited saves and exports"
   - "No watermark"
   - "AI original look"
-  - "Sync, auto-sync and schedules"
+  - "Auto-sync and schedules"
   - "Grok media and deleted-chat recovery"
   - "Any folder"
   - "One key per device"
