@@ -2,13 +2,13 @@
 # Plan names, subtitles, button texts and badges are translated in _data/i18n/<language>.yml (pricing: keys).
 # launched: false shows the Pro status on disabled buttons; true turns Pro buttons into checkout links (when a link is set).
 launched: false
-checkout_yearly: ""
-checkout_monthly: ""
-checkout_lifetime: ""
+checkout_yearly: "https://checkout.freemius.com/app/41733/plan/72498/?billing_cycle=annual"
+checkout_monthly: "https://checkout.freemius.com/app/41733/plan/72498/?billing_cycle=monthly"
+checkout_lifetime: "https://checkout.freemius.com/app/41733/plan/72498/?billing_cycle=lifetime"
 # highlighted: which plan gets the side glow (free, yearly, monthly or lifetime).
 highlighted: yearly
 # Optional Lifetime plan card, placed after Monthly. Off by default.
-lifetime_enabled: false
-price_lifetime: TBD
+lifetime_enabled: true
+price_lifetime: "99"
 # Free plan button link; empty = the Chrome Web Store link.
 free_url: ""
