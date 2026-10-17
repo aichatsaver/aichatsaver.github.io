@@ -1493,7 +1493,8 @@
   var HOME_SECTIONS = {
     hero: { title: "Hero (top of the page)", fields: [["h1_a", "Headline, first part"], ["h1_b", "Headline, highlighted part (gradient)"], ["h1_c", "Headline, last part"], ["lede", "Text under the headline", 1], ["hero_note", "Small note under the buttons"], ["logo_alt", "Logo description (for screen readers)"]] },
     ais: { title: "Supported AIs", fields: [["ais_h2", "Heading"], ["ais_p", "Text", 1]], extra: "ais" },
-    features: { title: "Features", fields: [["features_h2", "Heading"], ["features_p", "Text", 1], ["f1_h", "Card 1 title"], ["f1_p", "Card 1 text", 1], ["f2_h", "Card 2 title"], ["f2_p", "Card 2 text", 1], ["f3_h", "Card 3 title"], ["f3_items", "Card 3 list", "list"], ["f4_h", "Card 4 title"], ["f4_p", "Card 4 text", 1], ["f5_h", "Card 5 title"], ["f5_p", "Card 5 text (%shortcut% = the shortcut)", 1], ["f6_h", "Card 6 title"], ["f6_p", "Card 6 text", 1]] },
+    features: { title: "Features (titles under the demo videos)", fields: [["features_h2", "Heading"], ["features_p", "Text", 1], ["feat_save", "Video 1 title · one-click save"], ["feat_reader", "Video 2 title · reader"], ["feat_pdf", "Video 3 title · PDF export"], ["feat_formats", "Video 4 title · other formats"], ["feat_search", "Video 5 title · search"], ["feat_folders", "Video 6 title · folders and tags"], ["feat_highlights", "Video 7 title · highlights and notes"], ["feat_studio", "Video 8 title · Export Studio"], ["feat_looks", "Video 9 title · each AI's look (Pro)"], ["feat_sync", "Video 10 title · sync everything (Pro)"], ["feat_grok", "Video 11 title · Grok media and deleted chats (Pro)"], ["feat_ais", "Video 12 title · supported AIs"], ["pro_label", "Pro badge tooltip"]], extra: "features" },
+    help: { title: "Help (how to get Pro + tutorial video)", fields: [["help_eyebrow", "Small label above"], ["help_h2", "Heading"], ["help_p", "Text", 1], ["help_steps", "Steps", "steps"], ["help_more", "Contact line (%email% = support email)", 1], ["help_video", "Video description (for screen readers)"]], extra: "help" },
     how: { title: "How it works", fields: [["how_h2", "Heading"], ["steps", "Steps", "steps"]] },
     privacy: { title: "Privacy", fields: [["priv_eyebrow", "Small label above"], ["priv_h2", "Heading"], ["priv_p", "Text (%privacy_url% = link to the policy)", 1], ["priv_items", "Check list", "list"]] },
     faq: { title: "Questions (FAQ)", fields: [["faq_h2", "Heading"]], extra: "faq" },
@@ -1508,7 +1509,7 @@
       await loadLangs(force); fillLangSelect($("homeLang"), hm.code);
       var t = (await effYaml(i18nPath(hm.code), force)) || {}, en = (await effYaml(i18nPath("en"), force)) || {};
       hm.t = t.home || {}; hm.cur = clone(hm.t); hm.en = en.home || {}; hm.tFull = t;
-      hm.cfg = (await effYaml("_data/home.yml", force)) || {}; if (!Array.isArray(hm.cfg.sections)) hm.cfg.sections = ["ais", "features", "how", "privacy", "faq", "cta"].map(function (id) { return { id: id, show: true }; });
+      hm.cfg = (await effYaml("_data/home.yml", force)) || {}; if (!Array.isArray(hm.cfg.sections)) hm.cfg.sections = ["ais", "features", "how", "help", "privacy", "faq", "cta"].map(function (id) { return { id: id, show: true }; });
       if (!Array.isArray(hm.cfg.hero_buttons)) hm.cfg.hero_buttons = [];
       hm.cfgCur = clone(hm.cfg); hm.site = (await effYaml(SITE_PATH, force)) || {};
       renderHome(); homePreview();
@@ -1594,6 +1595,8 @@
       if (sc.id === "hero") body.appendChild(heroButtonsEditor());
       if (def.extra === "ais") body.appendChild(el("p", { class: "muted small" }, ["The logos themselves: ", el("button", { type: "button", class: "cp-link", onclick: function () { selectTab("ais"); } }, ["Supported AIs"]), "."]));
       if (def.extra === "faq") body.appendChild(el("p", { class: "muted small" }, ["The questions and answers: ", el("button", { type: "button", class: "cp-link", onclick: function () { selectTab("faq"); } }, ["FAQ editor"]), "."]));
+      if (def.extra === "features") body.appendChild(el("p", { class: "muted small", text: "Each title sits under its looping demo video (files in /assets/media/). Keep titles short: 2 to 6 words. An empty title hides that video." }));
+      if (def.extra === "help") body.appendChild(el("p", { class: "muted small", text: "The top-bar Help link (Navigation) opens this section. The tutorial video is /assets/media/help.mp4." }));
       if (def.extra === "cta") body.appendChild(el("p", { class: "muted small", text: "The text under this heading is the tagline (Site settings), followed by the store buttons." }));
       d.appendChild(body); box.appendChild(d);
     });
@@ -1641,11 +1644,18 @@
       var alt = vis++ % 2 === 0, s;
       if (sc.id === "ais") s = el("section", { class: alt ? "alt" : null }, [el("div", { class: "wrap" }, [el("div", { class: "section-head" }, [htmlEl("h2", {}, c.ais_h2), htmlEl("p", {}, fillPh(c.ais_p, v))]), el("p", { class: "muted small cp-center", text: "(logo tiles)" })])]);
       else if (sc.id === "features") {
-        var cards = [1, 2, 3, 4, 5, 6].map(function (n) {
-          var body = n === 3 ? el("ul", {}, (c.f3_items || []).map(function (x) { return htmlEl("li", {}, x); })) : htmlEl("p", {}, fillPh(c["f" + n + "_p"], v));
-          return el("div", { class: "card" }, [el("div", { class: "ic" }), htmlEl("h3", {}, c["f" + n + "_h"]), body]);
+        var FIDS = ["save", "reader", "pdf", "formats", "search", "folders", "highlights", "studio", "looks", "sync", "grok", "ais"], FPRO = { looks: 1, sync: 1, grok: 1 };
+        var cards = FIDS.filter(function (id) { return String(c["feat_" + id] || "").trim(); }).map(function (id) {
+          var h = htmlEl("h3", { class: "feat-title" }, c["feat_" + id]); if (FPRO[id]) h.appendChild(el("span", { class: "pro-chip", text: "Pro" }));
+          return el("li", { class: "feat", "data-feat": id }, [el("span", { class: "feat-media" }, [el("span", { class: "feat-bar" }, [el("i"), el("i"), el("i")]), el("img", { class: "feat-video", src: "/assets/media/" + id + ".webp", alt: "", loading: "lazy" })]), h]);
         });
-        s = el("section", { class: alt ? "alt" : null }, [el("div", { class: "wrap" }, [el("div", { class: "section-head" }, [htmlEl("h2", {}, c.features_h2), htmlEl("p", {}, c.features_p)]), el("div", { class: "grid" }, cards)])]);
+        s = el("section", { class: alt ? "alt" : null }, [el("div", { class: "wrap" }, [el("div", { class: "section-head" }, [htmlEl("h2", {}, c.features_h2), htmlEl("p", {}, c.features_p)]), el("ul", { class: "feat-grid" }, cards)])]);
+      } else if (sc.id === "help") {
+        s = el("section", { class: "help" + (alt ? " alt" : "") }, [el("div", { class: "wrap help-grid" }, [
+          el("div", { class: "help-video" }, [el("img", { src: "/assets/media/help.webp", alt: "", style: "display:block;width:100%;height:100%;object-fit:cover" })]),
+          el("div", { class: "help-text" }, [htmlEl("p", { class: "eyebrow" }, c.help_eyebrow), htmlEl("h2", {}, c.help_h2), htmlEl("p", { class: "muted" }, c.help_p),
+            el("ol", { class: "help-steps" }, (c.help_steps || []).map(function (st) { return el("li", {}, [htmlEl("b", {}, st.t), htmlEl("span", {}, st.d)]); })),
+            c.help_more ? htmlEl("p", { class: "help-more" }, fillPh(c.help_more, v)) : null])])]);
       } else if (sc.id === "how") s = el("section", { class: alt ? "alt" : null }, [el("div", { class: "wrap" }, [el("div", { class: "section-head" }, [htmlEl("h2", {}, c.how_h2)]), el("ol", { class: "steps" }, (c.steps || []).map(function (st) { return el("li", {}, [htmlEl("strong", {}, st.t), htmlEl("span", {}, st.d)]); }))])]);
       else if (sc.id === "privacy") s = el("section", { class: alt ? "alt" : null }, [el("div", { class: "wrap privacy-band" }, [el("div", {}, [htmlEl("p", { class: "eyebrow" }, c.priv_eyebrow), htmlEl("h2", {}, c.priv_h2), htmlEl("p", { class: "muted" }, fillPh(c.priv_p, v))]), el("ul", {}, (c.priv_items || []).map(function (x) { return htmlEl("li", {}, x); }))])]);
       else if (sc.id === "faq") s = el("section", { class: (alt ? "alt " : "") + "faq" }, [el("div", { class: "wrap narrow" }, [el("div", { class: "section-head" }, [htmlEl("h2", {}, c.faq_h2)]), el("p", { class: "muted small cp-center", text: "(questions from the FAQ editor)" })])]);
@@ -1899,8 +1909,8 @@
      ===================================================================== */
 
   /* ---------- Navigation & footer ---------- */
-  var NAV_KEYS = [["product", "Product"], ["pricing", "Pricing"], ["privacy", "Privacy"], ["terms", "Terms"], ["privacy_policy", "Privacy Policy"], ["terms_of_service", "Terms of Service"], ["refund_policy", "Refund Policy"], ["contact", "Contact"]];
-  var NAV_LINKS = [["home", "Home page"], ["pricing", "Pricing page"], ["/privacy.html", "Privacy Policy"], ["/terms.html", "Terms of Service"], ["/refund.html", "Refund Policy"], ["email", "Email (support address)"], ["custom", "Other address…"]];
+  var NAV_KEYS = [["product", "Product"], ["pricing", "Pricing"], ["help", "Help"], ["privacy", "Privacy"], ["terms", "Terms"], ["privacy_policy", "Privacy Policy"], ["terms_of_service", "Terms of Service"], ["refund_policy", "Refund Policy"], ["contact", "Contact"]];
+  var NAV_LINKS = [["home", "Home page"], ["pricing", "Pricing page"], ["help", "Help section (homepage)"], ["/privacy.html", "Privacy Policy"], ["/terms.html", "Terms of Service"], ["/refund.html", "Refund Policy"], ["email", "Email (support address)"], ["custom", "Other address…"]];
   var nv = { orig: null, cur: null, en: {} };
   var secNav = defineSection("nav", {
     label: "Navigation", files: function () { return ["_data/navigation.yml", i18nPath("en")]; }, page: function () { return "/"; }, history: function () { return "_data/navigation.yml"; },
@@ -1918,7 +1928,7 @@
           var it = list[i], n = areas[a][1] + " link " + (i + 1);
           if (!it.key && !String(it.label || "").trim()) return n + " needs a label.";
           if (!String(it.link || "").trim()) return n + " needs an address.";
-          if (["home", "pricing", "email"].indexOf(it.link) < 0) { var e = badLink(it.link, "mail"); if (e) return n + ": " + e; }
+          if (["home", "pricing", "email", "help"].indexOf(it.link) < 0) { var e = badLink(it.link, "mail"); if (e) return n + ": " + e; }
           if (a === 0 && (/\/refund(\.html)?$/i.test(it.link) || it.key === "refund_policy")) return "The Refund Policy stays out of the top bar (it’s in the footer).";
         }
       }
