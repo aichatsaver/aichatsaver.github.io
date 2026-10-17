@@ -9,6 +9,7 @@ nav:
   terms_of_service: 服务条款
   refund_policy: 退款政策
   contact: 联系我们
+  help: "帮助"
 ui:
   skip: 跳到正文
   theme_dark: 切换到深色模式
@@ -63,23 +64,19 @@ home:
   ais_p: 像平时一样在浏览器中登录你使用的 AI。%name% 会把每个 AI 的对话分别保存到各自的文件夹。
   features_h2: 完整保存对话，不只是文字
   features_p: 你的对话会变成真正属于你的文件：可离线阅读、可搜索、可随时导出。
-  f1_h: 属于你的本地文件夹
-  f1_p: "聊天会写入 <strong>Downloads/AI Chat Saver</strong>，每个 AI 一个文件夹，格式为 Markdown、HTML 和 JSON，媒体文件放在一旁。Free 版在每个 AI 的页面上保存当前打开的聊天，每天最多 8 个新聊天。Pro 版不限次数保存，并可选择任意文件夹，没有“另存为”弹窗。"
-  f2_h: "一键全部同步（Pro）"
-  f2_p: "使用 Pro，<strong>全部同步</strong>一次保存所有 AI，<strong>全部更新</strong>只保存新的或有改动的聊天，不会重复下载。可在命令中心或弹出窗口中运行，按 <kbd>Alt+Shift+U</kbd>，或设置为每小时、每 6 小时、每天或每周自动运行。"
-  f3_h: 保留媒体、思考过程、代码和 Artifacts
-  f3_items:
-  - "上传和生成的图片、视频和文件（Grok 媒体需 Pro）"
-  - 思考与推理过程、工具调用、AI 运行的代码及其输出
-  - 网页来源与引用
-  - 以真实文件保存 Claude Artifacts 和 ChatGPT Canvas
-  - 在网站上删除的消息仍会保留，并标记为“已在网站上删除”；编辑过的提示会作为不同版本保留
-  f4_h: "导出所有格式"
-  f4_p: "导出为 <strong>HTML、Markdown、PDF、Word（DOCX）和 TXT</strong>，以及 JSON、PNG 和 JPG，所有方案均可使用（Free：每天 8 次导出，带小标志）。使用 Pro，导出保留各 AI 网站原有外观，浅色或深色均可，且无标志。PDF 在你的电脑上生成，文字真实可选，无需打印对话框。"
-  f5_h: 搜索与命令中心
-  f5_p: 按 <kbd>%shortcut%</kbd> 打开全屏命令中心：在所有 AI 中即时全文搜索，使用 <code>provider:</code> 和 <code>has:code</code> 等筛选条件，还有命令面板（<kbd>Ctrl+K</kbd>）、时间线、高亮与笔记，以及阅读模式。
-  f6_h: 隐私从设计开始
-  f6_p: 一切都在你的浏览器中运行，使用你自己已登录的会话。你的对话只留在你的设备上：无需在我们这里注册账户，没有服务器，没有数据分析。
+  feat_save: "任何 AI 一键保存"
+  feat_reader: "代码、表格和图片完整保留"
+  feat_pdf: "保留格式的 PDF"
+  feat_formats: "Word、HTML、Markdown 等格式"
+  feat_search: "即时搜索所有对话"
+  feat_folders: "文件夹、标签和星标"
+  feat_highlights: "高亮和私人笔记"
+  feat_studio: "Export Studio，随心导出"
+  feat_looks: "每个 AI 的原生外观"
+  feat_sync: "一键同步所有 AI"
+  feat_grok: "Grok 媒体和已删除对话"
+  feat_ais: "支持 18 个 AI"
+  pro_label: "Pro 功能"
   how_h2: 使用方法
   steps:
   - t: 安装扩展
@@ -88,6 +85,20 @@ home:
     d: 像平常一样，在同一个浏览器配置文件中使用各个 AI 网站。
   - t: "保存你的聊天"
     d: "在任意 AI 的页面上保存当前打开的聊天。使用 Pro，点击“全部同步”，只保存新的和有改动的聊天。"
+  help_eyebrow: "帮助"
+  help_h2: "如何获取 Pro"
+  help_p: "观看 30 秒演示，或按以下步骤操作。"
+  help_steps:
+  - t: "选择方案"
+    d: "在价格页点击“获取 Pro”，或在扩展中点击“升级”。"
+  - t: "安全付款"
+    d: "Freemius 结账页面会打开。可用银行卡或 PayPal 付款。"
+  - t: "复制许可证密钥"
+    d: "密钥会显示在感谢页面，并通过邮件发送给你。"
+  - t: "激活"
+    d: "在扩展中打开“设置”，粘贴密钥并点击“激活”。Pro 即已开启。"
+  help_more: "仍有问题？请发邮件至 <a href=\"mailto:%email%\">%email%</a>，我们来帮你。"
+  help_video: "视频：获取 Pro 并激活许可证密钥"
   priv_eyebrow: 隐私
   priv_h2: 你的对话永远不会传给我们
   priv_p: '%name% 通过你的浏览器，从你已登录的 AI 网站读取对话，并且只写入你自己的文件夹和浏览器的本地存储。阅读完整的<a href="%privacy_url%">隐私政策</a>（英文）。'
