@@ -8,7 +8,7 @@ checkout_lifetime: "https://checkout.freemius.com/app/41733/plan/72498/?billing_
 # highlighted: which plan gets the side glow (free, yearly, monthly or lifetime).
 highlighted: yearly
 # Optional Lifetime plan card, placed after Monthly. Off by default.
-lifetime_enabled: true
-price_lifetime: "99"
+lifetime_enabled: false
+price_lifetime: TBD
 # Free plan button link; empty = the Chrome Web Store link.
 free_url: ""
