@@ -7,6 +7,8 @@ sections:
   show: true
 - id: how
   show: true
+- id: help
+  show: true
 - id: privacy
   show: true
 - id: faq
