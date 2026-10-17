@@ -26,7 +26,6 @@ stores:
   get_from: Disponible sur
   soon: Bientôt disponible
   chrome_soon_aria: 'Chrome Web Store : bientôt disponible'
-  edge_soon_aria: 'Microsoft Edge Add-ons : bientôt disponible'
   version: Version %version%
 meta:
   tagline: Enregistrez chaque conversation d’IA dans un dossier sur votre propre ordinateur.
@@ -59,7 +58,7 @@ home:
   h1_b: enregistrée sur votre ordinateur
   h1_c: .
   lede: "%name% est une extension de navigateur qui enregistre vos chats de 18 assistants IA dans un dossier sur votre propre ordinateur. Enregistrez le chat ouvert en un clic ; avec Pro, un clic synchronise toutes les IA. Rien ne quitte votre appareil."
-  hero_note: Pour Google Chrome et Microsoft Edge.
+  hero_note: Pour Google Chrome.
   ais_h2: Compatible avec 18 IA
   ais_p: Connectez-vous comme d’habitude aux IA que vous utilisez dans votre navigateur. %name% enregistre les conversations de chacune dans son propre dossier.
   features_h2: Tout le contenu de la conversation, pas seulement le texte
@@ -92,7 +91,7 @@ home:
   how_h2: Comment ça marche
   steps:
   - t: Installez l’extension
-    d: Ajoutez-la à Chrome ou à Edge et épinglez l’icône.
+    d: Ajoutez-la à Chrome et épinglez l’icône.
   - t: Restez connecté à vos IA
     d: Utilisez les sites d’IA dans le même profil de navigateur, comme vous le faites déjà.
   - t: "Enregistrez vos chats"
