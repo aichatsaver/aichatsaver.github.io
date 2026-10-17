@@ -3,6 +3,7 @@
 {%- assign nl_attr = "" -%}{%- assign nl_cur = false -%}
 {%- if it.link == "home" -%}{%- assign nl_href = tp | append: "/" | relative_url -%}{%- assign nl_attr = ll_home -%}{%- if page.i18n_key == "home" or page.url == "/" or page.url == "/index.html" -%}{%- assign nl_cur = true -%}{%- endif -%}
 {%- elsif it.link == "pricing" -%}{%- assign nl_href = tp | append: "/pricing.html" | relative_url -%}{%- assign nl_attr = ll_pricing -%}{%- if page.i18n_key == "pricing" or page.url == "/pricing.html" -%}{%- assign nl_cur = true -%}{%- endif -%}
+{%- elsif it.link == "help" -%}{%- assign nl_href = tp | append: "/#help" | relative_url -%}
 {%- elsif it.link == "email" -%}{%- assign nl_href = "mailto:" | append: s.support_email -%}
 {%- else -%}{%- assign nl_first = it.link | slice: 0 -%}{%- if nl_first == "/" -%}{%- assign nl_href = it.link | relative_url -%}{%- if page.url == it.link -%}{%- assign nl_cur = true -%}{%- endif -%}{%- else -%}{%- assign nl_href = it.link -%}{%- assign nl_attr = ' rel="noopener"' -%}{%- endif -%}
 {%- endif -%}
