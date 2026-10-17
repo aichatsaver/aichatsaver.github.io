@@ -1,11 +1,13 @@
 # Top bar and footer links — edit in the admin panel ("Navigation").
 # key: a built-in label translated in _data/i18n/<language>.yml (nav: keys). label: your own text instead of a key.
-# link: home and pricing go to the page in the visitor's language; email opens the support email; anything else is a path (/terms.html) or a full https:// address.
+# link: home and pricing go to the page in the visitor's language; help goes to the Help section of the homepage in the visitor's language; email opens the support email; anything else is a path (/terms.html) or a full https:// address.
 header:
 - key: product
   link: home
 - key: pricing
   link: pricing
+- key: help
+  link: help
 - key: privacy
   link: /privacy.html
 - key: terms
