@@ -26,7 +26,6 @@ stores:
   get_from: Baixe em
   soon: Em breve
   chrome_soon_aria: 'Chrome Web Store: em breve'
-  edge_soon_aria: 'Microsoft Edge Add-ons: em breve'
   version: Versão %version%
 meta:
   tagline: Salve cada chat de IA em uma pasta no seu próprio computador.
@@ -59,7 +58,7 @@ home:
   h1_b: salvo no seu computador
   h1_c: .
   lede: "%name% é uma extensão de navegador que salva seus chats de 18 assistentes de IA em uma pasta no seu próprio computador. Salve o chat aberto em um clique; com o Pro, um clique sincroniza todas as IAs. Nada sai do seu dispositivo."
-  hero_note: Para Google Chrome e Microsoft Edge.
+  hero_note: Para Google Chrome.
   ais_h2: Funciona com 18 IAs
   ais_p: Entre nas IAs que você usa no navegador, como sempre. O %name% salva os chats de cada uma em sua própria pasta.
   features_h2: Tudo o que está no chat, não só o texto
@@ -92,7 +91,7 @@ home:
   how_h2: Como funciona
   steps:
   - t: Instale a extensão
-    d: Adicione ao Chrome ou ao Edge e fixe o ícone.
+    d: Adicione ao Chrome e fixe o ícone.
   - t: Continue conectado às suas IAs
     d: Use os sites de IA no mesmo perfil do navegador, como você já faz.
   - t: "Salve seus chats"
