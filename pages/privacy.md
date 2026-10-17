@@ -25,9 +25,11 @@ The Extension saves conversations from AI services you use (ChatGPT, Claude, Gem
 
 The Extension only connects to:
 
-1. **The AI services themselves** and the addresses they use to store your chat media (for example their file and image hosts), to read your chats and download their attachments. For Google AI Mode it also reads your Google My Activity list of AI Mode chats; for Google AI Studio it reads (never changes) the AI Studio prompt files stored in your own Google Drive.
+1. **The AI services themselves** and the addresses they use to store your chat media (for example their file and image hosts), to read your chats and download their attachments. For Google AI Studio it reads (never changes) the AI Studio prompt files stored in your own Google Drive.
 2. **Google's public favicon service** (`www.google.com/s2/favicons`), in some views and exported pages, to show the small icon of a website cited as a source. This request includes that website's domain name, not your chat.
-3. **Public code libraries** (`esm.sh`, `unpkg.com`, `cdn.tailwindcss.com`), only when you open a live preview of a code artifact (for example a React or Mermaid artifact). These requests download the library code; your chat is not sent. The preview runs in an isolated sandbox page.
+3. **Freemius** (`api.freemius.com`), only to check a Pro licence key, as described in section 4. On the Free plan the Extension never contacts Freemius.
+
+The code libraries used for live previews of code artifacts (for example React or Mermaid artifacts) are bundled inside the Extension, so no code is downloaded from the internet. The preview runs in an isolated sandbox page.
 
 Like any web request, these services receive standard technical information such as your IP address and browser type, under their own privacy policies.
 
@@ -37,7 +39,7 @@ The Extension contains **no analytics, no advertising, no tracking and no teleme
 
 | Permission | Why it is needed |
 |---|---|
-| Access to the AI sites and their media hosts | To read your chats from the sites you are signed in to and save the images and files in them. Media can live on many different hosts, so access to web pages in general is requested; the Extension only uses it to download media belonging to your chats. |
+| Access to the AI sites and their media hosts | To read your chats from the sites you are signed in to and save the images and files in them. Access to other websites is optional: the Extension asks for it only after you click Allow, when a chat's media is stored on a host that is not on its list, and only uses it to download media belonging to your chats. |
 | `downloads`, `downloads.ui` | To write your saved chats into your Downloads folder, and to keep the browser's download bar quiet and remove the Extension's own entries from the download list (the files stay on disk). |
 | `storage`, `unlimitedStorage` | To keep your vault, settings, highlights and notes in local browser storage on your device. |
 | `scripting` | To read chats in the AI site's own page when the site has no other way to list them. |
@@ -47,7 +49,18 @@ The Extension contains **no analytics, no advertising, no tracking and no teleme
 
 ## 4. Pro, payments and licensing
 
-When Pro becomes available, purchases, subscriptions, licence keys and refunds will be handled by **Freemius, Inc.** as reseller and merchant of record. If you buy Pro, Freemius processes your **email address, licence key and payment data** (and related billing details such as country for tax) under its own privacy policy: <https://freemius.com/privacy/>. We do not see or store your full card details. Licence checks will send your licence key and the information needed to validate it to Freemius; they never include your chats.
+Purchases, subscriptions, licence keys and refunds for Pro are handled by **Freemius, Inc.** as reseller and merchant of record. When you buy Pro on the Freemius checkout (`checkout.freemius.com`), Freemius processes your **email address, licence key and payment data** (and related billing details such as country for tax) under its own privacy policy: <https://freemius.com/privacy/>. We do not see or store your full card details. You can see your invoices, cancel or find your licence key in the Freemius customer portal (`customers.freemius.com`).
+
+### Licence check (Pro)
+
+When you activate a Pro licence key, about every 3 days while Pro is active, and when you sign out of Pro on a device, the Extension checks your key with Freemius (`api.freemius.com`). Each check sends only:
+
+- your **licence key**;
+- a **random install ID** (created by the Extension or given by Freemius at activation; it is not linked to your name);
+- the **Extension version**; and
+- a **device title** such as "AI Chat Saver – Chrome on Windows".
+
+It never sends your chats, your browsing data or your name. The answer (your plan, its renewal date and the purchase email Freemius has on file) is stored only on your device. On the Free plan no licence checks are made.
 
 ## 5. Sharing and selling
 
