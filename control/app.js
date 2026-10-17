@@ -899,7 +899,6 @@
     refund_days: { label: "Refund days (Yearly plan)", type: "number" },
     command_center_shortcut: { label: "Command Center shortcut" },
     chrome_store_url: { label: "Chrome Web Store link", type: "url", placeholder: "Empty = Coming soon", wide: true },
-    edge_store_url: { label: "Microsoft Edge Add-ons link", type: "url", placeholder: "Empty = Coming soon", wide: true },
     extension_version: { label: "Extension version shown on the homepage", placeholder: "Empty = hidden" },
     policies_updated: { label: "Policies updated (date)", type: "date" },
     free_features: { label: "Free plan features" },
@@ -923,7 +922,7 @@
     validate: function () {
       var d = cleanSite(site.cur);
       if (d.support_email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.support_email)) return "The support email doesn’t look right.";
-      if (["chrome_store_url", "edge_store_url"].some(function (k) { return d[k] && !/^https:\/\//.test(d[k]); })) return "Store links must start with https://";
+      if (["chrome_store_url"].some(function (k) { return d[k] && !/^https:\/\//.test(d[k]); })) return "Store links must start with https://";
       return priceErr(d.price_monthly, "The monthly price") || priceErr(d.price_yearly, "The yearly price") || (d.product_name ? "" : "The product name can’t be empty.") || "";
     },
     changes: function () { return yamlKeyChanges(SITE_PATH, cleanSite(site.cur), site.orig); }
@@ -931,6 +930,7 @@
   function renderSite() {
     var form = $("siteForm"); form.textContent = "";
     Object.keys(site.cur).forEach(function (k) {
+      if (k === "edge_store_url") return; /* Chrome Web Store only */
       form.appendChild(fieldFor(k, site.cur[k], SITE_META[k], function (v) { site.cur[k] = v; secSite.check(); }));
     });
   }
@@ -1160,7 +1160,7 @@
   var TR_LANGS = ["es", "pt", "fr", "de", "hi", "ru", "ar", "zh", "ja"];
   var AUTO_PATH = "_data/i18n_auto.yml", AUTO_KEY = "acs_admin_autotr";
   var META_KEYS = ["tagline", "description", "pro_status", "free_features", "pro_features"];
-  var TERMS = ["AI Chat Saver", "Chrome Web Store", "Microsoft Edge Add-ons", "Edge Add-ons", "Microsoft Edge", "Google Chrome", "Chrome", "Freemius", "PayPal", "Markdown", "PDF", "DOCX", "HTML", "JSON", "TXT", "PNG", "JPG", "Pro", "Free"];
+  var TERMS = ["AI Chat Saver", "Chrome Web Store", "Google Chrome", "Chrome", "Freemius", "PayPal", "Markdown", "PDF", "DOCX", "HTML", "JSON", "TXT", "PNG", "JPG", "Pro", "Free"];
   var AI_NAMES = [];
   function autoOn() { try { return localStorage.getItem(AUTO_KEY) !== "off"; } catch (e) { return true; } }
   (function () {
@@ -1630,7 +1630,7 @@
       el("img", { class: "hero-logo", src: "/assets/images/logo.svg", width: "96", height: "96", alt: "" }),
       (function () { var h = el("h1"); h.appendChild(htmlEl("span", {}, c.h1_a)); h.appendChild(htmlEl("span", { class: "grad-text" }, c.h1_b)); h.appendChild(htmlEl("span", {}, c.h1_c)); return h; })(),
       htmlEl("p", { class: "lede" }, fillPh(c.lede, v)),
-      el("div", { class: "stores" }, [el("span", { class: "store soon" }, [el("span", {}, [el("small", { text: "Chrome Web Store" }), "…"])]), el("span", { class: "store soon" }, [el("span", {}, [el("small", { text: "Edge Add-ons" }), "…"])])]),
+      el("div", { class: "stores" }, [el("span", { class: "store soon" }, [el("span", {}, [el("small", { text: "Chrome Web Store" }), "…"])])]),
       (function () {
         var bs = cleanButtons(hm.cfgCur.hero_buttons); if (!bs.length) return null;
         return el("div", { class: "hero-buttons" }, bs.map(function (b) { return el("span", { class: "btn" + (b.style === "ghost" ? " ghost" : "") , text: (b.texts && b.texts[hm.code]) || b.text }); }));
@@ -2043,18 +2043,17 @@
 
   /* ---------- Store links & launch ---------- */
   var st = { orig: null, cur: null };
-  var STORE_KEYS = ["chrome_store_url", "edge_store_url", "extension_version"];
+  var STORE_KEYS = ["chrome_store_url", "extension_version"];
   var secStores = defineSection("stores", {
     label: "Store links", files: function () { return [SITE_PATH]; }, page: function () { return "/"; }, history: function () { return SITE_PATH; },
     load: async function (force) {
       var s = (await effYaml(SITE_PATH, force)) || {}; st.orig = {}; STORE_KEYS.forEach(function (k) { st.orig[k] = s[k] == null ? "" : String(s[k]); }); st.cur = clone(st.orig);
-      try { st.chrome = (await doc("_includes/chrome.svg")).text; st.edge = (await doc("_includes/edge.svg")).text; } catch (e) {}
+      try { st.chrome = (await doc("_includes/chrome.svg")).text; } catch (e) {}
       renderStores(); storesPreview();
     },
     validate: function () {
       var c = st.cur;
       if (c.chrome_store_url && !/^https:\/\/(chromewebstore\.google\.com|chrome\.google\.com\/webstore)\//.test(c.chrome_store_url.trim())) return "The Chrome link must start with https://chromewebstore.google.com/ (copy it from your item’s store page).";
-      if (c.edge_store_url && !/^https:\/\/microsoftedge\.microsoft\.com\/addons\//.test(c.edge_store_url.trim())) return "The Edge link must start with https://microsoftedge.microsoft.com/addons/ (copy it from your item’s store page).";
       if (c.extension_version && !/^\d+(\.\d+){0,3}$/.test(c.extension_version.trim())) return "The version should look like 2.13.10.";
       return "";
     },
@@ -2063,7 +2062,7 @@
   function storesChanged() { secStores.check(); storesPreviewSoon(); renderStoreStatus(); }
   function renderStoreStatus() {
     var b = $("storeStatus"); if (!b) return; b.textContent = "";
-    [["chrome_store_url", "Chrome Web Store"], ["edge_store_url", "Edge Add-ons"]].forEach(function (k) {
+    [["chrome_store_url", "Chrome Web Store"]].forEach(function (k) {
       var live = !!String(st.cur[k[0]] || "").trim();
       b.appendChild(el("div", {}, [el("div", { class: "cp-label", text: k[1] }), el("span", { class: "cp-pill " + (live ? "built" : "queued"), text: live ? "Live link" : "Coming soon" })]));
     });
@@ -2073,7 +2072,6 @@
     b.appendChild(el("div", { class: "cp-status", id: "storeStatus" }));
     var g = el("div", { class: "cp-form" });
     g.appendChild(fieldRow("Chrome Web Store link", textInput(st.cur.chrome_store_url, function (v) { st.cur.chrome_store_url = v; storesChanged(); }, { id: "stChrome", spellcheck: "false", placeholder: "Empty = Coming soon" }), "", true));
-    g.appendChild(fieldRow("Microsoft Edge Add-ons link", textInput(st.cur.edge_store_url, function (v) { st.cur.edge_store_url = v; storesChanged(); }, { id: "stEdge", spellcheck: "false", placeholder: "Empty = Coming soon" }), "", true));
     g.appendChild(fieldRow("Extension version shown on the homepage", textInput(st.cur.extension_version, function (v) { st.cur.extension_version = v; storesChanged(); }, { id: "stVersion", spellcheck: "false", placeholder: "Empty = hidden" }), "For example 2.13.10."));
     b.appendChild(g); renderStoreStatus();
   }
@@ -2083,7 +2081,7 @@
     var c = st.cur, p = $("storesPrev"); p.textContent = "";
     function badge(url, ic, live1, live2, soon1) { return url ? el("span", { class: "store" }, [svgImg(ic), el("span", {}, [el("small", { text: live1 }), live2])]) : el("span", { class: "store soon" }, [svgImg(ic), el("span", {}, [el("small", { text: soon1 }), "Coming soon"])]); }
     p.appendChild(el("div", { class: "cp-prev-root" }, [el("section", { class: "hero cp-hero-mini" }, [el("div", { class: "wrap" }, [
-      el("div", { class: "stores" }, [badge(c.chrome_store_url, st.chrome, "Available in the", "Chrome Web Store", "Chrome Web Store"), badge(c.edge_store_url, st.edge, "Get it from", "Microsoft Edge Add-ons", "Edge Add-ons")]),
+      el("div", { class: "stores" }, [badge(c.chrome_store_url, st.chrome, "Available in the", "Chrome Web Store", "Chrome Web Store")]),
       c.extension_version ? el("p", { class: "store-version", text: "Version " + c.extension_version }) : null
     ])])]));
   }
@@ -2518,7 +2516,7 @@
       function unset(v) { var x = v == null ? "" : String(v).trim(); return !x || /^tbd$/i.test(x); }
       var items = [
         [!unset(s.price_monthly), "Pro Monthly price", "pricing"], [!unset(s.price_yearly), "Pro Yearly price", "pricing"],
-        [!unset(s.chrome_store_url), "Chrome Web Store link", "stores"], [!unset(s.edge_store_url), "Microsoft Edge Add-ons link", "stores"],
+        [!unset(s.chrome_store_url), "Chrome Web Store link", "stores"],
         [!unset(z.checkout_yearly), "Freemius checkout link — Pro Yearly", "pricing"], [!unset(z.checkout_monthly), "Freemius checkout link — Pro Monthly", "pricing"],
         [!unset(s.extension_version), "Extension version shown on the homepage", "stores"], [!!z.launched, "Pro is on sale (launch switch)", "pricing"]
       ];
