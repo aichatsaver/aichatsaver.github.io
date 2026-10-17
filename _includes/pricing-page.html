@@ -34,6 +34,9 @@
       {%- if pz.lifetime_enabled %}
 
       {% include plan-pro.html id="lifetime" mark="LIFETIME" price=pz.price_lifetime per=tpr.per_lifetime %}
+      {%- elsif site.data.coupon.enabled and site.data.coupon.lifetime_card %}
+
+      {% include plan-pro.html id="lifetime" mark="LIFETIME" price=pz.price_lifetime per=tpr.per_lifetime deal=true %}
       {%- endif %}
 
     </div>
