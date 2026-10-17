@@ -26,7 +26,6 @@ stores:
   get_from: 立即获取
   soon: 即将推出
   chrome_soon_aria: Chrome Web Store：即将推出
-  edge_soon_aria: Microsoft Edge Add-ons：即将推出
   version: 版本 %version%
 meta:
   tagline: 把每一段 AI 对话保存到你自己电脑上的文件夹里。
@@ -59,7 +58,7 @@ home:
   h1_b: 都保存在你的电脑上
   h1_c: 。
   lede: "%name% 是一款浏览器扩展，可将你在 18 个 AI 助手中的聊天保存到你自己电脑上的文件夹。一键保存当前打开的聊天；使用 Pro，一键同步全部 AI。任何内容都不会离开你的设备。"
-  hero_note: 适用于 Google Chrome 和 Microsoft Edge。
+  hero_note: 适用于 Google Chrome。
   ais_h2: 支持 18 个 AI
   ais_p: 像平时一样在浏览器中登录你使用的 AI。%name% 会把每个 AI 的对话分别保存到各自的文件夹。
   features_h2: 完整保存对话，不只是文字
@@ -92,7 +91,7 @@ home:
   how_h2: 使用方法
   steps:
   - t: 安装扩展
-    d: 将其添加到 Chrome 或 Edge，并固定图标。
+    d: 将其添加到 Chrome，并固定图标。
   - t: 保持 AI 的登录状态
     d: 像平常一样，在同一个浏览器配置文件中使用各个 AI 网站。
   - t: "保存你的聊天"
