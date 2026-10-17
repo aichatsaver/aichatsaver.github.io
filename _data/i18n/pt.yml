@@ -9,6 +9,7 @@ nav:
   terms_of_service: Termos de Serviço
   refund_policy: Política de Reembolso
   contact: Contato
+  help: "Ajuda"
 ui:
   skip: Pular para o conteúdo
   theme_dark: Mudar para o modo escuro
@@ -63,23 +64,19 @@ home:
   ais_p: Entre nas IAs que você usa no navegador, como sempre. O %name% salva os chats de cada uma em sua própria pasta.
   features_h2: Tudo o que está no chat, não só o texto
   features_p: 'Seus chats viram arquivos reais que são seus: legíveis offline, pesquisáveis e prontos para exportar.'
-  f1_h: Uma pasta local que é sua
-  f1_p: "Os chats são gravados em <strong>Downloads/AI Chat Saver</strong>, uma pasta por IA, em Markdown, HTML e JSON, com a mídia ao lado. No Free você salva o chat aberto na página de cada IA, até 8 chats novos por dia. Com o Pro, salve sem limites e escolha qualquer pasta, sem janelas de “Salvar como”."
-  f2_h: "Sincronize tudo em um clique (Pro)"
-  f2_p: "Com o Pro, <strong>Sincronizar tudo</strong> salva todas as IAs de uma vez e <strong>Atualizar tudo</strong> salva só os chats novos ou alterados, então nada é baixado duas vezes. Execute pela Central de Comandos ou pelo pop-up, pressione <kbd>Alt+Shift+U</kbd> ou agende a cada hora, a cada 6 horas, diariamente ou semanalmente."
-  f3_h: Mídia, raciocínio, código e artefatos preservados
-  f3_items:
-  - "Imagens, vídeos e arquivos enviados e gerados (mídia do Grok com o Pro)"
-  - Raciocínio, chamadas de ferramentas, o código que a IA executou e o resultado
-  - Fontes da web e citações
-  - Artefatos do Claude e canvas do ChatGPT como arquivos reais
-  - Mensagens apagadas no site continuam, marcadas como “Apagada no site”; prompts editados são guardados como versões
-  f4_h: "Exportações em todos os formatos"
-  f4_p: "Exporte para <strong>HTML, Markdown, PDF, Word (DOCX) e TXT</strong>, além de JSON, PNG e JPG, em todos os planos (Free: 8 exportações por dia, com um pequeno logo). Com o Pro, as exportações mantêm o visual próprio de cada site de IA, no claro ou escuro, sem logo. Os PDFs são criados no seu computador com texto real e selecionável, sem caixa de impressão."
-  f5_h: Busca e a Central de Comandos
-  f5_p: 'Pressione <kbd>%shortcut%</kbd> para abrir a Central de Comandos em tela cheia: busca instantânea em texto completo em todas as IAs, filtros como <code>provider:</code> e <code>has:code</code>, uma paleta de comandos (<kbd>Ctrl+K</kbd>), uma linha do tempo, destaques e notas, e modo de leitura.'
-  f6_h: Privado desde a concepção
-  f6_p: 'Tudo roda no seu navegador usando as suas próprias sessões conectadas. Seus chats ficam no seu dispositivo: sem conta conosco, sem servidores, sem análises.'
+  feat_save: "Salve com um clique em qualquer IA"
+  feat_reader: "Código, tabelas e imagens preservados"
+  feat_pdf: "PDFs que mantêm a formatação"
+  feat_formats: "Word, HTML, Markdown e mais"
+  feat_search: "Pesquise todos os chats na hora"
+  feat_folders: "Pastas, etiquetas e estrelas"
+  feat_highlights: "Destaques e notas privadas"
+  feat_studio: "Export Studio, do seu jeito"
+  feat_looks: "A aparência original de cada IA"
+  feat_sync: "Sincronize todas as IAs com um clique"
+  feat_grok: "Mídia do Grok e chats apagados"
+  feat_ais: "Funciona com 18 IAs"
+  pro_label: "Recurso Pro"
   how_h2: Como funciona
   steps:
   - t: Instale a extensão
@@ -88,6 +85,20 @@ home:
     d: Use os sites de IA no mesmo perfil do navegador, como você já faz.
   - t: "Salve seus chats"
     d: "Salve o chat aberto na página de qualquer IA. Com o Pro, clique em Sincronizar tudo; só os chats novos e alterados são salvos."
+  help_eyebrow: "Ajuda"
+  help_h2: "Como obter o Pro"
+  help_p: "Assista ao tour de 30 segundos ou siga os passos abaixo."
+  help_steps:
+  - t: "Escolha um plano"
+    d: "Clique em «Obter Pro» na página de preços ou em «Upgrade» dentro da extensão."
+  - t: "Pague com segurança"
+    d: "O checkout da Freemius é aberto. Pague com cartão ou PayPal."
+  - t: "Copie sua chave de licença"
+    d: "Ela aparece na tela de agradecimento e chega por e-mail."
+  - t: "Ative-a"
+    d: "Na extensão, abra Configurações, cole a chave e clique em «Ativar». O Pro fica ativo."
+  help_more: "Ainda com dúvidas? Escreva para <a href=\"mailto:%email%\">%email%</a> e ajudamos você."
+  help_video: "Vídeo: como obter o Pro e ativar sua chave de licença"
   priv_eyebrow: Privacidade
   priv_h2: Seus chats nunca chegam até nós
   priv_p: O %name% lê seus chats pelo seu navegador, a partir dos sites de IA em que você está conectado, e os grava apenas na sua própria pasta e no armazenamento local do navegador. Leia a <a href="%privacy_url%">Política de Privacidade</a> completa (em inglês).
