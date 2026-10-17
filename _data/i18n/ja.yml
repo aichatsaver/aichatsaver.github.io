@@ -120,7 +120,7 @@ pricing:
   free_h: Free
   free_sub: チャットを残すのに必要なものがすべて揃っています。
   forever: ずっと無料
-  get_free: 無料で入手
+  get_free: "無料"
   yearly_h: Pro 年払い
   yearly_sub: 年に一度のお支払い。
   per_year: / 年
@@ -137,6 +137,7 @@ pricing:
   yearly_badge: ''
   monthly_badge: ''
   lifetime_badge: ''
+  yearly_save: "%pct%お得"
   howpro_h2: Pro のしくみ
   howpro_p: アカウント作成もパスワードも不要。ライセンスキーがそのままログインになります。
   howpro_steps:
