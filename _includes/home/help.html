@@ -1,0 +1,33 @@
+{%- comment -%} Help: the "how to get Pro" tutorial video + short steps. Texts: home.help_* in _data/i18n/<language>.yml (admin panel: Homepage → Help).
+The top-bar "Help" link (navigation key help) points here. Video: /assets/media/help.mp4 (+ help.webp poster). {%- endcomment -%}
+{%- assign hsteps = th.help_steps | default: tren.home.help_steps -%}
+<section class="help{% if halt %} alt{% endif %}" id="help">
+  <div class="wrap help-grid">
+    <div class="help-video">
+      <video controls playsinline preload="none" width="1280" height="800" poster="{{ '/assets/media/help.webp' | relative_url }}" aria-label="{{ th.help_video | default: tren.home.help_video | strip_html | escape }}">
+        <source src="{{ '/assets/media/help.mp4' | relative_url }}" type="video/mp4">
+      </video>
+      <button class="help-play" type="button" aria-label="{{ th.help_video | default: tren.home.help_video | strip_html | escape }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.6-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" fill="currentColor"/></svg></button>
+    </div>
+    <div class="help-text">
+      <p class="eyebrow">{{ th.help_eyebrow | default: tren.home.help_eyebrow }}</p>
+      <h2>{{ th.help_h2 | default: tren.home.help_h2 }}</h2>
+      <p class="muted">{{ th.help_p | default: tren.home.help_p }}</p>
+      <ol class="help-steps">
+        {%- for st in hsteps %}
+        <li><b>{{ st.t }}</b><span>{{ st.d }}</span></li>
+        {%- endfor %}
+      </ol>
+      {%- assign hmore = th.help_more | default: tren.home.help_more -%}
+      {%- if hmore and hmore != "" %}
+      <p class="help-more">{{ hmore | replace: '%email%', s.support_email }}</p>
+      {%- endif %}
+    </div>
+  </div>
+</section>
+<script>
+(function(){var w=document.querySelector('#help .help-video');if(!w)return;var v=w.querySelector('video'),b=w.querySelector('.help-play');v.controls=false;
+b.addEventListener('click',function(){var p=v.play();if(p&&p.catch)p.catch(function(){});});
+v.addEventListener('play',function(){w.classList.add('playing');v.controls=true;});v.addEventListener('ended',function(){w.classList.remove('playing');});
+  if(location.hash==='#help'){var h=document.getElementById('help'),fix=function(){if(location.hash==='#help'&&Math.abs(h.getBoundingClientRect().top-parseFloat(getComputedStyle(h).scrollMarginTop||0))>8)h.scrollIntoView();};if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fix);addEventListener('load',fix);}})();
+</script>
