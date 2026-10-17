@@ -3,9 +3,12 @@ Per feature: short title home.feat_<id> + one short line home.feat_<id>_d in _da
 Videos: /assets/media/<id>.mp4 (+ <id>.webp poster). A video loads only when it scrolls into view and pauses when it leaves.
 Parallax: the video and the text move at different speeds (transform only): CSS scroll-driven animations where supported (compositor, no script per frame),
 else one requestAnimationFrame per scroll for the rows on screen; the text slides in from its side.
-Reduced motion: no parallax, no slide-in, the screenshot stays (no autoplay). Phone: stacked video then text, gentle parallax. {%- endcomment -%}
+Reduced motion: no parallax, no slide-in, the screenshot stays (no autoplay). Phone: stacked video then text, gentle parallax.
+Larger view: clicking/tapping a video only shows the zoom arrow at its bottom (never on plain hover); the arrow opens the larger view. The arrow hides when the mouse leaves the video, on a tap/click elsewhere, on scroll, or Esc.
+No coloured border/outline/glow around the videos (neutral shadow only). {%- endcomment -%}
 {%- assign feat_ids = "save,reader,pdf,formats,search,folders,highlights,studio,looks,sync,grok,ais" | split: "," -%}
 {%- assign feat_pro = "looks,sync,grok" | split: "," -%}
+{%- case tlang -%}{%- when "es" -%}{%- assign zlabel = "Ver más grande" -%}{%- when "pt" -%}{%- assign zlabel = "Ver maior" -%}{%- when "fr" -%}{%- assign zlabel = "Agrandir" -%}{%- when "de" -%}{%- assign zlabel = "Größer anzeigen" -%}{%- when "hi" -%}{%- assign zlabel = "बड़ा करके देखें" -%}{%- when "ru" -%}{%- assign zlabel = "Увеличить" -%}{%- when "ar" -%}{%- assign zlabel = "عرض أكبر" -%}{%- when "zh" -%}{%- assign zlabel = "放大查看" -%}{%- when "ja" -%}{%- assign zlabel = "拡大表示" -%}{%- else -%}{%- assign zlabel = "Larger view" -%}{%- endcase -%}
 <section class="feat-sec{% if halt %} alt{% endif %}" id="features">
   <div class="wrap">
     <div class="section-head">
@@ -35,12 +38,13 @@ Reduced motion: no parallax, no slide-in, the screenshot stays (no autoplay). Ph
       </div>
       <div class="frow-media" data-par="v">
         <div class="frow-vin">
-          <span class="frow-glow" aria-hidden="true"></span>
-          <button class="feat-media" type="button" aria-label="{{ ftitle | strip_html | escape }}" data-feat-open>
-            <span class="feat-bar" aria-hidden="true"><i></i><i></i><i></i></span>
-            <video class="feat-video" muted loop playsinline preload="none" width="1280" height="800" poster="{{ '/assets/media/' | append: fid | append: '.webp' | relative_url }}" data-src="{{ '/assets/media/' | append: fid | append: '.mp4' | relative_url }}" aria-hidden="true" tabindex="-1"></video>
-            <span class="feat-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
-          </button>
+          <div class="feat-card">
+            <button class="feat-media" type="button" aria-label="{{ ftitle | strip_html | escape }}" aria-expanded="false" aria-controls="fz-{{ fid }}" data-feat-reveal>
+              <span class="feat-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+              <video class="feat-video" muted loop playsinline preload="none" width="1280" height="800" poster="{{ '/assets/media/' | append: fid | append: '.webp' | relative_url }}" data-src="{{ '/assets/media/' | append: fid | append: '.mp4' | relative_url }}" aria-hidden="true" tabindex="-1"></video>
+            </button>
+            <button class="feat-zoom" id="fz-{{ fid }}" type="button" aria-label="{{ zlabel }}: {{ ftitle | strip_html | escape }}" title="{{ zlabel }}" data-feat-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></button>
+          </div>
         </div>
       </div>
     </li>
@@ -91,14 +95,26 @@ Reduced motion: no parallax, no slide-in, the screenshot stays (no autoplay). Ph
     var off=function(){if(rm.matches){sec.classList.remove('fx','sda');window.removeEventListener('scroll',req);near=[];rows.forEach(function(r,i){pv[i].style.transform='';pt[i].style.transform='';});}};
     if(rm.addEventListener)rm.addEventListener('change',off);
   }
-  /* larger view */
-  var dlg=document.getElementById('feat-dialog');if(!dlg||!dlg.showModal)return;
-  var big=dlg.querySelector('.feat-big'),cap=dlg.querySelector('.feat-big-title');
-  sec.querySelectorAll('[data-feat-open]').forEach(function(b){b.addEventListener('click',function(){
-    var li=b.closest('.frow'),v=b.querySelector('video');big.poster=v.poster;big.src=v.dataset.src;cap.textContent=li.querySelector('.feat-title').textContent.trim();
-    dlg.showModal();if(!still){var p=big.play();if(p&&p.catch)p.catch(function(){});}
-  });});
-  dlg.addEventListener('close',function(){big.pause();big.removeAttribute('src');big.load();});
+  /* larger view: click/tap (or Enter/Space) on a video shows its zoom arrow; only the arrow opens the dialog */
+  var cards=[].slice.call(sec.querySelectorAll('.feat-card')),dlg=document.getElementById('feat-dialog'),sy=null;
+  function hide(c){if(c.classList.contains('zoom-on')){c.classList.remove('zoom-on');c.querySelector('[data-feat-reveal]').setAttribute('aria-expanded','false');}
+    if(!cards.some(function(x){return x.classList.contains('zoom-on');})){sy=null;window.removeEventListener('scroll',onScroll);}}
+  function show(c){cards.forEach(function(x){if(x!==c)hide(x);});c.classList.add('zoom-on');c.querySelector('[data-feat-reveal]').setAttribute('aria-expanded','true');
+    if(sy===null){sy=window.scrollY;window.addEventListener('scroll',onScroll,{passive:true});}}
+  function onScroll(){if(sy!==null&&Math.abs(window.scrollY-sy)>40)cards.forEach(hide);}
+  cards.forEach(function(c){var m=c.querySelector('[data-feat-reveal]'),z=c.querySelector('[data-feat-open]');
+    m.addEventListener('click',function(e){show(c);if(e.detail===0)z.focus();});   /* detail 0 = keyboard: move focus to the arrow, Enter again opens */
+    c.addEventListener('pointerleave',function(e){if(e.pointerType!=='touch')hide(c);});   /* touch fires pointerleave after every tap: ignore it */
+    c.addEventListener('keydown',function(e){if(e.key==='Escape'&&c.classList.contains('zoom-on')){hide(c);m.focus();}});
+    c.addEventListener('focusout',function(e){if(!(dlg&&dlg.open)&&!(e.relatedTarget&&c.contains(e.relatedTarget)))hide(c);});
+    z.addEventListener('click',function(){openBig(c);});
+  });
+  document.addEventListener('pointerdown',function(e){cards.forEach(function(c){if(!c.contains(e.target))hide(c);});},true);
+  if(!dlg||!dlg.showModal)return;
+  var big=dlg.querySelector('.feat-big'),cap=dlg.querySelector('.feat-big-title'),from=null;
+  function openBig(c){var li=c.closest('.frow'),v=c.querySelector('video');from=c;big.poster=v.poster;big.src=v.dataset.src;cap.textContent=li.querySelector('.feat-title').textContent.trim();
+    hide(c);dlg.showModal();if(!still){var p=big.play();if(p&&p.catch)p.catch(function(){});}}
+  dlg.addEventListener('close',function(){big.pause();big.removeAttribute('src');big.load();if(from){var m=from.querySelector('[data-feat-reveal]');from=null;try{m.focus({preventScroll:true});}catch(e){}}});
   dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
 })();
 </script>
