@@ -120,7 +120,7 @@ pricing:
   free_h: Free
   free_sub: अपनी चैट सँभालकर रखने के लिए ज़रूरी सब कुछ।
   forever: हमेशा के लिए
-  get_free: मुफ़्त पाएँ
+  get_free: "मुफ़्त"
   yearly_h: Pro सालाना
   yearly_sub: साल में एक बार बिल।
   per_year: / साल
@@ -137,6 +137,7 @@ pricing:
   yearly_badge: ''
   monthly_badge: ''
   lifetime_badge: ''
+  yearly_save: "%pct% की बचत"
   howpro_h2: Pro कैसे काम करता है
   howpro_p: न कोई अकाउंट बनाना, न कोई पासवर्ड। आपकी लाइसेंस की ही आपका साइन-इन है।
   howpro_steps:
