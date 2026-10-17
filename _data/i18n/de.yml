@@ -9,6 +9,7 @@ nav:
   terms_of_service: Nutzungsbedingungen
   refund_policy: Rückerstattung
   contact: Kontakt
+  help: "Hilfe"
 ui:
   skip: Zum Inhalt springen
   theme_dark: Zum dunklen Modus wechseln
@@ -63,23 +64,19 @@ home:
   ais_p: Melde dich wie gewohnt in deinem Browser bei den KIs an, die du nutzt. %name% speichert die Chats jeder KI in einem eigenen Ordner.
   features_h2: Alles aus dem Chat, nicht nur der Text
   features_p: 'Deine Chats werden zu echten Dateien, die dir gehören: offline lesbar, durchsuchbar und bereit zum Export.'
-  f1_h: Ein lokaler Ordner, der dir gehört
-  f1_p: "Chats werden in <strong>Downloads/AI Chat Saver</strong> geschrieben, ein Ordner pro KI, als Markdown, HTML und JSON, mit den Medien daneben. Mit Free speicherst du den geöffneten Chat auf der Seite der jeweiligen KI, bis zu 8 neue Chats pro Tag. Mit Pro speicherst du unbegrenzt und wählst einen beliebigen Ordner, ohne „Speichern unter“-Fenster."
-  f2_h: "Alles synchronisieren per Klick (Pro)"
-  f2_p: "Mit Pro speichert <strong>Alles synchronisieren</strong> alle KIs auf einmal, und <strong>Alles aktualisieren</strong> speichert nur neue oder geänderte Chats, sodass nichts doppelt heruntergeladen wird. Starte es im Command Center oder im Popup, drücke <kbd>Alt+Shift+U</kbd> oder plane es stündlich, alle 6 Stunden, täglich oder wöchentlich."
-  f3_h: Medien, Denkprozesse, Code und Artefakte bleiben erhalten
-  f3_items:
-  - "Hochgeladene und erzeugte Bilder, Videos und Dateien (Grok-Medien mit Pro)"
-  - Denkprozesse und Begründungen, Tool-Aufrufe, von der KI ausgeführter Code und seine Ausgabe
-  - Webquellen und Zitate
-  - Claude-Artefakte und ChatGPT-Canvas als echte Dateien
-  - Auf der Website gelöschte Nachrichten bleiben erhalten und werden als „Auf der Website gelöscht“ markiert; bearbeitete Prompts werden als Versionen aufbewahrt
-  f4_h: "Exporte in jedem Format"
-  f4_p: "Exportiere als <strong>HTML, Markdown, PDF, Word (DOCX) und TXT</strong>, dazu JSON, PNG und JPG, in jedem Tarif (Free: 8 Exporte pro Tag, mit kleinem Logo). Mit Pro behalten Exporte den eigenen Look der jeweiligen KI-Website, hell oder dunkel, ohne Logo. PDFs entstehen auf deinem Computer mit echtem, markierbarem Text, ohne Druckdialog."
-  f5_h: Suche und das Command Center
-  f5_p: 'Drücke <kbd>%shortcut%</kbd>, um das Command Center im Vollbild zu öffnen: sofortige Volltextsuche über alle KIs, Filter wie <code>provider:</code> und <code>has:code</code>, eine Befehlspalette (<kbd>Ctrl+K</kbd>), eine Zeitleiste, Markierungen und Notizen sowie ein Lesemodus.'
-  f6_h: Privat durch Design
-  f6_p: 'Alles läuft in deinem Browser mit deinen eigenen angemeldeten Sitzungen. Deine Chats bleiben auf deinem Gerät: kein Konto bei uns, keine Server, keine Analysen.'
+  feat_save: "Mit einem Klick bei jeder KI speichern"
+  feat_reader: "Code, Tabellen und Bilder bleiben"
+  feat_pdf: "PDFs, die das Format behalten"
+  feat_formats: "Word, HTML, Markdown und mehr"
+  feat_search: "Alle Chats sofort durchsuchen"
+  feat_folders: "Ordner, Tags und Sterne"
+  feat_highlights: "Markierungen und eigene Notizen"
+  feat_studio: "Export Studio, dein Stil"
+  feat_looks: "Das Original-Design jeder KI"
+  feat_sync: "Alle KIs mit einem Klick synchronisieren"
+  feat_grok: "Grok-Medien und gelöschte Chats"
+  feat_ais: "Funktioniert mit 18 KIs"
+  pro_label: "Pro-Funktion"
   how_h2: So funktioniert’s
   steps:
   - t: Erweiterung installieren
@@ -88,6 +85,20 @@ home:
     d: Nutze die KI-Seiten im selben Browserprofil, so wie bisher.
   - t: "Chats speichern"
     d: "Speichere den geöffneten Chat auf der Seite einer beliebigen KI. Mit Pro klickst du auf Alles synchronisieren; nur neue und geänderte Chats werden gespeichert."
+  help_eyebrow: "Hilfe"
+  help_h2: "So bekommst du Pro"
+  help_p: "Sieh dir die 30-Sekunden-Tour an oder folge diesen Schritten."
+  help_steps:
+  - t: "Tarif wählen"
+    d: "Klicke auf der Preisseite auf „Pro holen“ oder in der Erweiterung auf „Upgrade“."
+  - t: "Sicher bezahlen"
+    d: "Der Bezahlvorgang von Freemius öffnet sich. Bezahle per Karte oder PayPal."
+  - t: "Lizenzschlüssel kopieren"
+    d: "Er steht auf der Dankesseite und kommt per E-Mail."
+  - t: "Aktivieren"
+    d: "Öffne in der Erweiterung die Einstellungen, füge den Schlüssel ein und klicke auf „Aktivieren“. Pro ist an."
+  help_more: "Noch Fragen? Schreib an <a href=\"mailto:%email%\">%email%</a>, wir helfen dir."
+  help_video: "Video: Pro holen und den Lizenzschlüssel aktivieren"
   priv_eyebrow: Datenschutz
   priv_h2: Deine Chats erreichen uns nie
   priv_p: '%name% liest deine Chats über deinen Browser von den KI-Seiten, bei denen du angemeldet bist, und schreibt sie nur in deinen eigenen Ordner und in den lokalen Speicher deines Browsers. Lies die vollständige <a href="%privacy_url%">Datenschutzerklärung</a> (auf Englisch).'
