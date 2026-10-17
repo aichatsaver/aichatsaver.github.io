@@ -2,7 +2,26 @@
 {%- assign pp_id = include.id -%}{%- assign pp_mark = include.mark -%}{%- assign pp_price = include.price -%}{%- assign pp_per = include.per -%}
 {%- assign pp_hk = pp_id | append: "_h" -%}{%- assign pp_sk = pp_id | append: "_sub" -%}{%- assign pp_ck = pp_id | append: "_cta" -%}{%- assign pp_bk = pp_id | append: "_badge" -%}{%- assign pp_uk = "checkout_" | append: pp_id -%}
 {%- assign pp_badge = tpr[pp_bk] -%}{%- assign pp_url = pz[pp_uk] -%}
-<div class="plan{% if hl == pp_id %} featured{% endif %}"{% if include.deal %} data-deal-only style="display:none"{% endif %}>{% if pp_badge and pp_badge != "" %}<span class="badge">{{ pp_badge }}</span>{% endif %}
+{%- comment -%} "Save X%" pill on the Yearly card: pct = round((monthly*12 - yearly) / (monthly*12) * 100) from _data/site.yml prices.
+Hidden when either price is empty/TBD/not a plain number (digits with one optional dot), when pct <= 0, or when _data/pricing.yml show_save is false (admin: Pricing). {%- endcomment -%}
+{%- assign pp_save = "" -%}
+{%- if pp_id == "yearly" and pz.show_save != false -%}
+{%- assign sv_ok = true -%}{%- assign sv_dig = "0123456789" -%}
+{%- assign sv_m = s.price_monthly | append: "" | strip -%}{%- assign sv_y = s.price_yearly | append: "" | strip -%}
+{%- for sv_v in (1..2) -%}{%- if sv_v == 1 %}{% assign sv_x = sv_m %}{% else %}{% assign sv_x = sv_y %}{% endif -%}
+{%- assign sv_rest = sv_x | remove: "0" | remove: "1" | remove: "2" | remove: "3" | remove: "4" | remove: "5" | remove: "6" | remove: "7" | remove: "8" | remove: "9" | remove_first: "." -%}
+{%- assign sv_a = sv_x | slice: 0 -%}{%- assign sv_zl = sv_x.size | minus: 1 -%}{%- assign sv_z = sv_x | slice: sv_zl -%}
+{%- if sv_x == "" or sv_rest != "" or sv_a == "" or sv_z == "" -%}{%- assign sv_ok = false -%}{%- else -%}{%- unless sv_dig contains sv_a and sv_dig contains sv_z -%}{%- assign sv_ok = false -%}{%- endunless -%}{%- endif -%}
+{%- endfor -%}
+{%- if sv_ok -%}
+{%- assign sv_m12 = sv_m | times: 12.0 -%}{%- assign sv_yn = sv_y | times: 1.0 -%}
+{%- if sv_m12 > 0 and sv_yn > 0 -%}
+{%- assign sv_pct = sv_m12 | minus: sv_yn | times: 100.0 | divided_by: sv_m12 | round -%}
+{%- if sv_pct > 0 -%}{%- assign sv_txt = tpr.yearly_save | default: tren.pricing.yearly_save | default: "Save %pct%" -%}{%- assign sv_p = sv_pct | append: "%" -%}{%- assign pp_save = sv_txt | replace: "%pct%", sv_p -%}{%- endif -%}
+{%- endif -%}
+{%- endif -%}
+{%- endif -%}
+<div class="plan{% if hl == pp_id %} featured{% endif %}"{% if include.deal %} data-deal-only style="display:none"{% endif %}>{% if pp_badge and pp_badge != "" %}<span class="badge">{{ pp_badge }}</span>{% endif %}{% if pp_save != "" %}<span class="save-pill{% if pp_badge and pp_badge != "" %} side{% endif %}">{{ pp_save }}</span>{% endif %}
         {% unless pz.launched %}<span class="status">{{ pro_status }}</span>
         {% endunless %}<h2>{{ tpr[pp_hk] | default: tren.pricing[pp_hk] }}</h2>
         <p class="sub">{{ tpr[pp_sk] | default: tren.pricing[pp_sk] }}</p>
