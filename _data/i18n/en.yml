@@ -29,22 +29,25 @@ stores:
   version: Version %version%
 meta:
   tagline: Save every AI chat to a folder on your own computer.
-  description: AI Chat Saver is a browser extension that saves your chats from 18 AI assistants into a local folder, with one-click updates, search and exports that look like the original sites.
+  description: "AI Chat Saver is a browser extension that saves your chats from 18 AI assistants into a local folder, with search and exports in every format. Pro adds one-click sync of every AI and exports that look like the original sites."
   pro_status: Pro — launching soon
   free_features:
   - "All 18 AIs"
   - "Command Center to view your chats"
-  - "8 saves a day"
+  - "Save the open chat manually"
+  - "8 new chats a day"
   - "8 exports a day, any format"
+  - "Studio and highlights"
   - "Media from every AI (except Grok)"
   - "Saves to Downloads"
   - "Small logo watermark"
   pro_features:
   - "Everything in Free"
+  - "Sync everything from the Command Center"
   - "Unlimited saves and exports"
   - "No watermark"
   - "AI original look"
-  - "Sync, auto-sync and schedules"
+  - "Auto-sync and schedules"
   - "Grok media and deleted-chat recovery"
   - "Any folder"
   - "One key per device"
@@ -54,25 +57,25 @@ home:
   h1_a: 'Every AI chat, '
   h1_b: saved on your computer
   h1_c: .
-  lede: '%name% is a browser extension that saves your chats from 18 AI assistants into a folder on your own computer. One click keeps it up to date, and nothing leaves your device.'
+  lede: "%name% is a browser extension that saves your chats from 18 AI assistants into a folder on your own computer. Save the chat you have open in one click; with Pro, one click syncs every AI. Nothing leaves your device."
   hero_note: For Google Chrome and Microsoft Edge.
   ais_h2: Works with 18 AIs
   ais_p: Sign in to the AIs you use in your browser as usual. %name% saves the chats from each one into its own folder.
   features_h2: Everything in the chat, not just the text
   features_p: 'Your chats become real files you own: readable offline, searchable, and ready to export.'
   f1_h: A local folder you own
-  f1_p: Chats are written to <strong>Downloads/AI Chat Saver</strong>, one folder per AI, as Markdown, HTML and JSON, with media alongside. Or connect a folder once and files save straight into it, with no Save-As boxes.
-  f2_h: One-click incremental Update
-  f2_p: One Update button syncs every AI and saves only chats that are new or changed, so nothing is downloaded twice. Run it from the popup, press <kbd>Alt+Shift+U</kbd>, or schedule it hourly, every 6 hours, daily or weekly.
+  f1_p: "Chats are written to <strong>Downloads/AI Chat Saver</strong>, one folder per AI, as Markdown, HTML and JSON, with media alongside. On Free you save the chat you have open on each AI’s page, up to 8 new chats a day. With Pro, save without limits and choose any folder, with no Save-As boxes."
+  f2_h: "Sync everything in one click (Pro)"
+  f2_p: "With Pro, <strong>Sync everything</strong> saves every AI at once and <strong>Update everything</strong> saves only chats that are new or changed, so nothing is downloaded twice. Run it from the Command Center or the popup, press <kbd>Alt+Shift+U</kbd>, or schedule it hourly, every 6 hours, daily or weekly."
   f3_h: Media, thinking, code and artifacts kept
   f3_items:
-  - Uploaded and generated images, videos and files
+  - "Uploaded and generated images, videos and files (Grok media with Pro)"
   - Thinking and reasoning, tool calls, code the AI ran and its output
   - Web sources and citations
   - Claude artifacts and ChatGPT canvases as real files
   - Messages deleted on the site stay, marked “Deleted on site”; edited prompts are kept as versions
-  f4_h: Exports that look like the original
-  f4_p: Export to <strong>HTML, Markdown, PDF, Word (DOCX) and TXT</strong>, plus JSON, PNG and JPG. Each export can keep the AI site’s own look, in light or dark. PDFs are made on your computer with real, selectable text, with no print dialog.
+  f4_h: "Exports in every format"
+  f4_p: "Export to <strong>HTML, Markdown, PDF, Word (DOCX) and TXT</strong>, plus JSON, PNG and JPG, on every plan (Free: 8 exports a day, with a small logo). With Pro, exports keep each AI site’s own look, in light or dark, with no logo. PDFs are made on your computer with real, selectable text, with no print dialog."
   f5_h: Search and the Command Center
   f5_p: 'Press <kbd>%shortcut%</kbd> to open the full-screen Command Center: instant full-text search across every AI, filters like <code>provider:</code> and <code>has:code</code>, a command palette (<kbd>Ctrl+K</kbd>), a Timeline, highlights and notes, and Reading mode.'
   f6_h: Private by design
@@ -83,8 +86,8 @@ home:
     d: Add it to Chrome or Edge and pin the icon.
   - t: Stay signed in to your AIs
     d: Use the AI sites in the same browser profile, as you already do.
-  - t: Press Update
-    d: Your chats are saved to your folder. Press it again any time; only new and changed chats are saved.
+  - t: "Save your chats"
+    d: "Save the chat you have open on any AI’s page. With Pro, press Sync everything; only new and changed chats are saved."
   priv_eyebrow: Privacy
   priv_h2: Your chats never come to us
   priv_p: '%name% reads your chats through your browser from the AI sites you are signed in to, and writes them only to your own folder and your browser’s local storage. Read the full <a href="%privacy_url%">Privacy Policy</a>.'
@@ -103,6 +106,8 @@ home:
     a: After each sync the extension checks every AI. If a site changed and saving stops working, you get one notification and a banner, and a broken run never overwrites a good saved chat.
   - q: Is it free?
     a: Yes, there is a Free plan. %pro_status%. See <a href="%pricing_url%">Pricing</a>.
+  - q: "Can I get a refund?"
+    a: "Pro Yearly: a full refund within 7 days of your first payment. Pro Monthly is not refundable, but you can cancel any time and keep Pro until the end of the month you paid for."
   - q: I lost my licence key or typed the wrong email
     a: Email <a href="mailto:%email%">%email%</a> with your payment receipt. We'll correct the email on your licence and send the key again.
   cta_h2: Keep every conversation
