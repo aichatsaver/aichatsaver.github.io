@@ -120,7 +120,7 @@ pricing:
   free_h: Free
   free_sub: Everything you need to keep your chats.
   forever: forever
-  get_free: Get it free
+  get_free: "Free"
   yearly_h: Pro Yearly
   yearly_sub: Billed once a year.
   per_year: / year
@@ -137,6 +137,7 @@ pricing:
   yearly_badge: ''
   monthly_badge: ''
   lifetime_badge: ''
+  yearly_save: "Save %pct%"
   howpro_h2: How Pro works
   howpro_p: No account to create and no password. Your licence key is your sign-in.
   howpro_steps:
