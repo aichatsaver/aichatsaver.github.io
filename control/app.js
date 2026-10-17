@@ -1664,7 +1664,7 @@
   };
   var SITE_PRICE_KEYS = ["price_monthly", "price_yearly", "price_currency", "free_features", "pro_features", "pro_status"];
   var pr = { code: "en", site: null, siteCur: null, pz: null, pzCur: null, t: null, tCur: null, meta: null, metaCur: null };
-  var PZ_DEFAULT = { launched: false, checkout_yearly: "", checkout_monthly: "", checkout_lifetime: "", highlighted: "yearly", lifetime_enabled: false, price_lifetime: "TBD", free_url: "" };
+  var PZ_DEFAULT = { launched: false, checkout_yearly: "", checkout_monthly: "", checkout_lifetime: "", highlighted: "yearly", lifetime_enabled: false, price_lifetime: "TBD", free_url: "", show_save: true };
   var secPricing = defineSection("pricing", {
     label: "Pricing", files: function () { return [SITE_PATH, "_data/pricing.yml", i18nPath(pr.code)]; },
     page: function () { return (pr.code === "en" ? "" : "/" + pr.code) + "/pricing.html"; }, history: function () { return "_data/pricing.yml"; },
@@ -1735,8 +1735,13 @@
       } else f.appendChild(fieldRow("Price", el("input", { type: "text", value: "0", disabled: true, id: "pr_free_price" }), "The Free plan is always 0."));
       f.appendChild(tf(k.per, "Period text"));
       f.appendChild(tf(k.badge, "Badge (optional, small label on the card)"));
+      if (id === "yearly") {
+        var sv = checkInput(z.show_save !== false, function (v) { z.show_save = v; prChanged(); }, "Show save % on Yearly"); sv.querySelector("input").id = "prShowSave";
+        f.appendChild(el("div", { class: "cp-field wide" }, [el("span", { class: "cp-label", text: "Save badge" }), sv, el("span", { class: "cp-help-text", id: "prSaveInfo", text: saveInfo() })]));
+        f.appendChild(tf("yearly_save", "Save badge text (%pct% = the percent)"));
+      }
       f.appendChild(tf(k.cta, id === "free" ? "Button text" : "Button text (after launch)"));
-      if (id === "free") f.appendChild(fieldRow("Button link", textInput(z.free_url, function (v) { z.free_url = v; prChanged(); }, { id: "pr_free_url", spellcheck: "false", placeholder: s.chrome_store_url ? "Empty = " + s.chrome_store_url : "Empty = the Chrome Web Store link (not set yet)" }), "Leave empty to use the Chrome Web Store link."));
+      if (id === "free") f.appendChild(fieldRow("Button link", textInput(z.free_url, function (v) { z.free_url = v; prChanged(); }, { id: "pr_free_url", spellcheck: "false", placeholder: s.chrome_store_url ? "Empty = " + s.chrome_store_url : "Empty = the homepage install section (until the Chrome Web Store link is set)" }), "Leave empty to use the Chrome Web Store link (until it is set: the homepage install section, /#how)."));
       else f.appendChild(fieldRow("Checkout link (Freemius)", textInput(z[k.url], function (v) { z[k.url] = v; prChanged(); }, { id: "pr_" + k.url, spellcheck: "false", placeholder: "https://checkout.freemius.com/…" }), "Used only when “Pro is on sale” is on.", true));
       card.appendChild(f);
       if (id === "free" || id === "yearly") {
@@ -1747,7 +1752,15 @@
       box.appendChild(card);
     });
   }
-  var pricingPreviewSoon = debounce(function () { pricingPreview(); }, 120);
+  /* Same rule as _includes/plan-pro.html: plain numbers only, pct = round((monthly*12 - yearly) / (monthly*12) * 100), shown when > 0. */
+  function savePct(m, y) {
+    var ok = function (x) { return /^\d+(\.\d+)?$/.test(x); };
+    m = String(m == null ? "" : m).trim(); y = String(y == null ? "" : y).trim();
+    if (!ok(m) || !ok(y)) return 0; var m12 = parseFloat(m) * 12, yn = parseFloat(y);
+    if (!(m12 > 0) || !(yn > 0)) return 0; var p = Math.round((m12 - yn) * 100 / m12 + 1e-9); return p > 0 ? p : 0;
+  }
+  function saveInfo() { var p = savePct(pr.siteCur.price_monthly, pr.siteCur.price_yearly); return p ? "Worked out from the prices: Save " + p + "% (12 × monthly vs yearly). Off hides it." : "Hidden right now: both prices must be numbers and Yearly must cost less than 12 × Monthly."; }
+  var pricingPreviewSoon = debounce(function () { var i = $("prSaveInfo"); if (i) i.textContent = saveInfo(); pricingPreview(); }, 120);
   function pricingPreview() {
     var p = $("pricingPrev"), s = pr.siteCur, z = pr.pzCur, t = pr.tCur, en = pr.code === "en", dir = langDir(pr.code);
     var soon = "Coming soon", cur = String(s.price_currency || "USD");
@@ -1757,10 +1770,11 @@
     function plan(id) {
       var k = PLAN_KEYS[id], kids = [];
       if (t[k.badge]) kids.push(el("span", { class: "badge", text: t[k.badge] }));
+      if (id === "yearly" && z.show_save !== false) { var sp = savePct(s.price_monthly, s.price_yearly); if (sp) kids.push(el("span", { class: "save-pill" + (t[k.badge] ? " side" : ""), text: String(t.yearly_save || pr.en.yearly_save || "Save %pct%").split("%pct%").join(sp + "%") })); }
       if (id !== "free" && !z.launched) kids.push(el("span", { class: "status", text: status || "" }));
       kids.push(el("h2", { text: t[k.h] || "" }), el("p", { class: "sub", text: t[k.sub] || "" }));
       kids.push(id === "free" ? price("0", t[k.per]) : price(id === "lifetime" ? z.price_lifetime : s[k.price], t[k.per]));
-      if (id === "free") kids.push(el("span", { class: "btn ghost", text: (z.free_url || s.chrome_store_url) ? t.get_free : soon }));
+      if (id === "free") kids.push(el("span", { class: "btn ghost", text: t.get_free || "" }));
       else kids.push(el("span", { class: "btn", text: z.launched && String(z[k.url] || "").trim() ? t[k.cta] : status }));
       kids.push(el("ul", {}, ((id === "free" ? ff : pf) || []).filter(Boolean).map(function (x) { return el("li", { text: x }); })));
       return el("div", { class: "plan" + (z.highlighted === id ? " featured" : "") }, kids);
