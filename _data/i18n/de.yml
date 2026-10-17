@@ -29,22 +29,25 @@ stores:
   version: Version %version%
 meta:
   tagline: Speichere jeden KI-Chat in einem Ordner auf deinem eigenen Computer.
-  description: AI Chat Saver ist eine Browsererweiterung, die deine Chats aus 18 KI-Assistenten in einem lokalen Ordner speichert – mit Aktualisierung per Klick, Suche und Exporten, die wie die Originalseiten aussehen.
+  description: "AI Chat Saver ist eine Browser-Erweiterung, die deine Chats aus 18 KI-Assistenten in einem lokalen Ordner speichert, mit Suche und Exporten in jedem Format. Pro ergänzt die Synchronisierung aller KIs per Klick und Exporte, die wie die Original-Websites aussehen."
   pro_status: Pro – bald verfügbar
   free_features:
   - "Alle 18 KIs"
   - "Command Center zum Ansehen deiner Chats"
-  - "8 Speicherungen pro Tag"
+  - "Offenen Chat manuell speichern"
+  - "8 neue Chats pro Tag"
   - "8 Exporte pro Tag, jedes Format"
+  - "Studio und Markierungen"
   - "Medien aller KIs (außer Grok)"
   - "Speichert in Downloads"
   - "Kleines Logo als Wasserzeichen"
   pro_features:
   - "Alles aus Free"
+  - "„Alles synchronisieren“ im Command Center"
   - "Unbegrenzt speichern und exportieren"
   - "Kein Wasserzeichen"
   - "Original-Look der KI"
-  - "Sync, Auto-Sync und Zeitpläne"
+  - "Auto-Sync und Zeitpläne"
   - "Grok-Medien und Wiederherstellung gelöschter Chats"
   - "Beliebiger Ordner"
   - "Ein Schlüssel pro Gerät"
@@ -54,25 +57,25 @@ home:
   h1_a: 'Jeder KI-Chat, '
   h1_b: gespeichert auf deinem Computer
   h1_c: .
-  lede: '%name% ist eine Browsererweiterung, die deine Chats aus 18 KI-Assistenten in einem Ordner auf deinem eigenen Computer speichert. Ein Klick hält alles aktuell, und nichts verlässt dein Gerät.'
+  lede: "%name% ist eine Browser-Erweiterung, die deine Chats aus 18 KI-Assistenten in einem Ordner auf deinem eigenen Computer speichert. Speichere den geöffneten Chat mit einem Klick; mit Pro synchronisiert ein Klick alle KIs. Nichts verlässt dein Gerät."
   hero_note: Für Google Chrome und Microsoft Edge.
   ais_h2: Funktioniert mit 18 KIs
   ais_p: Melde dich wie gewohnt in deinem Browser bei den KIs an, die du nutzt. %name% speichert die Chats jeder KI in einem eigenen Ordner.
   features_h2: Alles aus dem Chat, nicht nur der Text
   features_p: 'Deine Chats werden zu echten Dateien, die dir gehören: offline lesbar, durchsuchbar und bereit zum Export.'
   f1_h: Ein lokaler Ordner, der dir gehört
-  f1_p: Chats werden in <strong>Downloads/AI Chat Saver</strong> geschrieben, ein Ordner pro KI, als Markdown, HTML und JSON, mit den Medien daneben. Oder verbinde einmalig einen Ordner, und die Dateien landen direkt darin – ohne „Speichern unter“-Dialoge.
-  f2_h: Inkrementelle Aktualisierung per Klick
-  f2_p: Eine einzige Aktualisieren-Schaltfläche synchronisiert alle KIs und speichert nur neue oder geänderte Chats, sodass nichts doppelt heruntergeladen wird. Starte sie im Pop-up, drücke <kbd>Alt+Shift+U</kbd> oder plane sie stündlich, alle 6 Stunden, täglich oder wöchentlich.
+  f1_p: "Chats werden in <strong>Downloads/AI Chat Saver</strong> geschrieben, ein Ordner pro KI, als Markdown, HTML und JSON, mit den Medien daneben. Mit Free speicherst du den geöffneten Chat auf der Seite der jeweiligen KI, bis zu 8 neue Chats pro Tag. Mit Pro speicherst du unbegrenzt und wählst einen beliebigen Ordner, ohne „Speichern unter“-Fenster."
+  f2_h: "Alles synchronisieren per Klick (Pro)"
+  f2_p: "Mit Pro speichert <strong>Alles synchronisieren</strong> alle KIs auf einmal, und <strong>Alles aktualisieren</strong> speichert nur neue oder geänderte Chats, sodass nichts doppelt heruntergeladen wird. Starte es im Command Center oder im Popup, drücke <kbd>Alt+Shift+U</kbd> oder plane es stündlich, alle 6 Stunden, täglich oder wöchentlich."
   f3_h: Medien, Denkprozesse, Code und Artefakte bleiben erhalten
   f3_items:
-  - Hochgeladene und generierte Bilder, Videos und Dateien
+  - "Hochgeladene und erzeugte Bilder, Videos und Dateien (Grok-Medien mit Pro)"
   - Denkprozesse und Begründungen, Tool-Aufrufe, von der KI ausgeführter Code und seine Ausgabe
   - Webquellen und Zitate
   - Claude-Artefakte und ChatGPT-Canvas als echte Dateien
   - Auf der Website gelöschte Nachrichten bleiben erhalten und werden als „Auf der Website gelöscht“ markiert; bearbeitete Prompts werden als Versionen aufbewahrt
-  f4_h: Exporte, die wie das Original aussehen
-  f4_p: Exportiere als <strong>HTML, Markdown, PDF, Word (DOCX) und TXT</strong>, dazu JSON, PNG und JPG. Jeder Export kann das Aussehen der jeweiligen KI-Seite behalten, hell oder dunkel. PDFs entstehen auf deinem Computer mit echtem, markierbarem Text – ganz ohne Druckdialog.
+  f4_h: "Exporte in jedem Format"
+  f4_p: "Exportiere als <strong>HTML, Markdown, PDF, Word (DOCX) und TXT</strong>, dazu JSON, PNG und JPG, in jedem Tarif (Free: 8 Exporte pro Tag, mit kleinem Logo). Mit Pro behalten Exporte den eigenen Look der jeweiligen KI-Website, hell oder dunkel, ohne Logo. PDFs entstehen auf deinem Computer mit echtem, markierbarem Text, ohne Druckdialog."
   f5_h: Suche und das Command Center
   f5_p: 'Drücke <kbd>%shortcut%</kbd>, um das Command Center im Vollbild zu öffnen: sofortige Volltextsuche über alle KIs, Filter wie <code>provider:</code> und <code>has:code</code>, eine Befehlspalette (<kbd>Ctrl+K</kbd>), eine Zeitleiste, Markierungen und Notizen sowie ein Lesemodus.'
   f6_h: Privat durch Design
@@ -83,8 +86,8 @@ home:
     d: Füge sie zu Chrome oder Edge hinzu und hefte das Symbol an.
   - t: Bei deinen KIs angemeldet bleiben
     d: Nutze die KI-Seiten im selben Browserprofil, so wie bisher.
-  - t: Auf Aktualisieren klicken
-    d: Deine Chats werden in deinem Ordner gespeichert. Klicke jederzeit erneut; gespeichert werden nur neue und geänderte Chats.
+  - t: "Chats speichern"
+    d: "Speichere den geöffneten Chat auf der Seite einer beliebigen KI. Mit Pro klickst du auf Alles synchronisieren; nur neue und geänderte Chats werden gespeichert."
   priv_eyebrow: Datenschutz
   priv_h2: Deine Chats erreichen uns nie
   priv_p: '%name% liest deine Chats über deinen Browser von den KI-Seiten, bei denen du angemeldet bist, und schreibt sie nur in deinen eigenen Ordner und in den lokalen Speicher deines Browsers. Lies die vollständige <a href="%privacy_url%">Datenschutzerklärung</a> (auf Englisch).'
@@ -103,6 +106,8 @@ home:
     a: Nach jeder Synchronisierung prüft die Erweiterung alle KIs. Hat sich eine Seite geändert und das Speichern funktioniert nicht mehr, bekommst du eine Benachrichtigung und einen Hinweis, und ein fehlerhafter Durchlauf überschreibt nie einen korrekt gespeicherten Chat.
   - q: Ist es kostenlos?
     a: Ja, es gibt einen Free-Tarif. %pro_status%. Siehe <a href="%pricing_url%">Preise</a>.
+  - q: "Kann ich eine Rückerstattung bekommen?"
+    a: "Pro Jährlich: volle Rückerstattung innerhalb von 7 Tagen nach deiner ersten Zahlung. Pro Monatlich wird nicht erstattet, aber du kannst jederzeit kündigen und behältst Pro bis zum Ende des bezahlten Monats."
   - q: Ich habe meinen Lizenzschlüssel verloren oder die falsche E-Mail eingegeben
     a: Schreib an <a href="mailto:%email%">%email%</a> und füge deinen Zahlungsbeleg bei. Wir korrigieren die E-Mail-Adresse deiner Lizenz und senden dir den Schlüssel erneut.
   cta_h2: Behalte jedes Gespräch
