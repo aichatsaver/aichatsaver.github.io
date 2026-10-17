@@ -1,30 +1,51 @@
-{%- comment -%} Feature showcase: one short title + a looping silent demo video (its screenshot is the poster) per feature.
-Titles are home.feat_<id> in _data/i18n/<language>.yml (admin panel: Homepage → Features). Videos: /assets/media/<id>.mp4 + <id>.webp.
-A video loads only when it scrolls into view and pauses when it leaves; with reduced motion the screenshot stays. {%- endcomment -%}
+{%- comment -%} Feature showcase: ONE feature per full-width row (zig-zag: text left / video right, then video left / text right …), with scroll parallax.
+Per feature: short title home.feat_<id> + one short line home.feat_<id>_d in _data/i18n/<language>.yml (admin panel: Homepage → Features); an empty title hides the row.
+Videos: /assets/media/<id>.mp4 (+ <id>.webp poster). A video loads only when it scrolls into view and pauses when it leaves.
+Parallax: the video and the text move at different speeds (transform only): CSS scroll-driven animations where supported (compositor, no script per frame),
+else one requestAnimationFrame per scroll for the rows on screen; the text slides in from its side.
+Reduced motion: no parallax, no slide-in, the screenshot stays (no autoplay). Phone: stacked video then text, gentle parallax. {%- endcomment -%}
 {%- assign feat_ids = "save,reader,pdf,formats,search,folders,highlights,studio,looks,sync,grok,ais" | split: "," -%}
 {%- assign feat_pro = "looks,sync,grok" | split: "," -%}
-<section{% if halt %} class="alt"{% endif %} id="features">
+<section class="feat-sec{% if halt %} alt{% endif %}" id="features">
   <div class="wrap">
     <div class="section-head">
       <h2>{{ th.features_h2 }}</h2>
       <p>{{ th.features_p }}</p>
     </div>
-    <ul class="feat-grid" role="list">
-      {%- for fid in feat_ids %}
-      {%- assign fkey = "feat_" | append: fid -%}
-      {%- assign ftitle = th[fkey] | default: tren.home[fkey] -%}
-      {%- if ftitle == nil or ftitle == "" %}{% continue %}{% endif %}
-      <li class="feat" data-feat="{{ fid }}">
-        <button class="feat-media" type="button" aria-label="{{ ftitle | strip_html | escape }}" data-feat-open>
-          <span class="feat-bar" aria-hidden="true"><i></i><i></i><i></i></span>
-          <video class="feat-video" muted loop playsinline preload="none" width="1280" height="800" poster="{{ '/assets/media/' | append: fid | append: '.webp' | relative_url }}" data-src="{{ '/assets/media/' | append: fid | append: '.mp4' | relative_url }}" aria-hidden="true" tabindex="-1"></video>
-          <span class="feat-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
-        </button>
-        <h3 class="feat-title">{{ ftitle }}{% if feat_pro contains fid %} <span class="pro-chip" title="{{ th.pro_label | default: tren.home.pro_label }}">Pro</span>{% endif %}</h3>
-      </li>
-      {%- endfor %}
-    </ul>
   </div>
+  <ol class="wrap feat-rows" role="list">
+    {%- assign fn = 0 -%}
+    {%- for fid in feat_ids %}
+    {%- assign fkey = "feat_" | append: fid -%}
+    {%- assign dkey = fkey | append: "_d" -%}
+    {%- assign ftitle = th[fkey] | default: tren.home[fkey] -%}
+    {%- if ftitle == nil or ftitle == "" %}{% continue %}{% endif %}
+    {%- assign fdesc = th[dkey] | default: tren.home[dkey] -%}
+    {%- assign fn = fn | plus: 1 -%}
+    {%- assign fmod = fn | modulo: 2 -%}
+    <li class="frow{% if fmod == 0 %} flip{% endif %}" data-feat="{{ fid }}">
+      <div class="frow-text" data-par="t">
+        <div class="frow-tin">
+          <span class="frow-num" aria-hidden="true">{% if fn < 10 %}0{% endif %}{{ fn }}</span>
+          <h3 class="feat-title">{{ ftitle }}{% if feat_pro contains fid %} <span class="pro-chip" title="{{ th.pro_label | default: tren.home.pro_label }}">Pro</span>{% endif %}</h3>
+          {%- if fdesc and fdesc != "" %}
+          <p class="feat-desc">{{ fdesc }}</p>
+          {%- endif %}
+        </div>
+      </div>
+      <div class="frow-media" data-par="v">
+        <div class="frow-vin">
+          <span class="frow-glow" aria-hidden="true"></span>
+          <button class="feat-media" type="button" aria-label="{{ ftitle | strip_html | escape }}" data-feat-open>
+            <span class="feat-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+            <video class="feat-video" muted loop playsinline preload="none" width="1280" height="800" poster="{{ '/assets/media/' | append: fid | append: '.webp' | relative_url }}" data-src="{{ '/assets/media/' | append: fid | append: '.mp4' | relative_url }}" aria-hidden="true" tabindex="-1"></video>
+            <span class="feat-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+          </button>
+        </div>
+      </div>
+    </li>
+    {%- endfor %}
+  </ol>
   <dialog class="feat-dialog" id="feat-dialog" aria-label="{{ th.features_h2 | strip_html | escape }}">
     <form method="dialog"><button class="feat-close" type="submit" aria-label="{{ tr.ui.dismiss | default: tren.ui.dismiss }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></form>
     <video class="feat-big" muted loop playsinline controls width="1280" height="800"></video>
@@ -33,16 +54,48 @@ A video loads only when it scrolls into view and pauses when it leaves; with red
 </section>
 <script>
 (function(){
-  var vids=[].slice.call(document.querySelectorAll('.feat-video')),still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var sec=document.getElementById('features');if(!sec)return;
+  var mm=function(q){return window.matchMedia?matchMedia(q):{matches:false,addEventListener:null};};
+  var rm=mm('(prefers-reduced-motion: reduce)'),still=rm.matches,hasIO='IntersectionObserver' in window;
+  var rows=[].slice.call(sec.querySelectorAll('.frow')),vids=[].slice.call(sec.querySelectorAll('.feat-video'));
   function load(v){if(!v.src&&v.dataset.src){v.src=v.dataset.src;}}
-  if(!still&&'IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){load(v);var p=v.play();if(p&&p.catch)p.catch(function(){});}else if(!v.paused){v.pause();}});},{rootMargin:'160px 0px',threshold:0.25});
-    vids.forEach(function(v){io.observe(v);});
+  /* videos: play only while on screen */
+  if(!still&&hasIO){
+    var vio=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){load(v);var p=v.play();if(p&&p.catch)p.catch(function(){});}else if(!v.paused){v.pause();}});},{rootMargin:'120px 0px',threshold:0.2});
+    vids.forEach(function(v){vio.observe(v);});
   }
+  /* slide-in + parallax */
+  if(!still&&hasIO&&window.requestAnimationFrame){
+    sec.classList.add('fx');
+    var sda=!!(window.CSS&&CSS.supports&&CSS.supports('animation-timeline: view()'));   /* scroll-driven CSS animations: parallax runs on the compositor, no scroll script */
+    if(sda)sec.classList.add('sda');
+    var near=[],ticking=false,vh=window.innerHeight,phone=mm('(max-width: 760px)');
+    var pv=[],pt=[];rows.forEach(function(r,i){pv[i]=r.querySelector('[data-par="v"]');pt[i]=r.querySelector('[data-par="t"]');r._i=i;});
+    function amp(){return phone.matches?{v:0,t:14}:{v:36,t:92};}
+    var A=amp();
+    function frame(){
+      ticking=false;var rects=near.map(function(r){return r.getBoundingClientRect();});   /* read all first (rows themselves are never transformed) */
+      near.forEach(function(r,k){var b=rects[k],c=(b.top+b.height/2-vh/2)/(vh/2+b.height/2);c=c<-1?-1:c>1?1:c;
+        pv[r._i].style.transform=A.v?'translate3d(0,'+(c*A.v).toFixed(2)+'px,0)':'';
+        pt[r._i].style.transform='translate3d(0,'+(c*A.t).toFixed(2)+'px,0)';});
+    }
+    function req(){if(!sda&&!ticking&&near.length){ticking=true;requestAnimationFrame(frame);}}
+    var pio=new IntersectionObserver(function(es){es.forEach(function(e){var r=e.target,j=near.indexOf(r);
+      if(e.isIntersecting){if(j<0)near.push(r);r.classList.add('near');}
+      else{if(j>=0)near.splice(j,1);r.classList.remove('near');}});req();},{rootMargin:'15% 0px'});
+    var rio=new IntersectionObserver(function(es){es.forEach(function(e){var r=e.target;
+      if(e.isIntersecting)r.classList.add('in');else if(e.boundingClientRect.top>0)r.classList.remove('in');});},{threshold:0.18});  /* replays when it comes in from below again */
+    rows.forEach(function(r){pio.observe(r);rio.observe(r);});
+    if(!sda)window.addEventListener('scroll',req,{passive:true});
+    window.addEventListener('resize',function(){vh=window.innerHeight;A=amp();req();},{passive:true});
+    var off=function(){if(rm.matches){sec.classList.remove('fx','sda');window.removeEventListener('scroll',req);near=[];rows.forEach(function(r,i){pv[i].style.transform='';pt[i].style.transform='';});}};
+    if(rm.addEventListener)rm.addEventListener('change',off);
+  }
+  /* larger view */
   var dlg=document.getElementById('feat-dialog');if(!dlg||!dlg.showModal)return;
   var big=dlg.querySelector('.feat-big'),cap=dlg.querySelector('.feat-big-title');
-  document.querySelectorAll('[data-feat-open]').forEach(function(b){b.addEventListener('click',function(){
-    var li=b.closest('.feat'),v=b.querySelector('video');big.poster=v.poster;big.src=v.dataset.src;cap.textContent=li.querySelector('.feat-title').textContent.trim();
+  sec.querySelectorAll('[data-feat-open]').forEach(function(b){b.addEventListener('click',function(){
+    var li=b.closest('.frow'),v=b.querySelector('video');big.poster=v.poster;big.src=v.dataset.src;cap.textContent=li.querySelector('.feat-title').textContent.trim();
     dlg.showModal();if(!still){var p=big.play();if(p&&p.catch)p.catch(function(){});}
   });});
   dlg.addEventListener('close',function(){big.pause();big.removeAttribute('src');big.load();});
