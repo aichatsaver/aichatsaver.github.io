@@ -1,0 +1,35 @@
+{%- comment -%} Coupon / deal from _data/coupon.yml (admin panel: Coupon / Deal). Only included while it is switched on.
+Everything starts hidden; the script shows it and adds ?coupon= to the Freemius checkout links only between starts and ends (visitor's clock). {%- endcomment -%}
+{%- assign cp = site.data.coupon -%}
+{%- assign cpz = site.data.pricing -%}
+{%- assign cp_code = cp.code | default: "" | append: "" | strip -%}
+{%- if cp_code != "" %}
+{%- assign cp_limit = cp.limit | default: "" | append: "" | strip -%}
+{%- assign cp_deal = cp.deal_texts[tlang] | default: cp.deal_text | default: "" | replace: "%code%", cp_code | replace: "%limit%", cp_limit -%}
+{%- assign cp_note = cp.note_texts[tlang] | default: cp.note_text | default: "Coupon %code% applied at checkout" | replace: "%code%", cp_code -%}
+{%- assign cp_btn = cp.button_texts[tlang] | default: cp.button_text | default: "Get the deal" -%}
+{%- assign cp_bk = "checkout_" | append: cp.banner_cycle -%}{%- assign cp_burl = cpz[cp_bk] | default: "" -%}
+<div id="coupon-cfg" hidden data-code="{{ cp_code | escape }}" data-cycles="{{ cp.cycles | join: ',' | escape }}" data-starts="{% if cp.starts and cp.starts != "" %}{{ cp.starts | date: "%Y-%m-%dT%H:%M:%S%:z" }}{% endif %}" data-ends="{% if cp.ends and cp.ends != "" %}{{ cp.ends | date: "%Y-%m-%dT%H:%M:%S%:z" }}{% endif %}" data-note="{{ cp_note | escape }}"></div>
+<style>.announce a.deal-btn{display:inline-block;margin-inline-start:12px;padding:4px 14px;border-radius:999px;background:var(--ann-fg,#fff);color:var(--ann-bg,#c2410c);text-decoration:none;font-weight:800;white-space:nowrap}.announce a.deal-btn:hover{opacity:.92}.coupon-note{margin:-2px 0 8px;font-size:13px;font-weight:700;color:#15803d}html[data-theme="dark"] .coupon-note{color:#4ade80}</style>
+{%- if cp.banner and cp_deal != "" %}
+<div class="announce deal" id="dealbar" role="region" aria-label="{{ cp_deal | escape }}" style="display:none;--ann-bg:{{ cp.color | default: '#c2410c' | escape }};--ann-fg:{{ cp.text_color | default: '#ffffff' | escape }}" data-key="{{ cp_code | append: '|' | append: cp_deal | escape }}">
+  <div class="wrap announce-row">
+    <p>{{ cp_deal | escape }}{% if cpz.launched and cp_burl != "" %} <a class="deal-btn" data-plan="{{ cp.banner_cycle | escape }}" href="{{ cp_burl | escape }}">{{ cp_btn | escape }}</a>{% endif %}</p>
+    <button type="button" class="announce-x" aria-label="{{ tr.ui.dismiss | default: tren.ui.dismiss }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+</div>
+{%- endif %}
+<script>(function(){var c=document.getElementById("coupon-cfg");if(!c)return;var code=c.getAttribute("data-code")||"";if(!/^[A-Za-z0-9_-]{1,40}$/.test(code))return;
+function t(v){if(!v)return null;var n=Date.parse(v);return isNaN(n)?NaN:n}var now=Date.now(),ts=t(c.getAttribute("data-starts")),te=t(c.getAttribute("data-ends"));
+if(ts!==null&&(isNaN(ts)||now<ts))return;if(te!==null&&(isNaN(te)||now>=te))return;
+var cyc=(c.getAttribute("data-cycles")||"").split(","),BC={yearly:"annual",monthly:"monthly",lifetime:"lifetime"};
+function on(p){return BC.hasOwnProperty(p)&&cyc.indexOf(p)>-1}
+function link(a){var p=a.getAttribute("data-plan");if(!on(p))return false;try{var u=new URL(a.getAttribute("href"),location.href);if(u.protocol!=="https:"||u.hostname!=="checkout.freemius.com")return false;u.searchParams.set("coupon",code);u.searchParams.set("billing_cycle",BC[p]);a.setAttribute("href",u.toString());return true}catch(x){return false}}
+function run(){document.documentElement.setAttribute("data-coupon",code);
+var b=document.getElementById("dealbar");if(b){var k=b.getAttribute("data-key"),closed=false;try{closed=localStorage.getItem("deal_closed")===k}catch(x){}
+if(!closed){var ba=b.querySelector("a.deal-btn");if(ba&&!link(ba))ba.remove();b.style.display="";var an=document.getElementById("announce");if(an)an.style.display="none";
+b.querySelector(".announce-x").addEventListener("click",function(){try{localStorage.setItem("deal_closed",k)}catch(x){}b.remove();if(an)an.style.display=""})}}
+if(on("lifetime"))[].forEach.call(document.querySelectorAll("[data-deal-only]"),function(d){d.style.display="";var ps=d.closest(".plans");if(ps)ps.classList.add("plans-4")});
+[].forEach.call(document.querySelectorAll(".plan a.btn[data-plan]"),function(a){var pl=a.closest(".plan");if(!pl||pl.style.display==="none"||!link(a))return;var pr=pl.querySelector(".price");if(pr&&!pl.querySelector(".coupon-note")){var n=document.createElement("p");n.className="coupon-note";n.textContent=c.getAttribute("data-note");pr.parentNode.insertBefore(n,pr.nextSibling)}})}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",run);else run()})();</script>
+{%- endif %}
