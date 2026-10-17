@@ -9,6 +9,7 @@ nav:
   terms_of_service: Conditions d’utilisation
   refund_policy: Politique de remboursement
   contact: Contact
+  help: "Aide"
 ui:
   skip: Aller au contenu
   theme_dark: Passer en mode sombre
@@ -63,23 +64,19 @@ home:
   ais_p: Connectez-vous comme d’habitude aux IA que vous utilisez dans votre navigateur. %name% enregistre les conversations de chacune dans son propre dossier.
   features_h2: Tout le contenu de la conversation, pas seulement le texte
   features_p: 'Vos conversations deviennent de vrais fichiers qui vous appartiennent : lisibles hors ligne, consultables et prêts à exporter.'
-  f1_h: Un dossier local qui vous appartient
-  f1_p: "Les chats sont écrits dans <strong>Downloads/AI Chat Saver</strong>, un dossier par IA, en Markdown, HTML et JSON, avec les médias à côté. Avec Free, vous enregistrez le chat ouvert sur la page de chaque IA, jusqu’à 8 nouveaux chats par jour. Avec Pro, enregistrez sans limite et choisissez n’importe quel dossier, sans fenêtre « Enregistrer sous »."
-  f2_h: "Tout synchroniser en un clic (Pro)"
-  f2_p: "Avec Pro, <strong>Tout synchroniser</strong> enregistre toutes les IA d’un coup et <strong>Tout mettre à jour</strong> n’enregistre que les chats nouveaux ou modifiés, donc rien n’est téléchargé deux fois. Lancez-le depuis le Centre de commande ou la fenêtre de l’extension, appuyez sur <kbd>Alt+Shift+U</kbd>, ou planifiez-le toutes les heures, toutes les 6 heures, chaque jour ou chaque semaine."
-  f3_h: Médias, réflexion, code et artefacts conservés
-  f3_items:
-  - "Images, vidéos et fichiers envoyés et générés (médias Grok avec Pro)"
-  - Réflexion et raisonnement, appels d’outils, code exécuté par l’IA et son résultat
-  - Sources web et citations
-  - Artefacts de Claude et canevas de ChatGPT sous forme de vrais fichiers
-  - Les messages supprimés sur le site restent, marqués « Supprimé sur le site » ; les invites modifiées sont conservées en versions
-  f4_h: "Des exports dans tous les formats"
-  f4_p: "Exportez en <strong>HTML, Markdown, PDF, Word (DOCX) et TXT</strong>, ainsi qu’en JSON, PNG et JPG, avec tous les plans (Free : 8 exports par jour, avec un petit logo). Avec Pro, les exports gardent l’apparence propre à chaque site d’IA, en clair ou en sombre, sans logo. Les PDF sont créés sur votre ordinateur avec du vrai texte sélectionnable, sans boîte d’impression."
-  f5_h: La recherche et le Centre de commande
-  f5_p: 'Appuyez sur <kbd>%shortcut%</kbd> pour ouvrir le Centre de commande en plein écran : recherche instantanée en texte intégral dans toutes les IA, filtres comme <code>provider:</code> et <code>has:code</code>, une palette de commandes (<kbd>Ctrl+K</kbd>), une chronologie, des surlignages et des notes, et un mode lecture.'
-  f6_h: Confidentiel dès la conception
-  f6_p: 'Tout fonctionne dans votre navigateur avec vos propres sessions connectées. Vos conversations restent sur votre appareil : aucun compte chez nous, aucun serveur, aucune mesure d’audience.'
+  feat_save: "Enregistrez en un clic sur toute IA"
+  feat_reader: "Code, tableaux et images conservés"
+  feat_pdf: "Des PDF qui gardent la mise en forme"
+  feat_formats: "Word, HTML, Markdown et plus"
+  feat_search: "Cherchez dans tous vos chats"
+  feat_folders: "Dossiers, étiquettes et favoris"
+  feat_highlights: "Surlignages et notes privées"
+  feat_studio: "Export Studio, à votre style"
+  feat_looks: "L'apparence propre à chaque IA"
+  feat_sync: "Synchronisez toutes les IA en un clic"
+  feat_grok: "Médias Grok et chats supprimés"
+  feat_ais: "Compatible avec 18 IA"
+  pro_label: "Fonction Pro"
   how_h2: Comment ça marche
   steps:
   - t: Installez l’extension
@@ -88,6 +85,20 @@ home:
     d: Utilisez les sites d’IA dans le même profil de navigateur, comme vous le faites déjà.
   - t: "Enregistrez vos chats"
     d: "Enregistrez le chat ouvert sur la page de n’importe quelle IA. Avec Pro, appuyez sur Tout synchroniser ; seuls les chats nouveaux et modifiés sont enregistrés."
+  help_eyebrow: "Aide"
+  help_h2: "Comment obtenir Pro"
+  help_p: "Regardez la visite de 30 secondes ou suivez les étapes ci-dessous."
+  help_steps:
+  - t: "Choisissez un forfait"
+    d: "Cliquez sur « Obtenir Pro » sur la page Tarifs, ou sur « Passer à Pro » dans l’extension."
+  - t: "Payez en toute sécurité"
+    d: "Le paiement Freemius s’ouvre. Payez par carte ou PayPal."
+  - t: "Copiez votre clé de licence"
+    d: "Elle s’affiche sur l’écran de remerciement et arrive par e-mail."
+  - t: "Activez-la"
+    d: "Dans l’extension, ouvrez Réglages, collez la clé et cliquez sur « Activer ». Pro est activé."
+  help_more: "Toujours bloqué ? Écrivez à <a href=\"mailto:%email%\">%email%</a>, nous vous aiderons."
+  help_video: "Vidéo : obtenir Pro et activer votre clé de licence"
   priv_eyebrow: Confidentialité
   priv_h2: Vos conversations ne nous parviennent jamais
   priv_p: '%name% lit vos conversations via votre navigateur, sur les sites d’IA auxquels vous êtes connecté, et les écrit uniquement dans votre propre dossier et dans le stockage local de votre navigateur. Lisez la <a href="%privacy_url%">Politique de confidentialité</a> complète (en anglais).'
