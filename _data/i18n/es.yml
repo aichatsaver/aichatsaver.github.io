@@ -26,7 +26,6 @@ stores:
   get_from: Consíguelo en
   soon: Muy pronto
   chrome_soon_aria: 'Chrome Web Store: muy pronto'
-  edge_soon_aria: 'Microsoft Edge Add-ons: muy pronto'
   version: Versión %version%
 meta:
   tagline: Guarda cada chat de IA en una carpeta de tu propio ordenador.
@@ -59,7 +58,7 @@ home:
   h1_b: guardado en tu ordenador
   h1_c: .
   lede: "%name% es una extensión del navegador que guarda tus chats de 18 asistentes de IA en una carpeta de tu propio ordenador. Guarda el chat que tienes abierto en un clic; con Pro, un clic sincroniza todas las IA. Nada sale de tu dispositivo."
-  hero_note: Para Google Chrome y Microsoft Edge.
+  hero_note: Para Google Chrome.
   ais_h2: Funciona con 18 IA
   ais_p: Inicia sesión en las IA que usas en tu navegador, como siempre. %name% guarda los chats de cada una en su propia carpeta.
   features_h2: Todo lo del chat, no solo el texto
@@ -92,7 +91,7 @@ home:
   how_h2: Cómo funciona
   steps:
   - t: Instala la extensión
-    d: Añádela a Chrome o Edge y fija el icono.
+    d: Añádela a Chrome y fija el icono.
   - t: Mantén la sesión iniciada en tus IA
     d: Usa los sitios de IA en el mismo perfil del navegador, como ya haces.
   - t: "Guarda tus chats"
