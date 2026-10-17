@@ -29,22 +29,25 @@ stores:
   version: Version %version%
 meta:
   tagline: Enregistrez chaque conversation d’IA dans un dossier sur votre propre ordinateur.
-  description: AI Chat Saver est une extension de navigateur qui enregistre vos conversations de 18 assistants d’IA dans un dossier local, avec mise à jour en un clic, recherche et exports fidèles aux sites d’origine.
+  description: "AI Chat Saver est une extension de navigateur qui enregistre vos chats de 18 assistants IA dans un dossier local, avec recherche et exports dans tous les formats. Pro ajoute la synchronisation de toutes les IA en un clic et des exports fidèles aux sites d’origine."
   pro_status: Pro — bientôt disponible
   free_features:
   - "Les 18 IA"
   - "Centre de commande pour voir vos chats"
-  - "8 enregistrements par jour"
+  - "Enregistrement manuel du chat ouvert"
+  - "8 nouveaux chats par jour"
   - "8 exports par jour, tout format"
+  - "Studio et surlignages"
   - "Médias de toutes les IA (sauf Grok)"
   - "Enregistrement dans Téléchargements"
   - "Petit logo en filigrane"
   pro_features:
   - "Tout ce qu’offre Free"
+  - "« Tout synchroniser » depuis le Centre de commande"
   - "Enregistrements et exports illimités"
   - "Sans filigrane"
   - "Apparence originale de l’IA"
-  - "Synchro, synchro auto et planifications"
+  - "Synchro auto et planifications"
   - "Médias Grok et récupération des chats supprimés"
   - "N’importe quel dossier"
   - "Une clé par appareil"
@@ -54,25 +57,25 @@ home:
   h1_a: 'Chaque conversation d’IA, '
   h1_b: enregistrée sur votre ordinateur
   h1_c: .
-  lede: '%name% est une extension de navigateur qui enregistre vos conversations de 18 assistants d’IA dans un dossier sur votre propre ordinateur. Un clic suffit pour tout mettre à jour, et rien ne quitte votre appareil.'
+  lede: "%name% est une extension de navigateur qui enregistre vos chats de 18 assistants IA dans un dossier sur votre propre ordinateur. Enregistrez le chat ouvert en un clic ; avec Pro, un clic synchronise toutes les IA. Rien ne quitte votre appareil."
   hero_note: Pour Google Chrome et Microsoft Edge.
   ais_h2: Compatible avec 18 IA
   ais_p: Connectez-vous comme d’habitude aux IA que vous utilisez dans votre navigateur. %name% enregistre les conversations de chacune dans son propre dossier.
   features_h2: Tout le contenu de la conversation, pas seulement le texte
   features_p: 'Vos conversations deviennent de vrais fichiers qui vous appartiennent : lisibles hors ligne, consultables et prêts à exporter.'
   f1_h: Un dossier local qui vous appartient
-  f1_p: Les conversations sont écrites dans <strong>Downloads/AI Chat Saver</strong>, un dossier par IA, en Markdown, HTML et JSON, avec les médias à côté. Ou connectez un dossier une seule fois et les fichiers y sont enregistrés directement, sans fenêtre « Enregistrer sous ».
-  f2_h: Mise à jour incrémentale en un clic
-  f2_p: 'Un seul bouton de mise à jour synchronise toutes les IA et n’enregistre que les conversations nouvelles ou modifiées : rien n’est téléchargé deux fois. Lancez-la depuis la fenêtre de l’extension, appuyez sur <kbd>Alt+Shift+U</kbd> ou planifiez-la toutes les heures, toutes les 6 heures, chaque jour ou chaque semaine.'
+  f1_p: "Les chats sont écrits dans <strong>Downloads/AI Chat Saver</strong>, un dossier par IA, en Markdown, HTML et JSON, avec les médias à côté. Avec Free, vous enregistrez le chat ouvert sur la page de chaque IA, jusqu’à 8 nouveaux chats par jour. Avec Pro, enregistrez sans limite et choisissez n’importe quel dossier, sans fenêtre « Enregistrer sous »."
+  f2_h: "Tout synchroniser en un clic (Pro)"
+  f2_p: "Avec Pro, <strong>Tout synchroniser</strong> enregistre toutes les IA d’un coup et <strong>Tout mettre à jour</strong> n’enregistre que les chats nouveaux ou modifiés, donc rien n’est téléchargé deux fois. Lancez-le depuis le Centre de commande ou la fenêtre de l’extension, appuyez sur <kbd>Alt+Shift+U</kbd>, ou planifiez-le toutes les heures, toutes les 6 heures, chaque jour ou chaque semaine."
   f3_h: Médias, réflexion, code et artefacts conservés
   f3_items:
-  - Images, vidéos et fichiers envoyés et générés
+  - "Images, vidéos et fichiers envoyés et générés (médias Grok avec Pro)"
   - Réflexion et raisonnement, appels d’outils, code exécuté par l’IA et son résultat
   - Sources web et citations
   - Artefacts de Claude et canevas de ChatGPT sous forme de vrais fichiers
   - Les messages supprimés sur le site restent, marqués « Supprimé sur le site » ; les invites modifiées sont conservées en versions
-  f4_h: Des exports fidèles à l’original
-  f4_p: Exportez en <strong>HTML, Markdown, PDF, Word (DOCX) et TXT</strong>, ainsi qu’en JSON, PNG et JPG. Chaque export peut garder l’apparence du site d’IA, en clair ou en sombre. Les PDF sont créés sur votre ordinateur avec un vrai texte sélectionnable, sans boîte d’impression.
+  f4_h: "Des exports dans tous les formats"
+  f4_p: "Exportez en <strong>HTML, Markdown, PDF, Word (DOCX) et TXT</strong>, ainsi qu’en JSON, PNG et JPG, avec tous les plans (Free : 8 exports par jour, avec un petit logo). Avec Pro, les exports gardent l’apparence propre à chaque site d’IA, en clair ou en sombre, sans logo. Les PDF sont créés sur votre ordinateur avec du vrai texte sélectionnable, sans boîte d’impression."
   f5_h: La recherche et le Centre de commande
   f5_p: 'Appuyez sur <kbd>%shortcut%</kbd> pour ouvrir le Centre de commande en plein écran : recherche instantanée en texte intégral dans toutes les IA, filtres comme <code>provider:</code> et <code>has:code</code>, une palette de commandes (<kbd>Ctrl+K</kbd>), une chronologie, des surlignages et des notes, et un mode lecture.'
   f6_h: Confidentiel dès la conception
@@ -83,8 +86,8 @@ home:
     d: Ajoutez-la à Chrome ou à Edge et épinglez l’icône.
   - t: Restez connecté à vos IA
     d: Utilisez les sites d’IA dans le même profil de navigateur, comme vous le faites déjà.
-  - t: Appuyez sur Mettre à jour
-    d: 'Vos conversations sont enregistrées dans votre dossier. Recommencez quand vous voulez : seules les conversations nouvelles et modifiées sont enregistrées.'
+  - t: "Enregistrez vos chats"
+    d: "Enregistrez le chat ouvert sur la page de n’importe quelle IA. Avec Pro, appuyez sur Tout synchroniser ; seuls les chats nouveaux et modifiés sont enregistrés."
   priv_eyebrow: Confidentialité
   priv_h2: Vos conversations ne nous parviennent jamais
   priv_p: '%name% lit vos conversations via votre navigateur, sur les sites d’IA auxquels vous êtes connecté, et les écrit uniquement dans votre propre dossier et dans le stockage local de votre navigateur. Lisez la <a href="%privacy_url%">Politique de confidentialité</a> complète (en anglais).'
@@ -103,6 +106,8 @@ home:
     a: Après chaque synchronisation, l’extension vérifie toutes les IA. Si un site a changé et que l’enregistrement ne fonctionne plus, vous recevez une notification et un bandeau, et une exécution défaillante n’écrase jamais une conversation correctement enregistrée.
   - q: Est-ce gratuit ?
     a: Oui, il existe un forfait Free. %pro_status%. Consultez les <a href="%pricing_url%">Tarifs</a>.
+  - q: "Puis-je être remboursé ?"
+    a: "Pro Annuel : remboursement intégral dans les 7 jours suivant votre premier paiement. Pro Mensuel n’est pas remboursable, mais vous pouvez résilier à tout moment et garder Pro jusqu’à la fin du mois payé."
   - q: J’ai perdu ma clé de licence ou mal saisi mon e-mail
     a: Écrivez à <a href="mailto:%email%">%email%</a> avec votre reçu de paiement. Nous corrigerons l’e-mail de votre licence et vous renverrons la clé.
   cta_h2: Gardez chaque conversation
