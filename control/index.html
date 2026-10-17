@@ -11,7 +11,7 @@
 <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg">
 <script src="/control/theme.js"></script>
 <link rel="stylesheet" href="/assets/css/style.css">
-<link rel="stylesheet" href="/control/admin.css?v=202610161158">
+<link rel="stylesheet" href="/control/admin.css?v=202610170554">
 </head>
 <body class="cp">
 <header class="cp-head">
@@ -94,6 +94,7 @@
         <p class="cp-group">Pages</p>
         <button role="tab" type="button" data-tab="home">Homepage</button>
         <button role="tab" type="button" data-tab="pricing">Pricing</button>
+        <button role="tab" type="button" data-tab="coupon">Coupon / Deal</button>
         <button role="tab" type="button" data-tab="faq">FAQ</button>
         <button role="tab" type="button" data-tab="ais">Supported AIs</button>
         <button role="tab" type="button" data-tab="policies">Policies</button>
@@ -193,6 +194,16 @@
       </div>
       <div class="cp-card"><h3 class="cp-h3first">Preview</h3><div class="cp-sitepreview" id="navPrev"></div></div>
       <div class="cp-savebar" data-sec="nav"></div>
+    </div>
+
+    <div class="cp-pane" data-pane="coupon" hidden>
+      <div class="cp-card">
+        <h2>Coupon / Deal</h2>
+        <p class="muted small">Type a coupon you created in Freemius (Marketing → Coupons). While it’s on and between the start and end, every buy button opens the Freemius checkout with the coupon already applied. Saved to <code>_data/coupon.yml</code>. Off by default.</p>
+        <div id="couponForm"></div>
+      </div>
+      <div class="cp-card"><h3 class="cp-h3first">Preview</h3><div class="cp-sitepreview" id="couponPrev"></div></div>
+      <div class="cp-savebar" data-sec="coupon"></div>
     </div>
 
     <div class="cp-pane" data-pane="announce" hidden>
@@ -416,6 +427,6 @@
 </template>
 
 <script src="/control/js-yaml.min.js"></script>
-<script src="/control/app.js?v=202610161158"></script>
+<script src="/control/app.js?v=202610170554"></script>
 </body>
 </html>
