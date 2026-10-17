@@ -41,7 +41,7 @@ When Pro is available, it is sold by **Freemius, Inc.** as our reseller and merc
 - **Plans:** Pro is offered as a **Monthly** plan and a **Yearly** plan, at the prices shown on the [Pricing](/pricing.html) page at the time you buy.
 - **Renewal:** subscriptions renew automatically at the end of each billing period until you cancel.
 - **Cancellation:** you can cancel at any time. Pro stays active until the end of the period you have already paid for, and you are not charged again.
-- **Refunds:** the **Yearly** plan has a **{{ s.refund_days }}-day refund**: a full refund if you ask within {{ s.refund_days }} days of your first yearly payment. **Monthly** payments are not refunded. The Free plan has nothing to refund. Full details are in the [Refund Policy](/refund.html).
+- **Refunds:** the **Yearly** plan has a **{{ s.refund_days }}-day refund**: a full refund if you ask within {{ s.refund_days }} days of your first yearly payment. **Monthly** payments are not refunded, but you can cancel at any time. The Free plan has nothing to refund. Full details are in the [Refund Policy](/refund.html).
 - **Price changes:** we may change prices for future billing periods. We will tell you before a change applies to your renewal, and you can cancel before it does.
 
 Statutory consumer rights, where they apply, are not affected.
