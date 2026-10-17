@@ -373,7 +373,7 @@
   }
   function touchesEnglish(ch) {
     return ch.some(function (c) {
-      if (c.path === "_data/i18n/en.yml" || ["_data/navigation.yml", "_data/home.yml", "_data/announcement.yml", "_data/seo.yml"].indexOf(c.path) > -1) return true;
+      if (c.path === "_data/i18n/en.yml" || ["_data/navigation.yml", "_data/home.yml", "_data/announcement.yml", "_data/seo.yml", "_data/coupon.yml"].indexOf(c.path) > -1) return true;
       return c.path === "_data/site.yml" && c.ops.some(function (o) { return o.t === "yset" && Object.keys(o.keys).some(function (k) { return ["tagline", "description", "pro_status", "free_features", "pro_features"].indexOf(k) > -1; }); });
     });
   }
@@ -1278,7 +1278,7 @@
       c.ops.forEach(function (op) {
         if (c.path === enPath && op.t === "ypath") op.sets.forEach(function (s) { deltas.push({ p: s[0], o: getAt(enOld, s[0]), n: s[1] }); });
         if (c.path === SITE_PATH && op.t === "yset") Object.keys(op.keys).forEach(function (k) { if (META_KEYS.indexOf(k) > -1 && !deepEq(op.keys[k], getAt(enOld, ["meta", k]))) deltas.push({ p: ["meta", k], o: getAt(enOld, ["meta", k]), n: op.keys[k], site: true }); });
-        if (op.t === "yset" && ["_data/navigation.yml", "_data/home.yml", "_data/announcement.yml", "_data/seo.yml"].indexOf(c.path) > -1) embedded.push({ path: c.path, op: op });
+        if (op.t === "yset" && ["_data/navigation.yml", "_data/home.yml", "_data/announcement.yml", "_data/seo.yml", "_data/coupon.yml"].indexOf(c.path) > -1) embedded.push({ path: c.path, op: op });
         // hand edits in another language clear the 'auto' badge of what was edited
         var m = /^_data\/i18n\/([\w-]+)\.yml$/.exec(c.path);
         if (m && m[1] !== "en" && op.t === "ypath") op.sets.forEach(function (s) {
@@ -1357,6 +1357,13 @@
     if (e.path === "_data/announcement.yml") {
       if ("text" in k && k.text !== old.text && k.text) { var av = await tx(k.text, old.text, old.texts, "announcement.text"); if (av) { k.texts = Object.assign({}, k.texts || old.texts || {}); k.texts[L] = av; } }
       if ("link_text" in k && k.link_text !== old.link_text && k.link_text) { var lv = await tx(k.link_text, old.link_text, old.link_texts, "announcement.link_text"); if (lv) { k.link_texts = Object.assign({}, k.link_texts || old.link_texts || {}); k.link_texts[L] = lv; } }
+    }
+    if (e.path === "_data/coupon.yml") for (var cm of [["deal_text", "deal_texts"], ["button_text", "button_texts"], ["note_text", "note_texts"]]) {
+      if (!(cm[0] in k) || !k[cm[0]] || k[cm[0]] === old[cm[0]]) continue;
+      var cmap = k[cm[1]] || {};
+      if (cmap[L]) continue; // typed by hand for this language in this edit
+      var cv = await tx(k[cm[0]], old[cm[0]], null, "coupon." + cm[0]);
+      if (cv) { k[cm[1]] = Object.assign({}, cmap); k[cm[1]][L] = cv; }
     }
     if (e.path === "_data/seo.yml" && k.pages) for (var pg of ["home", "pricing"]) {
       var np = k.pages[pg], op = (old.pages || {})[pg] || {}; if (!np || !np.en) continue;
@@ -2233,6 +2240,186 @@
     ])]));
   }
 
+  /* ---------- Coupon / Deal (_data/coupon.yml) ----------
+     The site pre-applies a Freemius coupon code (?coupon=) on the checkout links of the chosen plans, only between
+     the start and end (checked in the visitor's browser). Discount and redemption limit live in Freemius. */
+  var COUPON_PATH = "_data/coupon.yml";
+  var CP_CYCLES = [["yearly", "Pro Yearly"], ["monthly", "Pro Monthly"], ["lifetime", "Lifetime"]];
+  var CP_BILLING = { yearly: "annual", monthly: "monthly", lifetime: "lifetime" };
+  var CP_TEXT_MAPS = [["deal_text", "deal_texts"], ["button_text", "button_texts"], ["note_text", "note_texts"]];
+  var CP_DEFAULT = { enabled: false, code: "", cycles: ["yearly", "monthly", "lifetime"], deal_text: "", deal_texts: {}, starts: "", ends: "", limit: "", lifetime_card: false, banner: true, banner_cycle: "yearly", color: "#c2410c", text_color: "#ffffff", button_text: "Get the deal", button_texts: {}, note_text: "Coupon %code% applied at checkout", note_texts: {} };
+  var cp = { orig: null, cur: null, pz: null };
+  function cpCodeOk(c) { return /^[A-Za-z0-9_-]{1,40}$/.test(String(c || "")); }
+  function cpTime(v) { if (!v) return null; var n = Date.parse(v); return isNaN(n) ? NaN : n; }
+  // Same rule the public page uses: on, valid code, now >= starts (if set) and now < ends (if set).
+  function cpStatus(c, now) {
+    now = now == null ? Date.now() : now;
+    if (!c || !c.enabled) return { k: "off", t: "Off — the site doesn’t apply a coupon" };
+    if (!cpCodeOk(c.code)) return { k: "bad", t: "Not applied — the code is missing or not valid" };
+    var s = cpTime(c.starts), e = cpTime(c.ends);
+    if (s !== null && isNaN(s) || e !== null && isNaN(e)) return { k: "bad", t: "Not applied — a date isn’t valid" };
+    if (s !== null && now < s) return { k: "soon", t: "Scheduled — starts " + new Date(s).toLocaleString() };
+    if (e !== null && now >= e) return { k: "ended", t: "Ended " + new Date(e).toLocaleString() + " — the site no longer applies it" };
+    return { k: "live", t: "Live — buy buttons open the checkout with " + c.code + (e !== null ? " until " + new Date(e).toLocaleString() : "") };
+  }
+  function tzLabel(d) { var o = -(d || new Date()).getTimezoneOffset(), a = Math.abs(o); return "UTC" + (o < 0 ? "−" : "+") + String(Math.floor(a / 60)).padStart(2, "0") + ":" + String(a % 60).padStart(2, "0"); }
+  function isoToLocalInput(v) {
+    var n = cpTime(v); if (n === null || isNaN(n)) return "";
+    var d = new Date(n), p = function (x) { return String(x).padStart(2, "0"); };
+    return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate()) + "T" + p(d.getHours()) + ":" + p(d.getMinutes());
+  }
+  function localInputToIso(v) {
+    if (!v) return "";
+    var d = new Date(v); if (isNaN(d.getTime())) return "";
+    var o = -d.getTimezoneOffset(), a = Math.abs(o), p = function (x) { return String(x).padStart(2, "0"); };
+    return v.slice(0, 16) + (o < 0 ? "-" : "+") + p(Math.floor(a / 60)) + ":" + p(a % 60);
+  }
+  function cpCheckoutUrl(base, code, cycle) {
+    try { var u = new URL(base); u.searchParams.set("coupon", code); u.searchParams.set("billing_cycle", CP_BILLING[cycle]); return u.toString(); } catch (e) { return ""; }
+  }
+  var secCoupon = defineSection("coupon", {
+    label: "Coupon / Deal", files: function () { return [COUPON_PATH, "_data/pricing.yml"]; }, page: function () { return "/pricing.html"; }, history: function () { return COUPON_PATH; },
+    load: async function (force) {
+      await loadLangs(force);
+      var raw = (await effYaml(COUPON_PATH, force)) || {};
+      cp.orig = Object.assign({}, clone(CP_DEFAULT), raw);
+      if (!Array.isArray(cp.orig.cycles)) cp.orig.cycles = [];
+      CP_TEXT_MAPS.forEach(function (m) { if (!cp.orig[m[1]] || typeof cp.orig[m[1]] !== "object") cp.orig[m[1]] = {}; });
+      ["code", "deal_text", "starts", "ends", "button_text", "note_text"].forEach(function (k) { cp.orig[k] = cp.orig[k] == null ? "" : String(cp.orig[k]); });
+      cp.orig.limit = cp.orig.limit == null ? "" : String(cp.orig.limit);
+      cp.cur = clone(cp.orig);
+      cp.pz = Object.assign({}, PZ_DEFAULT, (await effYaml("_data/pricing.yml", force)) || {});
+      renderCoupon(); couponPreview();
+    },
+    validate: function () {
+      var c = cp.cur, code = String(c.code || "").trim();
+      if (c.enabled && !code) return "Type the coupon code you created in Freemius, or switch the coupon off.";
+      if (code && !cpCodeOk(code)) return "The coupon code can only have letters, numbers, - and _ (up to 40).";
+      if (c.enabled && !c.cycles.length) return "Pick at least one plan the coupon applies to.";
+      var s = cpTime(c.starts), e = cpTime(c.ends);
+      if (s !== null && isNaN(s)) return "The start date isn’t valid.";
+      if (e !== null && isNaN(e)) return "The end date isn’t valid.";
+      if (s !== null && e !== null && e <= s) return "The end must be after the start.";
+      if (c.enabled && e !== null && e <= Date.now()) return "The end date is already past. Pick a later end, clear it, or switch the coupon off.";
+      if (String(c.limit || "").trim() && !/^[1-9][0-9]{0,6}$/.test(String(c.limit).trim())) return "The limit must be a whole number, such as 100 (or leave it empty).";
+      if (String(c.deal_text || "").length > 220) return "Keep the deal text under 220 characters.";
+      if (c.enabled && c.banner && !String(c.deal_text || "").trim()) return "Write the deal text for the top banner, or switch the banner off.";
+      if (c.enabled && c.banner && c.cycles.indexOf(c.banner_cycle) < 0) return "The banner button must open one of the plans the coupon applies to.";
+      if (c.enabled && c.lifetime_card && c.cycles.indexOf("lifetime") < 0) return "The deal-only Lifetime card needs “Lifetime” ticked under “Applies to”.";
+      var bad = CP_TEXT_MAPS.map(function (m) { return [c[m[0]]].concat(Object.keys(c[m[1]] || {}).map(function (l) { return c[m[1]][l]; })); }).reduce(function (a, b) { return a.concat(b); }, []).filter(function (v) { return unsafeHtml(v); })[0];
+      if (bad != null) return "The texts can’t contain scripts or HTML tags.";
+      if (!/^#[0-9a-f]{6}$/i.test(c.color)) return "Pick a banner colour.";
+      return "";
+    },
+    changes: function () {
+      var c = clone(cp.cur), o = cp.orig, keys = {};
+      ["code", "deal_text", "button_text", "note_text", "limit", "starts", "ends"].forEach(function (k) { c[k] = String(c[k] == null ? "" : c[k]).trim(); });
+      c.cycles = CP_CYCLES.map(function (x) { return x[0]; }).filter(function (k) { return c.cycles.indexOf(k) > -1; });
+      c.text_color = contrastText(c.color);
+      CP_TEXT_MAPS.forEach(function (m) {
+        var map = {}, oldMap = o[m[1]] || {}, enChanged = c[m[0]] !== o[m[0]];
+        Object.keys(c[m[1]] || {}).forEach(function (l) {
+          var v = String(c[m[1]][l] || "").trim(); if (!v) return;
+          // English changed: drop old translations (they'd describe the old deal) unless typed by hand in this edit.
+          if (enChanged && v === oldMap[l]) return;
+          map[l] = v;
+        });
+        c[m[1]] = map;
+      });
+      Object.keys(CP_DEFAULT).forEach(function (k) { if (!deepEq(c[k], o[k])) keys[k] = c[k]; });
+      return Object.keys(keys).length ? [{ path: COUPON_PATH, ops: [{ t: "yset", keys: keys }] }] : [];
+    }
+  });
+  function cpChanged() { secCoupon.check(); couponPreviewSoon(); }
+  function renderCoupon() {
+    var b = $("couponForm"), c = cp.cur, z = cp.pz; b.textContent = "";
+    var g = el("div", { class: "cp-form" });
+    var on = checkInput(c.enabled, function (v) { c.enabled = v; cpChanged(); }, "Apply a coupon on the website"); on.querySelector("input").id = "cpOn";
+    g.appendChild(el("div", { class: "cp-field wide" }, [on, el("span", { class: "cp-help-text", id: "cpStatus" })]));
+    g.appendChild(el("div", { class: "cp-banner warn wide", id: "cpFreemiusNote" }, [el("span", {}, [
+      el("strong", { text: "Set the discount and the real limit in Freemius. " }),
+      "Create the coupon in Freemius → Marketing → Coupons: the discount amount, the redemption limit (for example 100 uses), its plans and its own expiry are set there. The website can’t count how many people used a coupon — counting needs the Freemius secret key, which must never be on a public website. When Freemius’s limit is reached, the checkout simply refuses the code."
+    ])]));
+    if (!z.launched) g.appendChild(el("div", { class: "cp-banner wide", id: "cpNotLaunched" }, [el("span", { text: "Pro isn’t on sale yet (Pricing → “Pro is on sale” is off), so the buy buttons are inactive. The coupon starts working on them as soon as you launch." })]));
+    g.appendChild(fieldRow("Coupon code", textInput(c.code, function (v) { c.code = v; cpChanged(); }, { id: "cpCode", maxlength: "40", spellcheck: "false", autocomplete: "off", placeholder: "e.g. LAUNCH20" }), "Exactly as you created it in Freemius. Letters, numbers, - and _ only."));
+    var cyc = el("div", { class: "cp-checks", id: "cpCycles" });
+    CP_CYCLES.forEach(function (x) {
+      var lab = checkInput(c.cycles.indexOf(x[0]) > -1, function (v) { var i = c.cycles.indexOf(x[0]); if (v && i < 0) c.cycles.push(x[0]); if (!v && i > -1) c.cycles.splice(i, 1); renderBannerCycle(); cpChanged(); }, x[1]);
+      lab.querySelector("input").id = "cpCyc_" + x[0]; cyc.appendChild(lab);
+    });
+    g.appendChild(el("div", { class: "cp-field" }, [el("span", { class: "cp-label", text: "Applies to" }), cyc, el("span", { class: "cp-help-text", text: "Buy buttons of these plans open the checkout with the code. Lifetime is used by the deal-only Lifetime card or a permanent Lifetime card." })]));
+    g.appendChild(fieldRow("Deal text (optional)", textInput(c.deal_text, function (v) { c.deal_text = v; cpChanged(); }, { id: "cpText", maxlength: "220", placeholder: "Launch deal: Lifetime Pro $20, first %limit% people" }), "Shown in the top banner. %limit% = the limit below, %code% = the code. With auto-translate on, it’s translated into the other languages when you save.", true));
+    g.appendChild(fieldRow("Limit shown in the text (optional)", textInput(c.limit, function (v) { c.limit = v; cpChanged(); }, { id: "cpLimit", inputmode: "numeric", maxlength: "7", placeholder: "e.g. 100" }), "Display only (fills %limit%). The real limit is the one you set in Freemius."));
+    var tz = tzLabel();
+    var st = el("input", { type: "datetime-local", id: "cpStart" }); st.value = isoToLocalInput(c.starts);
+    st.addEventListener("input", function () { c.starts = localInputToIso(st.value); cpChanged(); });
+    var en = el("input", { type: "datetime-local", id: "cpEnd" }); en.value = isoToLocalInput(c.ends);
+    en.addEventListener("input", function () { c.ends = localInputToIso(en.value); cpChanged(); });
+    g.appendChild(fieldRow("Starts (optional)", st, "Your time zone (" + tz + "). Empty = from now."));
+    g.appendChild(fieldRow("Ends (optional)", en, "Your time zone (" + tz + "). After this, visitors’ browsers stop applying and showing the coupon by themselves. Set the same expiry in Freemius too."));
+    var lt = checkInput(c.lifetime_card, function (v) { c.lifetime_card = v; cpChanged(); }, "Show a Lifetime card on the pricing page only while the deal runs"); lt.querySelector("input").id = "cpLifetime";
+    var ltHelp = z.lifetime_enabled ? "A permanent Lifetime card is already on (Pricing), so this has no effect." : "Uses the Lifetime price and checkout link from Pricing" + ((/^\s*(tbd)?\s*$/i.test(String(z.price_lifetime || "")) || !String(z.checkout_lifetime || "").trim()) ? " — set them there first (price is " + (z.price_lifetime || "empty") + ", link " + (String(z.checkout_lifetime || "").trim() ? "set" : "empty") + ")." : ".");
+    g.appendChild(el("div", { class: "cp-field wide" }, [el("span", { class: "cp-label", text: "Lifetime" }), lt, el("span", { class: "cp-help-text", id: "cpLifetimeHelp", text: ltHelp })]));
+    var bn = checkInput(c.banner, function (v) { c.banner = v; cpChanged(); }, "Show the deal text in a banner at the top of every page, with a button to the checkout"); bn.querySelector("input").id = "cpBanner";
+    g.appendChild(el("div", { class: "cp-field wide" }, [el("span", { class: "cp-label", text: "Top banner" }), bn, el("span", { class: "cp-help-text", text: "Hidden when the coupon is off, not started or ended. While it shows, it replaces the normal announcement bar. The button appears once Pro is on sale." })]));
+    var bcWrap = el("span", { id: "cpBannerCycleWrap" });
+    g.appendChild(fieldRow("Banner button opens", bcWrap));
+    g.appendChild(fieldRow("Banner button text", textInput(c.button_text, function (v) { c.button_text = v; cpChanged(); }, { id: "cpBtnText", maxlength: "40" })));
+    var sw = el("div", { class: "cp-swatches" });
+    ANN_COLORS.forEach(function (k) { var bt = el("button", { type: "button", class: "cp-swatch", title: k[1], "aria-label": k[1], "aria-pressed": c.color.toLowerCase() === k[0] ? "true" : "false", onclick: function () { c.color = k[0]; col.value = k[0]; [].forEach.call(sw.querySelectorAll(".cp-swatch"), function (x) { x.setAttribute("aria-pressed", "false"); }); bt.setAttribute("aria-pressed", "true"); cpChanged(); } }); bt.style.setProperty("--sw", k[0]); sw.appendChild(bt); });
+    var col = el("input", { type: "color", id: "cpColor", "aria-label": "Custom colour" }); col.value = c.color; col.addEventListener("input", function () { c.color = col.value; [].forEach.call(sw.querySelectorAll(".cp-swatch"), function (x) { x.setAttribute("aria-pressed", "false"); }); cpChanged(); });
+    sw.appendChild(col);
+    g.appendChild(fieldRow("Banner colour", sw, "The text colour is picked automatically for contrast."));
+    g.appendChild(fieldRow("Note under the price", textInput(c.note_text, function (v) { c.note_text = v; cpChanged(); }, { id: "cpNote", maxlength: "80" }), "Shown under the price of each plan the coupon applies to. %code% = the code.", true));
+    var det = el("details", { class: "cp-more wide" }, [el("summary", { text: "Texts in other languages (optional)" })]);
+    det.appendChild(el("p", { class: "muted small", text: "Empty = translated automatically when you save the English (or the English is shown)." }));
+    LANGS.filter(function (l) { return l.code !== "en"; }).forEach(function (l) {
+      CP_TEXT_MAPS.forEach(function (m) {
+        var lab = { deal_text: "Deal text", button_text: "Button", note_text: "Note" }[m[0]];
+        det.appendChild(fieldRow(l.name + " (" + l.code + ") — " + lab, textInput((c[m[1]] || {})[l.code], function (v) { c[m[1]] = c[m[1]] || {}; c[m[1]][l.code] = v; cpChanged(); }, { id: "cp_" + m[1] + "_" + l.code, dir: l.dir || null, lang: l.hreflang, placeholder: "Empty = automatic" })));
+      });
+    });
+    g.appendChild(det);
+    b.appendChild(g);
+    renderBannerCycle();
+  }
+  function renderBannerCycle() {
+    var w = $("cpBannerCycleWrap"), c = cp.cur; if (!w) return; w.textContent = "";
+    var opts = CP_CYCLES.filter(function (x) { return c.cycles.indexOf(x[0]) > -1; });
+    if (!opts.length) { w.appendChild(el("span", { class: "muted small", text: "Tick a plan under “Applies to” first." })); return; }
+    if (c.cycles.indexOf(c.banner_cycle) < 0) c.banner_cycle = opts[0][0];
+    w.appendChild(selectInput(c.banner_cycle, opts.map(function (x) { return [x[0], x[1] + " checkout"]; }), function (v) { c.banner_cycle = v; cpChanged(); }, { id: "cpBannerCycle" }));
+  }
+  var couponPreviewSoon = debounce(function () { couponPreview(); }, 80);
+  function couponPreview() {
+    var c = cp.cur, z = cp.pz, p = $("couponPrev"); if (!p || !c) return; p.textContent = "";
+    var stt = cpStatus(c), sEl = $("cpStatus");
+    if (sEl) { sEl.textContent = stt.t; sEl.setAttribute("data-k", stt.k); }
+    var code = String(c.code || "").trim();
+    if (stt.k !== "live") p.appendChild(el("p", { class: "muted small", text: "Visitors don’t see this right now (" + stt.t.split(" — ")[0].toLowerCase() + "). This is how it looks while the deal runs:" }));
+    var deal = String(c.deal_text || "").replace(/%code%/g, code || "CODE").replace(/%limit%/g, String(c.limit || "").trim());
+    var root = el("div", { class: "cp-prev-root" });
+    if (c.banner && deal) {
+      var bar = el("div", { class: "announce deal" }, [el("div", { class: "wrap announce-row" }, [
+        el("p", {}, [deal, z.launched ? el("a", { href: "#", class: "deal-btn", text: c.button_text || "Get the deal", onclick: function (e) { e.preventDefault(); } }) : null]),
+        el("button", { type: "button", class: "announce-x", "aria-label": "Dismiss" }, ["✕"])
+      ])]);
+      bar.style.setProperty("--ann-bg", c.color); bar.style.setProperty("--ann-fg", contrastText(c.color));
+      root.appendChild(bar);
+    }
+    var note = String(c.note_text || "").replace(/%code%/g, code || "CODE");
+    var list = el("ul", { class: "cp-cplist", id: "cpUrls" });
+    CP_CYCLES.forEach(function (x) {
+      if (c.cycles.indexOf(x[0]) < 0) return;
+      var base = String(z["checkout_" + x[0]] || "").trim();
+      list.appendChild(el("li", {}, [el("strong", { text: x[1] + ": " }), base ? el("code", { text: cpCheckoutUrl(base, code || "CODE", x[0]) }) : el("span", { class: "muted", text: "no checkout link in Pricing yet" })]));
+    });
+    root.appendChild(el("p", { class: "coupon-note", text: note }));
+    p.appendChild(root);
+    p.appendChild(el("p", { class: "muted small", text: "Checkout links while the deal runs:" }));
+    p.appendChild(list);
+  }
+
   /* =====================================================================
      Tools: Dashboard, Drafts, Media library, History & undo, Backup, Search
      ===================================================================== */
@@ -2292,7 +2479,7 @@
   }
 
   /* ---------- Dashboard ---------- */
-  var SECTION_LINKS = [["home", "Homepage"], ["pricing", "Pricing"], ["faq", "FAQ"], ["ais", "Supported AIs"], ["nav", "Navigation"], ["announce", "Announcement"], ["stores", "Store links"], ["seo", "SEO"], ["langs", "Languages"], ["i18n", "Translations"], ["media", "Media"], ["history", "History"], ["backup", "Backup"]];
+  var SECTION_LINKS = [["home", "Homepage"], ["pricing", "Pricing"], ["coupon", "Coupon"], ["faq", "FAQ"], ["ais", "Supported AIs"], ["nav", "Navigation"], ["announce", "Announcement"], ["stores", "Store links"], ["seo", "SEO"], ["langs", "Languages"], ["i18n", "Translations"], ["media", "Media"], ["history", "History"], ["backup", "Backup"]];
   async function loadDash() {
     var top = $("dashTop"), list = $("dashChecklist"), q = $("dashQuick");
     q.textContent = "";
@@ -2315,6 +2502,8 @@
       var cells = [];
       cells.push(el("div", { class: "cp-dcell" }, [el("div", { class: "cp-label", text: "Site" }), el("span", { class: "cp-pill " + (m.enabled ? "errored" : "built"), text: m.enabled ? "Maintenance mode ON" : "Online" })]));
       cells.push(el("div", { class: "cp-dcell" }, [el("div", { class: "cp-label", text: "Announcement bar" }), el("span", { class: "cp-pill " + (a.enabled ? "queued" : ""), text: a.enabled ? "Showing" : "Off" })]));
+      var cpd = (await effYaml(COUPON_PATH)) || {}, cps = cpStatus(cpd);
+      cells.push(el("div", { class: "cp-dcell", id: "dashCoupon" }, [el("div", { class: "cp-label", text: "Coupon" }), el("button", { type: "button", class: "cp-link cp-pill " + ({ live: "built", soon: "queued", ended: "", bad: "errored", off: "" }[cps.k]), onclick: function () { selectTab("coupon"); } }, [{ live: "Live: " + cpd.code, soon: "Scheduled: " + cpd.code, ended: "Ended", bad: "Not valid", off: "Off" }[cps.k]])]));
       cells.push(el("div", { class: "cp-dcell" }, [el("div", { class: "cp-label", text: "Drafts waiting" }), el("button", { type: "button", class: "cp-link", onclick: function () { selectTab("drafts"); } }, [String(draftCount())])]));
       cells.push(el("div", { class: "cp-dcell" }, [el("div", { class: "cp-label", text: "Auto-translate" }), el("span", { class: "muted", text: !autoOn() ? "Off" : trSupported() ? "On" : "On, but this browser can’t translate (needs Chrome 138+)" })]));
       var bc = el("div", { class: "cp-dcell", id: "dashBuild" }, [el("div", { class: "cp-label", text: "Last site build" }), el("span", { class: "muted", text: "…" })]);
@@ -2517,7 +2706,7 @@
   });
 
   /* ---------- Global search ---------- */
-  var SEARCH_ROUTE = { "_data/site.yml": "site", "_data/home.yml": "home", "_data/ais.yml": "ais", "_data/navigation.yml": "nav", "_data/pricing.yml": "pricing", "_data/announcement.yml": "announce", "_data/seo.yml": "seo", "_data/maintenance.yml": "maint", "_data/languages.yml": "langs" };
+  var SEARCH_ROUTE = { "_data/site.yml": "site", "_data/home.yml": "home", "_data/ais.yml": "ais", "_data/navigation.yml": "nav", "_data/pricing.yml": "pricing", "_data/coupon.yml": "coupon", "_data/announcement.yml": "announce", "_data/seo.yml": "seo", "_data/maintenance.yml": "maint", "_data/languages.yml": "langs" };
   var searchSeq = 0;
   async function runSearch(q) {
     var seq = ++searchSeq, box = $("searchResults"), info = $("searchInfo");
@@ -2631,7 +2820,7 @@
 
   var LOADERS = {
     dash: loadDash, drafts: loadDrafts,
-    home: function () { return secHome.reload(false); }, pricing: function () { return secPricing.reload(false); }, faq: function () { return secFaq.reload(false); }, ais: function () { return secAis.reload(false); },
+    home: function () { return secHome.reload(false); }, pricing: function () { return secPricing.reload(false); }, coupon: function () { return secCoupon.reload(false); }, faq: function () { return secFaq.reload(false); }, ais: function () { return secAis.reload(false); },
     policies: function () { return secPol.reload(false); }, nav: function () { return secNav.reload(false); }, announce: function () { return secAnn.reload(false); },
     stores: function () { return secStores.reload(false); }, seo: function () { return secSeo.reload(false); }, langs: function () { return secLangs.reload(false); },
     i18n: function () { return secI18n.reload(false); }, maint: function () { return secMaint.reload(false); }, site: function () { return secSite.reload(false); },
