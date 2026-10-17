@@ -120,7 +120,7 @@ pricing:
   free_h: Free
   free_sub: 保存对话所需的一切。
   forever: 永久免费
-  get_free: 免费获取
+  get_free: "免费"
   yearly_h: Pro 年付
   yearly_sub: 每年付费一次。
   per_year: / 年
@@ -137,6 +137,7 @@ pricing:
   yearly_badge: ''
   monthly_badge: ''
   lifetime_badge: ''
+  yearly_save: "节省 %pct%"
   howpro_h2: Pro 如何运作
   howpro_p: 无需创建账户，也无需密码。你的许可证密钥就是你的登录凭证。
   howpro_steps:
