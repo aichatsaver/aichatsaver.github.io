@@ -26,7 +26,6 @@ stores:
   get_from: Get it from
   soon: Coming soon
   chrome_soon_aria: 'Chrome Web Store: coming soon'
-  edge_soon_aria: 'Microsoft Edge Add-ons: coming soon'
   version: Version %version%
 meta:
   tagline: Save every AI chat to a folder on your own computer.
@@ -59,7 +58,7 @@ home:
   h1_b: saved on your computer
   h1_c: .
   lede: "%name% is a browser extension that saves your chats from 18 AI assistants into a folder on your own computer. Save the chat you have open in one click; with Pro, one click syncs every AI. Nothing leaves your device."
-  hero_note: For Google Chrome and Microsoft Edge.
+  hero_note: For Google Chrome.
   ais_h2: Works with 18 AIs
   ais_p: Sign in to the AIs you use in your browser as usual. %name% saves the chats from each one into its own folder.
   features_h2: Everything in the chat, not just the text
@@ -92,7 +91,7 @@ home:
   how_h2: How it works
   steps:
   - t: Install the extension
-    d: Add it to Chrome or Edge and pin the icon.
+    d: Add it to Chrome and pin the icon.
   - t: Stay signed in to your AIs
     d: Use the AI sites in the same browser profile, as you already do.
   - t: "Save your chats"
