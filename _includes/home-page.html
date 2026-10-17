@@ -18,6 +18,6 @@
 {%- assign hmod = hsi | modulo: 2 -%}{%- assign hsi = hsi | plus: 1 -%}
 {%- if hmod == 0 -%}{%- assign halt = true -%}{%- else -%}{%- assign halt = false -%}{%- endif %}
 
-{% case sec.id %}{% when "ais" %}{% include home/ais.html %}{% when "features" %}{% include home/features.html %}{% when "how" %}{% include home/how.html %}{% when "privacy" %}{% include home/privacy.html %}{% when "faq" %}{% include home/faq.html %}{% when "cta" %}{% include home/cta.html %}{% endcase %}
+{% case sec.id %}{% when "ais" %}{% include home/ais.html %}{% when "features" %}{% include home/features.html %}{% when "how" %}{% include home/how.html %}{% when "privacy" %}{% include home/privacy.html %}{% when "faq" %}{% include home/faq.html %}{% when "help" %}{% include home/help.html %}{% when "cta" %}{% include home/cta.html %}{% endcase %}
 {%- endunless -%}
 {%- endfor %}
