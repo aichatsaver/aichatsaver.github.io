@@ -26,7 +26,6 @@ stores:
   get_from: Erhältlich bei
   soon: Demnächst
   chrome_soon_aria: 'Chrome Web Store: demnächst'
-  edge_soon_aria: 'Microsoft Edge Add-ons: demnächst'
   version: Version %version%
 meta:
   tagline: Speichere jeden KI-Chat in einem Ordner auf deinem eigenen Computer.
@@ -59,7 +58,7 @@ home:
   h1_b: gespeichert auf deinem Computer
   h1_c: .
   lede: "%name% ist eine Browser-Erweiterung, die deine Chats aus 18 KI-Assistenten in einem Ordner auf deinem eigenen Computer speichert. Speichere den geöffneten Chat mit einem Klick; mit Pro synchronisiert ein Klick alle KIs. Nichts verlässt dein Gerät."
-  hero_note: Für Google Chrome und Microsoft Edge.
+  hero_note: Für Google Chrome.
   ais_h2: Funktioniert mit 18 KIs
   ais_p: Melde dich wie gewohnt in deinem Browser bei den KIs an, die du nutzt. %name% speichert die Chats jeder KI in einem eigenen Ordner.
   features_h2: Alles aus dem Chat, nicht nur der Text
@@ -92,7 +91,7 @@ home:
   how_h2: So funktioniert’s
   steps:
   - t: Erweiterung installieren
-    d: Füge sie zu Chrome oder Edge hinzu und hefte das Symbol an.
+    d: Füge sie zu Chrome hinzu und hefte das Symbol an.
   - t: Bei deinen KIs angemeldet bleiben
     d: Nutze die KI-Seiten im selben Browserprofil, so wie bisher.
   - t: "Chats speichern"
