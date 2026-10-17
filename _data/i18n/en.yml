@@ -9,6 +9,7 @@ nav:
   terms_of_service: Terms of Service
   refund_policy: Refund Policy
   contact: Contact
+  help: "Help"
 ui:
   skip: Skip to content
   theme_dark: Switch to dark mode
@@ -63,23 +64,19 @@ home:
   ais_p: Sign in to the AIs you use in your browser as usual. %name% saves the chats from each one into its own folder.
   features_h2: Everything in the chat, not just the text
   features_p: 'Your chats become real files you own: readable offline, searchable, and ready to export.'
-  f1_h: A local folder you own
-  f1_p: "Chats are written to <strong>Downloads/AI Chat Saver</strong>, one folder per AI, as Markdown, HTML and JSON, with media alongside. On Free you save the chat you have open on each AI’s page, up to 8 new chats a day. With Pro, save without limits and choose any folder, with no Save-As boxes."
-  f2_h: "Sync everything in one click (Pro)"
-  f2_p: "With Pro, <strong>Sync everything</strong> saves every AI at once and <strong>Update everything</strong> saves only chats that are new or changed, so nothing is downloaded twice. Run it from the Command Center or the popup, press <kbd>Alt+Shift+U</kbd>, or schedule it hourly, every 6 hours, daily or weekly."
-  f3_h: Media, thinking, code and artifacts kept
-  f3_items:
-  - "Uploaded and generated images, videos and files (Grok media with Pro)"
-  - Thinking and reasoning, tool calls, code the AI ran and its output
-  - Web sources and citations
-  - Claude artifacts and ChatGPT canvases as real files
-  - Messages deleted on the site stay, marked “Deleted on site”; edited prompts are kept as versions
-  f4_h: "Exports in every format"
-  f4_p: "Export to <strong>HTML, Markdown, PDF, Word (DOCX) and TXT</strong>, plus JSON, PNG and JPG, on every plan (Free: 8 exports a day, with a small logo). With Pro, exports keep each AI site’s own look, in light or dark, with no logo. PDFs are made on your computer with real, selectable text, with no print dialog."
-  f5_h: Search and the Command Center
-  f5_p: 'Press <kbd>%shortcut%</kbd> to open the full-screen Command Center: instant full-text search across every AI, filters like <code>provider:</code> and <code>has:code</code>, a command palette (<kbd>Ctrl+K</kbd>), a Timeline, highlights and notes, and Reading mode.'
-  f6_h: Private by design
-  f6_p: 'Everything runs in your browser using your own signed-in sessions. Your chats stay on your device: no account with us, no servers, no analytics.'
+  feat_save: "One-click save on any AI"
+  feat_reader: "Code, tables and images kept"
+  feat_pdf: "PDFs that keep every format"
+  feat_formats: "Word, HTML, Markdown and more"
+  feat_search: "Search every chat instantly"
+  feat_folders: "Folders, tags and stars"
+  feat_highlights: "Highlights and private notes"
+  feat_studio: "Export Studio, your style"
+  feat_looks: "Each AI's own look"
+  feat_sync: "Sync every AI in one click"
+  feat_grok: "Grok media and deleted chats"
+  feat_ais: "Works with 18 AIs"
+  pro_label: "Pro feature"
   how_h2: How it works
   steps:
   - t: Install the extension
@@ -88,6 +85,20 @@ home:
     d: Use the AI sites in the same browser profile, as you already do.
   - t: "Save your chats"
     d: "Save the chat you have open on any AI’s page. With Pro, press Sync everything; only new and changed chats are saved."
+  help_eyebrow: "Help"
+  help_h2: "How to get Pro"
+  help_p: "Watch the 30-second tour, or follow the steps below."
+  help_steps:
+  - t: "Choose a plan"
+    d: "Press Get Pro on the Pricing page, or Upgrade inside the extension."
+  - t: "Pay securely"
+    d: "The Freemius checkout opens. Pay by card or PayPal."
+  - t: "Copy your licence key"
+    d: "It shows on the thank-you screen and arrives by email."
+  - t: "Activate it"
+    d: "In the extension, open Settings, paste the key and press Activate. Pro is on."
+  help_more: "Still stuck? Email <a href=\"mailto:%email%\">%email%</a> and we'll help."
+  help_video: "Video: getting Pro and activating your licence key"
   priv_eyebrow: Privacy
   priv_h2: Your chats never come to us
   priv_p: '%name% reads your chats through your browser from the AI sites you are signed in to, and writes them only to your own folder and your browser’s local storage. Read the full <a href="%privacy_url%">Privacy Policy</a>.'
