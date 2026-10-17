@@ -1,44 +1,51 @@
+{%- comment -%} Feature showcase: one short title + a looping silent demo video (its screenshot is the poster) per feature.
+Titles are home.feat_<id> in _data/i18n/<language>.yml (admin panel: Homepage → Features). Videos: /assets/media/<id>.mp4 + <id>.webp.
+A video loads only when it scrolls into view and pauses when it leaves; with reduced motion the screenshot stays. {%- endcomment -%}
+{%- assign feat_ids = "save,reader,pdf,formats,search,folders,highlights,studio,looks,sync,grok,ais" | split: "," -%}
+{%- assign feat_pro = "looks,sync,grok" | split: "," -%}
 <section{% if halt %} class="alt"{% endif %} id="features">
   <div class="wrap">
     <div class="section-head">
       <h2>{{ th.features_h2 }}</h2>
       <p>{{ th.features_p }}</p>
     </div>
-    <div class="grid">
-      <div class="card">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
-        <h3>{{ th.f1_h }}</h3>
-        <p>{{ th.f1_p }}</p>
-      </div>
-      <div class="card">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></div>
-        <h3>{{ th.f2_h }}</h3>
-        <p>{{ th.f2_p }}</p>
-      </div>
-      <div class="card">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg></div>
-        <h3>{{ th.f3_h }}</h3>
-        <ul>
-          {%- for li in th.f3_items %}
-          <li>{{ li }}</li>
-          {%- endfor %}
-        </ul>
-      </div>
-      <div class="card">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M12 12v6"/><path d="m9 15 3 3 3-3"/></svg></div>
-        <h3>{{ th.f4_h }}</h3>
-        <p>{{ th.f4_p }}</p>
-      </div>
-      <div class="card">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
-        <h3>{{ th.f5_h }}</h3>
-        <p>{{ th.f5_p | replace: '%shortcut%', s.command_center_shortcut }}</p>
-      </div>
-      <div class="card">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></div>
-        <h3>{{ th.f6_h }}</h3>
-        <p>{{ th.f6_p }}</p>
-      </div>
-    </div>
+    <ul class="feat-grid" role="list">
+      {%- for fid in feat_ids %}
+      {%- assign fkey = "feat_" | append: fid -%}
+      {%- assign ftitle = th[fkey] | default: tren.home[fkey] -%}
+      {%- if ftitle == nil or ftitle == "" %}{% continue %}{% endif %}
+      <li class="feat" data-feat="{{ fid }}">
+        <button class="feat-media" type="button" aria-label="{{ ftitle | strip_html | escape }}" data-feat-open>
+          <span class="feat-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+          <video class="feat-video" muted loop playsinline preload="none" width="1280" height="800" poster="{{ '/assets/media/' | append: fid | append: '.webp' | relative_url }}" data-src="{{ '/assets/media/' | append: fid | append: '.mp4' | relative_url }}" aria-hidden="true" tabindex="-1"></video>
+          <span class="feat-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </button>
+        <h3 class="feat-title">{{ ftitle }}{% if feat_pro contains fid %} <span class="pro-chip" title="{{ th.pro_label | default: tren.home.pro_label }}">Pro</span>{% endif %}</h3>
+      </li>
+      {%- endfor %}
+    </ul>
   </div>
+  <dialog class="feat-dialog" id="feat-dialog" aria-label="{{ th.features_h2 | strip_html | escape }}">
+    <form method="dialog"><button class="feat-close" type="submit" aria-label="{{ tr.ui.dismiss | default: tren.ui.dismiss }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></form>
+    <video class="feat-big" muted loop playsinline controls width="1280" height="800"></video>
+    <p class="feat-big-title"></p>
+  </dialog>
 </section>
+<script>
+(function(){
+  var vids=[].slice.call(document.querySelectorAll('.feat-video')),still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function load(v){if(!v.src&&v.dataset.src){v.src=v.dataset.src;}}
+  if(!still&&'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){load(v);var p=v.play();if(p&&p.catch)p.catch(function(){});}else if(!v.paused){v.pause();}});},{rootMargin:'160px 0px',threshold:0.25});
+    vids.forEach(function(v){io.observe(v);});
+  }
+  var dlg=document.getElementById('feat-dialog');if(!dlg||!dlg.showModal)return;
+  var big=dlg.querySelector('.feat-big'),cap=dlg.querySelector('.feat-big-title');
+  document.querySelectorAll('[data-feat-open]').forEach(function(b){b.addEventListener('click',function(){
+    var li=b.closest('.feat'),v=b.querySelector('video');big.poster=v.poster;big.src=v.dataset.src;cap.textContent=li.querySelector('.feat-title').textContent.trim();
+    dlg.showModal();if(!still){var p=big.play();if(p&&p.catch)p.catch(function(){});}
+  });});
+  dlg.addEventListener('close',function(){big.pause();big.removeAttribute('src');big.load();});
+  dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
+})();
+</script>
