@@ -1,7 +1,7 @@
 # Pricing settings — edit in the admin panel ("Pricing"). Prices, currency and feature lists stay in _data/site.yml.
 # Plan names, subtitles, button texts and badges are translated in _data/i18n/<language>.yml (pricing: keys).
 # launched: false shows the Pro status on disabled buttons; true turns Pro buttons into checkout links (when a link is set).
-launched: false
+launched: true
 checkout_yearly: "https://checkout.freemius.com/app/41733/plan/72498/?billing_cycle=annual"
 checkout_monthly: "https://checkout.freemius.com/app/41733/plan/72498/?billing_cycle=monthly"
 checkout_lifetime: "https://checkout.freemius.com/app/41733/plan/72498/?billing_cycle=lifetime"
@@ -10,5 +10,7 @@ highlighted: yearly
 # Optional Lifetime plan card, placed after Monthly. Off by default.
 lifetime_enabled: false
 price_lifetime: TBD
-# Free plan button link; empty = the Chrome Web Store link.
+# show_save: the small "Save X%" pill on the Yearly card (worked out from the monthly and yearly prices). true or false.
+show_save: true
+# Free plan button link; empty = the Chrome Web Store link (until that is set: the homepage install section).
 free_url: ""
