@@ -26,7 +26,6 @@ stores:
   get_from: 入手先
   soon: 近日公開
   chrome_soon_aria: Chrome Web Store：近日公開
-  edge_soon_aria: Microsoft Edge Add-ons：近日公開
   version: バージョン %version%
 meta:
   tagline: すべての AI チャットを、自分のパソコンのフォルダに保存。
@@ -59,7 +58,7 @@ home:
   h1_b: あなたのパソコンに保存
   h1_c: 。
   lede: "%name% は、18 の AI アシスタントのチャットをお使いのパソコンのフォルダに保存するブラウザ拡張機能です。開いているチャットをワンクリックで保存。Pro なら、ワンクリックですべての AI を同期します。データがデバイスの外に出ることはありません。"
-  hero_note: Google Chrome と Microsoft Edge に対応。
+  hero_note: Google Chrome に対応。
   ais_h2: 18 の AI に対応
   ais_p: いつもどおりブラウザで各 AI にログインするだけ。%name% がそれぞれのチャットを専用のフォルダに保存します。
   features_h2: テキストだけでなく、チャットのすべてを
@@ -92,7 +91,7 @@ home:
   how_h2: 使い方
   steps:
   - t: 拡張機能をインストール
-    d: Chrome または Edge に追加して、アイコンをピン留めします。
+    d: Chrome に追加して、アイコンをピン留めします。
   - t: AI にログインしたままにする
     d: いつもどおり、同じブラウザプロファイルで各 AI サイトを使います。
   - t: "チャットを保存"
