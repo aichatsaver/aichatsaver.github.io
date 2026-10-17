@@ -210,3 +210,8 @@ kbd{font:600 .85em var(--mono);padding:2px 7px;border-radius:6px;border:1px soli
 /* maintenance page */
 .maint-box{text-align:center;padding:96px 20px}
 .maint-box h1{font-size:clamp(30px,5vw,44px);margin:20px 0 10px}
+/* "Save X%" pill on the Yearly card (absolute: never changes card size or alignment) */
+.plan .save-pill{position:absolute;top:-12px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:12px;font-weight:700;line-height:1.5;padding:2px 11px;border-radius:999px;letter-spacing:.02em;color:#c2410c;background:linear-gradient(90deg,#fff1f0,#fff4ea);border:1px solid rgba(239,68,68,.32);box-shadow:-6px 4px 14px -6px rgba(239,68,68,.45),6px 4px 14px -6px rgba(249,115,22,.5);pointer-events:none}
+.plan .save-pill.side{left:20px;transform:none}
+[dir="rtl"] .plan .save-pill.side{left:auto;right:20px}
+html[data-theme="dark"] .plan .save-pill{color:#fdba74;background:linear-gradient(90deg,#2b1518,#2d1a10);border-color:rgba(249,115,22,.42);box-shadow:-6px 4px 16px -6px rgba(239,68,68,.55),6px 4px 16px -6px rgba(249,115,22,.55)}
