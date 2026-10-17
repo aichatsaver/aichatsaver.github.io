@@ -120,7 +120,7 @@ pricing:
   free_h: Free
   free_sub: Alles, was du brauchst, um deine Chats zu behalten.
   forever: für immer
-  get_free: Kostenlos holen
+  get_free: "Kostenlos"
   yearly_h: Pro jährlich
   yearly_sub: Einmal im Jahr abgerechnet.
   per_year: / Jahr
@@ -137,6 +137,7 @@ pricing:
   yearly_badge: ''
   monthly_badge: ''
   lifetime_badge: ''
+  yearly_save: "Spare %pct%"
   howpro_h2: So funktioniert Pro
   howpro_p: Kein Konto, kein Passwort. Dein Lizenzschlüssel ist deine Anmeldung.
   howpro_steps:
