@@ -120,7 +120,7 @@ pricing:
   free_h: Free
   free_sub: كل ما تحتاجه للاحتفاظ بمحادثاتك.
   forever: للأبد
-  get_free: احصل عليه مجانًا
+  get_free: "مجانًا"
   yearly_h: Pro السنوية
   yearly_sub: تُدفع مرة واحدة في السنة.
   per_year: / سنة
@@ -137,6 +137,7 @@ pricing:
   yearly_badge: ''
   monthly_badge: ''
   lifetime_badge: ''
+  yearly_save: "وفّر %pct%"
   howpro_h2: كيف يعمل Pro
   howpro_p: لا حساب تنشئه ولا كلمة مرور. مفتاح الترخيص هو وسيلة تسجيل دخولك.
   howpro_steps:
