@@ -31,7 +31,7 @@ code{font-family:var(--mono);font-size:.9em;background:var(--bg2);padding:1px 5p
 .cp-help-text,.cp-field>.cp-help-text{display:block;font-size:13px;font-weight:400;color:var(--muted);margin:4px 0 0}
 .cp-inline{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .cp-inline>span{margin:0}
-.cp input[type=text],.cp input[type=password],.cp input[type=email],.cp input[type=url],.cp input[type=date],.cp input[type=number],.cp input[type=search],.cp select,.cp textarea,.cp-input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--text);font:15px/1.45 var(--font)}
+.cp input[type=text],.cp input[type=password],.cp input[type=email],.cp input[type=url],.cp input[type=date],.cp input[type=datetime-local],.cp input[type=number],.cp input[type=search],.cp select,.cp textarea,.cp-input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--text);font:15px/1.45 var(--font)}
 .cp textarea{resize:vertical;min-height:44px}
 .cp select{width:auto;min-width:200px;max-width:100%}
 .cp-mono,.cp textarea.cp-mono{font-family:var(--mono);font-size:13.5px}
@@ -305,3 +305,16 @@ button.cp-media-item:hover{border-color:var(--accent)}
   .cp-savebar .cp-btn{flex:1}
   .cp-savebar .cp-btn.small{flex:none}
 }
+/* Coupon / Deal */
+.cp-checks{display:flex;gap:18px;flex-wrap:wrap;align-items:center;min-height:40px}
+#cpStatus{font-weight:700}
+#cpStatus[data-k="live"]{color:var(--ok)}
+#cpStatus[data-k="soon"]{color:#9a6b00}
+html[data-theme="dark"] #cpStatus[data-k="soon"]{color:#ffcf5c}
+#cpStatus[data-k="bad"]{color:#c0322b}
+.cp-banner.wide{grid-column:1/-1;margin:4px 0 14px}
+.cp-prev-root .announce a.deal-btn{display:inline-block;margin-inline-start:12px;padding:4px 14px;border-radius:999px;background:var(--ann-fg,#fff);color:var(--ann-bg,#c2410c);text-decoration:none;font-weight:800;white-space:nowrap}
+.cp-prev-root .coupon-note{margin:10px 16px;font-size:13px;font-weight:700;color:#15803d}
+html[data-theme="dark"] .cp-prev-root .coupon-note{color:#4ade80}
+.cp-cplist{margin:4px 0 0;padding-left:18px;font-size:13px;word-break:break-all}
+.cp-cplist li{margin:4px 0}
