@@ -29,22 +29,25 @@ stores:
   version: Versão %version%
 meta:
   tagline: Salve cada chat de IA em uma pasta no seu próprio computador.
-  description: AI Chat Saver é uma extensão de navegador que salva seus chats de 18 assistentes de IA em uma pasta local, com atualização em um clique, busca e exportações com a aparência dos sites originais.
+  description: "AI Chat Saver é uma extensão de navegador que salva seus chats de 18 assistentes de IA em uma pasta local, com busca e exportações em todos os formatos. O Pro adiciona a sincronização de todas as IAs em um clique e exportações com a cara dos sites originais."
   pro_status: Pro — lançamento em breve
   free_features:
   - "Todas as 18 IAs"
   - "Central de Comandos para ver seus chats"
-  - "8 salvamentos por dia"
+  - "Salve manualmente o chat aberto"
+  - "8 chats novos por dia"
   - "8 exportações por dia, qualquer formato"
+  - "Studio e destaques"
   - "Mídia de todas as IAs (exceto Grok)"
   - "Salva em Downloads"
   - "Pequeno logo como marca d'água"
   pro_features:
   - "Tudo do Free"
+  - "“Sincronizar tudo” pela Central de Comandos"
   - "Salvamentos e exportações ilimitados"
   - "Sem marca d'água"
   - "Visual original da IA"
-  - "Sincronização, sincronização automática e agendamentos"
+  - "Sincronização automática e agendamentos"
   - "Mídia do Grok e recuperação de chats excluídos"
   - "Qualquer pasta"
   - "Uma chave por dispositivo"
@@ -54,25 +57,25 @@ home:
   h1_a: 'Cada chat de IA, '
   h1_b: salvo no seu computador
   h1_c: .
-  lede: '%name% é uma extensão de navegador que salva seus chats de 18 assistentes de IA em uma pasta no seu próprio computador. Um clique mantém tudo atualizado, e nada sai do seu dispositivo.'
+  lede: "%name% é uma extensão de navegador que salva seus chats de 18 assistentes de IA em uma pasta no seu próprio computador. Salve o chat aberto em um clique; com o Pro, um clique sincroniza todas as IAs. Nada sai do seu dispositivo."
   hero_note: Para Google Chrome e Microsoft Edge.
   ais_h2: Funciona com 18 IAs
   ais_p: Entre nas IAs que você usa no navegador, como sempre. O %name% salva os chats de cada uma em sua própria pasta.
   features_h2: Tudo o que está no chat, não só o texto
   features_p: 'Seus chats viram arquivos reais que são seus: legíveis offline, pesquisáveis e prontos para exportar.'
   f1_h: Uma pasta local que é sua
-  f1_p: Os chats são gravados em <strong>Downloads/AI Chat Saver</strong>, uma pasta por IA, em Markdown, HTML e JSON, com a mídia ao lado. Ou conecte uma pasta uma única vez e os arquivos são salvos direto nela, sem janelas de “Salvar como”.
-  f2_h: Atualização incremental em um clique
-  f2_p: Um único botão de atualizar sincroniza todas as IAs e salva só os chats novos ou alterados, então nada é baixado duas vezes. Execute pelo pop-up, pressione <kbd>Alt+Shift+U</kbd> ou agende a cada hora, a cada 6 horas, diariamente ou semanalmente.
+  f1_p: "Os chats são gravados em <strong>Downloads/AI Chat Saver</strong>, uma pasta por IA, em Markdown, HTML e JSON, com a mídia ao lado. No Free você salva o chat aberto na página de cada IA, até 8 chats novos por dia. Com o Pro, salve sem limites e escolha qualquer pasta, sem janelas de “Salvar como”."
+  f2_h: "Sincronize tudo em um clique (Pro)"
+  f2_p: "Com o Pro, <strong>Sincronizar tudo</strong> salva todas as IAs de uma vez e <strong>Atualizar tudo</strong> salva só os chats novos ou alterados, então nada é baixado duas vezes. Execute pela Central de Comandos ou pelo pop-up, pressione <kbd>Alt+Shift+U</kbd> ou agende a cada hora, a cada 6 horas, diariamente ou semanalmente."
   f3_h: Mídia, raciocínio, código e artefatos preservados
   f3_items:
-  - Imagens, vídeos e arquivos enviados e gerados
+  - "Imagens, vídeos e arquivos enviados e gerados (mídia do Grok com o Pro)"
   - Raciocínio, chamadas de ferramentas, o código que a IA executou e o resultado
   - Fontes da web e citações
   - Artefatos do Claude e canvas do ChatGPT como arquivos reais
   - Mensagens apagadas no site continuam, marcadas como “Apagada no site”; prompts editados são guardados como versões
-  f4_h: Exportações com a cara do original
-  f4_p: Exporte para <strong>HTML, Markdown, PDF, Word (DOCX) e TXT</strong>, além de JSON, PNG e JPG. Cada exportação pode manter a aparência do próprio site de IA, no modo claro ou escuro. Os PDFs são criados no seu computador com texto real e selecionável, sem caixa de impressão.
+  f4_h: "Exportações em todos os formatos"
+  f4_p: "Exporte para <strong>HTML, Markdown, PDF, Word (DOCX) e TXT</strong>, além de JSON, PNG e JPG, em todos os planos (Free: 8 exportações por dia, com um pequeno logo). Com o Pro, as exportações mantêm o visual próprio de cada site de IA, no claro ou escuro, sem logo. Os PDFs são criados no seu computador com texto real e selecionável, sem caixa de impressão."
   f5_h: Busca e a Central de Comandos
   f5_p: 'Pressione <kbd>%shortcut%</kbd> para abrir a Central de Comandos em tela cheia: busca instantânea em texto completo em todas as IAs, filtros como <code>provider:</code> e <code>has:code</code>, uma paleta de comandos (<kbd>Ctrl+K</kbd>), uma linha do tempo, destaques e notas, e modo de leitura.'
   f6_h: Privado desde a concepção
@@ -83,8 +86,8 @@ home:
     d: Adicione ao Chrome ou ao Edge e fixe o ícone.
   - t: Continue conectado às suas IAs
     d: Use os sites de IA no mesmo perfil do navegador, como você já faz.
-  - t: Clique em Atualizar
-    d: Seus chats são salvos na sua pasta. Clique de novo quando quiser; só os chats novos e alterados são salvos.
+  - t: "Salve seus chats"
+    d: "Salve o chat aberto na página de qualquer IA. Com o Pro, clique em Sincronizar tudo; só os chats novos e alterados são salvos."
   priv_eyebrow: Privacidade
   priv_h2: Seus chats nunca chegam até nós
   priv_p: O %name% lê seus chats pelo seu navegador, a partir dos sites de IA em que você está conectado, e os grava apenas na sua própria pasta e no armazenamento local do navegador. Leia a <a href="%privacy_url%">Política de Privacidade</a> completa (em inglês).
@@ -103,6 +106,8 @@ home:
     a: Depois de cada sincronização, a extensão verifica todas as IAs. Se um site mudou e o salvamento parar de funcionar, você recebe uma notificação e um aviso, e uma execução com falha nunca sobrescreve um chat salvo corretamente.
   - q: É grátis?
     a: Sim, existe um plano Free. %pro_status%. Veja os <a href="%pricing_url%">Preços</a>.
+  - q: "Posso pedir reembolso?"
+    a: "Pro Anual: reembolso total em até 7 dias após o primeiro pagamento. O Pro Mensal não é reembolsável, mas você pode cancelar a qualquer momento e mantém o Pro até o fim do mês pago."
   - q: Perdi minha chave de licença ou digitei o e-mail errado
     a: Escreva para <a href="mailto:%email%">%email%</a> com o seu recibo de pagamento. Vamos corrigir o e-mail da sua licença e enviar a chave novamente.
   cta_h2: Guarde cada conversa
