@@ -215,3 +215,80 @@ kbd{font:600 .85em var(--mono);padding:2px 7px;border-radius:6px;border:1px soli
 .plan .save-pill.side{left:20px;transform:none}
 [dir="rtl"] .plan .save-pill.side{left:auto;right:20px}
 html[data-theme="dark"] .plan .save-pill{color:#fdba74;background:linear-gradient(90deg,#2b1518,#2d1a10);border-color:rgba(249,115,22,.42);box-shadow:-6px 4px 16px -6px rgba(239,68,68,.55),6px 4px 16px -6px rgba(249,115,22,.55)}
+
+/* ===== feature showcase (home #features): short title + looping demo video per feature ===== */
+.feat-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 30px}
+.feat{display:flex;flex-direction:column;gap:12px;min-width:0}
+.feat-media{position:relative;display:block;width:100%;padding:0;border:0;cursor:zoom-in;border-radius:16px;overflow:hidden;padding-top:32px;
+  background:var(--card);box-shadow:0 0 0 1px var(--line),0 1px 2px rgba(23,20,43,.05),0 12px 32px -10px rgba(76,29,149,.22);
+  transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s ease;isolation:isolate}
+.feat-media::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;padding:1px;background:var(--grad);opacity:0;transition:opacity .25s ease;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.feat-media:hover,.feat-media:focus-visible{transform:translateY(-4px);box-shadow:0 0 0 1px transparent,0 2px 4px rgba(23,20,43,.06),0 22px 44px -14px rgba(124,58,237,.42)}
+.feat-media:hover::after,.feat-media:focus-visible::after{opacity:1}
+.feat-media:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.feat-bar{position:absolute;inset:0 0 auto;height:32px;display:flex;align-items:center;gap:6px;padding:0 12px;background:color-mix(in srgb,var(--bg2) 92%,#fff);border-bottom:1px solid var(--line);z-index:1}
+.feat-bar i{width:9px;height:9px;border-radius:50%;background:#e5e1ef}.feat-bar i:nth-child(1){background:#ff5f57}.feat-bar i:nth-child(2){background:#febc2e}.feat-bar i:nth-child(3){background:#28c840}
+.feat-video{position:relative;width:100%;height:auto;aspect-ratio:1280/800;object-fit:cover;display:block;background:var(--bg2)}
+.feat-zoom{position:absolute;right:10px;bottom:10px;z-index:2;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:#fff;background:rgba(17,17,27,.62);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;transform:translateY(4px);transition:opacity .2s ease,transform .2s ease}
+.feat-zoom svg{width:16px;height:16px}
+.feat-media:hover .feat-zoom,.feat-media:focus-visible .feat-zoom{opacity:1;transform:none}
+.feat-title{margin:0;font-size:18px;font-weight:650;letter-spacing:-.01em;line-height:1.35;display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:0 2px}
+.pro-chip{display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;font-size:11px;font-weight:750;letter-spacing:.03em;color:#fff;background:linear-gradient(135deg,#ef4444,#f97316)}
+html[data-theme="dark"] .feat-bar{background:#1f1b30}
+html[data-theme="dark"] .feat-bar i{opacity:.9}
+html[data-theme="dark"] .feat-media{box-shadow:0 0 0 1px var(--line),0 14px 36px -12px rgba(0,0,0,.6)}
+@media (max-width:980px){.feat-grid{gap:26px 20px}}
+@media (max-width:600px){.feat-grid{grid-template-columns:1fr;gap:26px}.feat-zoom{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.feat-media,.feat-media::after,.feat-zoom{transition:none}.feat-media:hover{transform:none}}
+.feat-dialog{width:min(1180px,94vw);max-height:94vh;padding:0;border:0;border-radius:18px;background:var(--card);color:var(--text);box-shadow:0 30px 80px rgba(0,0,0,.45);overflow:hidden}
+.feat-dialog::backdrop{background:rgba(10,8,20,.72);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.feat-big{display:block;width:100%;height:auto;max-height:calc(94vh - 56px);background:#000;aspect-ratio:1280/800}
+.feat-big-title{margin:0;padding:14px 56px 16px 20px;font-weight:650}
+.feat-dialog form{position:absolute;top:10px;right:10px;margin:0;z-index:2}
+[dir="rtl"] .feat-dialog form{right:auto;left:10px}
+[dir="rtl"] .feat-big-title{padding:14px 20px 16px 56px}
+.feat-close{width:38px;height:38px;border-radius:12px;border:0;display:grid;place-items:center;cursor:pointer;color:#fff;background:rgba(17,17,27,.66);backdrop-filter:blur(6px)}
+.feat-close svg{width:18px;height:18px}
+[dir="rtl"] .feat-zoom{right:auto;left:10px}
+
+/* ===== Help (home #help): tutorial video + steps ===== */
+.help{scroll-margin-top:72px}
+.help-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:40px;align-items:center}
+.help-video{position:relative;border-radius:18px;overflow:hidden;background:#0e0c18;aspect-ratio:1280/800;
+  box-shadow:0 0 0 1px var(--line),0 24px 60px -18px rgba(124,58,237,.45)}
+.help-video::before{content:"";position:absolute;inset:-2px;z-index:-1;border-radius:20px;background:var(--grad);opacity:.5;filter:blur(18px)}
+.help-video video{display:block;width:100%;height:100%;object-fit:cover;background:#0e0c18}
+.help-text h2{font-size:clamp(26px,3.4vw,34px);margin:0 0 8px}
+.help-text>.muted{margin:0 0 18px}
+.help-steps{list-style:none;counter-reset:hs;margin:0;padding:0;display:grid;gap:10px}
+.help-steps li{counter-increment:hs;position:relative;padding:12px 14px 12px 56px;border-radius:14px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:2px}
+.help-steps li::before{content:counter(hs);position:absolute;left:14px;top:12px;width:30px;height:30px;border-radius:50%;background:var(--grad);color:#fff;font-weight:700;font-size:14px;display:grid;place-items:center}
+.help-steps b{font-weight:650}
+.help-steps span{color:var(--muted);font-size:15px;line-height:1.5}
+[dir="rtl"] .help-steps li{padding:12px 56px 12px 14px}
+[dir="rtl"] .help-steps li::before{left:auto;right:14px}
+.help-more{margin:16px 0 0;font-size:15px;color:var(--muted)}
+@media (max-width:900px){.help-grid{grid-template-columns:1fr;gap:28px}}
+
+/* ===== phone top bar (≤640px): brand + language + theme on one row, the links (incl. Help) centred on the next ===== */
+@media (max-width:640px){
+  .head-row{gap:6px 2px;padding:8px 14px}
+  .head-row .nav{display:contents}
+  .head-row .brand{order:0}
+  .head-row .lang{order:1;margin-inline-start:auto}
+  .head-row .theme-toggle{order:2}
+  .head-row::after{content:"";order:3;flex-basis:100%;height:0}
+  .head-row .nav>a{order:4}
+}
+
+/* help video: big centred play button until the tutorial starts */
+.help-play{position:absolute;left:50%;top:50%;z-index:2;width:76px;height:76px;margin:-38px 0 0 -38px;border:0;border-radius:50%;padding:0;cursor:pointer;display:grid;place-items:center;
+  color:#fff;background:var(--grad);box-shadow:0 0 0 8px rgba(255,255,255,.28),0 14px 34px -6px rgba(124,58,237,.7);transition:transform .2s ease,box-shadow .2s ease}
+.help-play svg{width:30px;height:30px;margin-left:4px}
+.help-play:hover{transform:scale(1.07)}
+.help-play:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.help-video.playing .help-play{display:none}
+@media (max-width:600px){.help-play{width:62px;height:62px;margin:-31px 0 0 -31px}.help-play svg{width:24px;height:24px}}
+@media (prefers-reduced-motion:reduce){.help-play{transition:none}.help-play:hover{transform:none}}
