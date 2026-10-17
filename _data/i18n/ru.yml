@@ -120,7 +120,7 @@ pricing:
   free_h: Free
   free_sub: Всё, что нужно, чтобы сохранить ваши чаты.
   forever: навсегда
-  get_free: Получить бесплатно
+  get_free: "Бесплатно"
   yearly_h: Pro на год
   yearly_sub: Оплата раз в год.
   per_year: / год
@@ -137,6 +137,7 @@ pricing:
   yearly_badge: ''
   monthly_badge: ''
   lifetime_badge: ''
+  yearly_save: "Экономия %pct%"
   howpro_h2: Как работает Pro
   howpro_p: Не нужно создавать аккаунт и придумывать пароль. Ваш лицензионный ключ и есть ваш вход.
   howpro_steps:
